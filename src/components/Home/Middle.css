@@ -1,0 +1,37 @@
+.mid {
+  padding: 1rem 5rem 0 5rem;
+
+  margin-top: -20rem;
+}
+
+.about {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 1rem;
+  align-self: center;
+  justify-self: center;
+}
+.working {
+  align-self: center;
+  justify-self: center;
+}
+
+.aboutimg {
+  grid-template-rows: 1fr 1fr;
+  grid-gap: 2rem;
+  align-self: center;
+  justify-self: center;
+}
+.category {
+  text-align: center;
+}
+.categories {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 1rem;
+}
+
+.catImg {
+  align-self: center;
+  justify-self: center;
+}

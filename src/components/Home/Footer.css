@@ -1,0 +1,14 @@
+.foot {
+  margin: 0;
+  background-color: #457b9d;
+  height: 150px;
+}
+
+.fwaves {
+  /* background-color: #457b9d;
+  height: 150px; */
+}
+
+svg {
+  margin-bottom: -8px;
+}
