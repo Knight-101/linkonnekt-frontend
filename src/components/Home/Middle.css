@@ -25,13 +25,9 @@
 .category {
   text-align: center;
 }
+
 .categories {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-gap: 1rem;
-}
-
-.catImg {
-  align-self: center;
-  justify-self: center;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
 }
