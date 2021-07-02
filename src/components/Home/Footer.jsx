@@ -1,4 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
+import LinkedInIcon from "@material-ui/icons/LinkedIn";
+import TwitterIcon from "@material-ui/icons/Twitter";
+import FacebookIcon from "@material-ui/icons/Facebook";
 import "./Footer.css";
 
 const Footer = () => {
@@ -15,25 +18,71 @@ const Footer = () => {
       </div>
 
       <div className="foot">
-        <div id="foot1">
-          <h2>Linkonnekt</h2>
-          <p> Linkonnekt is a network of Content Creators and makes discovery and Collaboration easier.</p>
+        <div className="foot-grid">
+          <div className="foot-left">
+            <h2>Linkonnekt</h2>
+          </div>
+          <div></div>
+          <div>
+            <h4> Support</h4>
+          </div>
+          <div>
+            <h4> Community</h4>
+          </div>
+          <div>
+            <h4> Contact Us </h4>
+          </div>
+          <div className="foot-left">
+            <p id="subscribe">Subscibe with us</p>
+            <input id="mail" placeholder="yourmail@gmail.com"></input>
+            <p>
+              Linkonnekt is a network of Content Creators and makes discovery
+              and Collaboration easier.
+            </p>
+          </div>
+          <div></div>
+          <div>
+            <ul>
+              <li>About Us</li>
+              <li>Support</li>
+              <li>FAQ</li>
+              <li>Terms and Conditions</li>
+              <li>Privacy Policy</li>
+            </ul>
+          </div>
+          <div>
+            <ul>
+              <li>Blog</li>
+              <li>Partnership</li>
+              <li>Affiliates</li>
+            </ul>
+          </div>
+          <div>
+            <ul>
+              <li>Contact info</li>
+            </ul>
+            <div className="socials">
+              <a
+                href="https://www.linkedin.com/in/sanskar-mohapatra-51215815a/"
+                className="socials-link"
+              >
+                <LinkedInIcon fontSize="large" />
+              </a>
+              <a
+                href="https://twitter.com/SanskarMohapat1"
+                className="socials-link"
+              >
+                <TwitterIcon fontSize="large" />
+              </a>
+              <a href="" className="socials-link">
+                <FacebookIcon fontSize="large" />
+              </a>
+            </div>
+          </div>
         </div>
-        <div id="foot2">
-          <h3> Community</h3>
-          <ul>
-            <li>Blog</li>
-            <li>Youtube</li>
-          </ul>
+        <div className="copyright">
+          <p>ⓒ 2021 Linkonnekt. All Rights Reserved.</p>
         </div>
-        <div id="foot3">
-          <h3> Contact </h3>
-          <ul>
-            <li>Blog</li>
-            <li>Youtube</li>
-          </ul>
-        </div>
-        <div id="foot4"></div>
       </div>
     </div>
   );

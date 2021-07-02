@@ -9,7 +9,7 @@ const Head = () => {
         <div className="headContent">
           <div className="nav">
             <div>
-              <p>Linkonnekt</p>
+              <h4 style={{ wordSpacing: "1rem" }}>Linkonnekt</h4>
             </div>
             <div className="grid-item">
               <p id="login">Login</p>
