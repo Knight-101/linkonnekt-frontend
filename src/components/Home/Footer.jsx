@@ -13,7 +13,28 @@ const Footer = () => {
           ></path>
         </svg>
       </div>
-      <div className="foot"></div>
+
+      <div className="foot">
+        <div id="foot1">
+          <h2>Linkonnekt</h2>
+          <p> Linkonnekt is a network of Content Creators and makes discovery and Collaboration easier.</p>
+        </div>
+        <div id="foot2">
+          <h3> Community</h3>
+          <ul>
+            <li>Blog</li>
+            <li>Youtube</li>
+          </ul>
+        </div>
+        <div id="foot3">
+          <h3> Contact </h3>
+          <ul>
+            <li>Blog</li>
+            <li>Youtube</li>
+          </ul>
+        </div>
+        <div id="foot4"></div>
+      </div>
     </div>
   );
 };

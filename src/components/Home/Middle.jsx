@@ -12,6 +12,16 @@ import imgcat7 from "./CategoryImages/Cat7.png";
 import imgcat8 from "./CategoryImages/Cat8.png";
 import "./Middle.css";
 
+const arr = [
+  imgcat1,
+  imgcat2,
+  imgcat3,
+  imgcat4,
+  imgcat5,
+  imgcat6,
+  imgcat7,
+  imgcat8,
+];
 const Middle = () => {
   return (
     <div>
@@ -34,41 +44,24 @@ const Middle = () => {
             <img src={imgsrc1} className="about1img" alt="logo"></img>
           </div>
           <div className="aboutimg">
+          <div>
+              <img src={imgsrc3} className="about3img" alt="logo"></img>
+            </div>
             <div>
               <img src={imgsrc2} className="about2img" alt="logo"></img>
             </div>
-            <div>
-              <img src={imgsrc3} className="about3img" alt="logo"></img>
-            </div>
           </div>
+
         </div>
         <div className="category">
           <h2>Get Connected with Talented People in over 40 categories.</h2>
+
           <div className="categories">
-            <div>
-              <img src={imgcat1} className="catImg" alt="logo"></img>
-            </div>
-            <div>
-              <img src={imgcat2} className="catImg" alt="logo"></img>
-            </div>
-            <div>
-              <img src={imgcat3} className="catImg" alt="logo"></img>
-            </div>
-            <div>
-              <img src={imgcat4} className="catImg" alt="logo"></img>
-            </div>
-            <div>
-              <img src={imgcat5} className="catImg" alt="logo"></img>
-            </div>
-            <div>
-              <img src={imgcat6} className="catImg" alt="logo"></img>
-            </div>
-            <div>
-              <img src={imgcat7} className="catImg" alt="logo"></img>
-            </div>
-            <div>
-              <img src={imgcat8} className="catImg" alt="logo"></img>
-            </div>
+            {arr.map((img) => (
+              <div className="imgdiv">
+                <img src={img} className="catImg" id={arr.index} alt="logo"></img>
+              </div>
+            ))}
           </div>
         </div>
       </div>
