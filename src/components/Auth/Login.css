@@ -1,0 +1,82 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap");
+
+.login-layout {
+  display: grid;
+  grid-template-columns: 4fr 2fr;
+  height: 100vh;
+  font-family: Poppins;
+  letter-spacing: 2px;
+  text-align: center;
+}
+
+#login-layout-r {
+  background-color: #457b9d;
+}
+#login-layout-r-content {
+  text-align: center;
+  color: #f8f8f8;
+  padding: 4.5rem;
+}
+.loginImg {
+  margin-top: 3rem;
+  height: 80%;
+  width: 80%;
+}
+
+#signupB {
+  margin-top: 3rem;
+  border: solid thin;
+  border-color: #f8f8f8;
+  background-color: #457b9d;
+  color: #f8f8f8;
+  border-radius: 30px;
+  font-size: 1.2rem;
+  padding: 0.5rem 4rem 0.5rem 4rem;
+  cursor: pointer;
+}
+
+#signupB:hover {
+  border: solid thin;
+  border-color: #457b9d;
+  background-color: #f8f8f8;
+  color: #457b9d;
+  transition: 0.5s;
+}
+
+.login-layout-l {
+  padding: 4.5rem 15rem 0 15rem;
+}
+
+.createAcc {
+  text-align: center;
+  font-size: 2.8rem;
+  color: #2f3033;
+  font-family: Montserrat;
+  font-weight: 600;
+}
+
+.loginInput {
+  margin: 1rem 0 0 0;
+  padding: 0.8rem;
+}
+
+.loginB {
+  background-color: #2f3033;
+  color: white;
+  font-size: 1.3rem;
+  border-radius: 30px;
+  padding: 0.5rem 0 0.5rem 0;
+  margin-top: 2rem;
+  font-family: Poppins;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+.loginB:hover {
+  border: solid thin;
+  border-color: #2f3033;
+  background-color: #f8f8f8;
+  color: #2f3033;
+  transition: 0.5s;
+}

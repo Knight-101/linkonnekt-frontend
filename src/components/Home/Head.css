@@ -7,6 +7,9 @@ body {
   font-family: Poppins;
   font-weight: 300;
 }
+* {
+  box-sizing: border-box;
+}
 
 .head {
   background-color: #457b9d;
