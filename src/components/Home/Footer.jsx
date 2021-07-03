@@ -5,6 +5,15 @@ import FacebookIcon from "@material-ui/icons/Facebook";
 import "./Footer.css";
 
 const Footer = () => {
+  const [phoneInput, setPhoneInput] = useState('');
+  function handleInputChange(event) {
+    setPhoneInput(event.target.value);
+  }
+
+  function handleSubmit(event) {
+    alert('A number was submitted: ' + phoneInput);
+    event.preventDefault();
+  }
   return (
     <div>
       <div className="fwaves">
@@ -33,8 +42,12 @@ const Footer = () => {
             <h4> Contact Us </h4>
           </div>
           <div className="foot-left">
-            <p id="subscribe">Subscibe with us</p>
-            <input id="mail" placeholder="yourmail@gmail.com"></input>
+            <p id="subscribe">Request a Callback</p>
+            <form onSubmit={handleSubmit}>
+            <input id="mail" placeholder="+91 12345 67890" value={phoneInput} onChange={handleInputChange} >
+            </input>
+            <input type="submit" value="Submit" />
+            </form>
             <p>
               Linkonnekt is a network of Content Creators and makes discovery
               and Collaboration easier.
