@@ -6,6 +6,28 @@ import imgmail from "./Images/mail.png";
 import imglock from "./Images/lock.png";
 
 const Signup = () => {
+  const [ loginUsername, setLoginUsername ] = useState("");
+  const [loginEmail, setLoginEmail] = useState("");
+  const [loginPassword, setLoginPassword] = useState("");
+
+  function handleChangeEmail(event) {
+    setLoginEmail(event.target.value);
+  }
+
+  function handleChangePassword(event){
+    setLoginPassword(event.target.value);
+  }
+
+  function handleChangeUsername(event){
+    setLoginUsername(event.target.value);
+  }
+
+  function handleSubmit(event) {
+    event.preventDefault();
+    alert('Email and password was submitted: ' +loginUsername + loginEmail + loginPassword);
+  }
+
+
   return (
     <div>
       <div className="signup-layout">
@@ -23,7 +45,7 @@ const Signup = () => {
         </div>
         <div className="signup-layout-r">
           <main className="form-signin">
-            <form style={{ lineHeight: "5rem" }}>
+            <form style={{ lineHeight: "5rem" }} onSubmit={handleSubmit}>
               <h1 className="createAcc">Create Account</h1>
               <label htmlFor="firstName" className="visually-hidden">
                 username
@@ -39,8 +61,10 @@ const Signup = () => {
                   type="text"
                   class="form-control"
                   placeholder="Username"
-                  aria-label="Username"
-                  aria-describedby="basic-addon1"
+                  value={loginUsername}
+                  onChange={handleChangeUsername}
+                  // aria-label="Username"
+                  // aria-describedby="basic-addon1"
                 />
               </div>
 
@@ -55,8 +79,11 @@ const Signup = () => {
                   type="email"
                   class="form-control"
                   placeholder="Email"
-                  aria-label="Email"
-                  aria-describedby="basic-addon1"
+                  value={loginEmail}
+                  onChange={handleChangeEmail}
+
+                  // aria-label="Email"
+                  // aria-describedby="basic-addon1"
                 />
               </div>
 
@@ -68,11 +95,13 @@ const Signup = () => {
                   <img src={imglock} className="userImg" alt="logo"></img>
                 </span>
                 <input
-                  type="text"
+                  type="password"
                   class="form-control"
                   placeholder="Password"
-                  aria-label="Password"
-                  aria-describedby="basic-addon1"
+                  value={loginPassword}
+                  onChange={handleChangePassword}
+                  // aria-label="Password"
+                  // aria-describedby="basic-addon1"
                 />
               </div>
 

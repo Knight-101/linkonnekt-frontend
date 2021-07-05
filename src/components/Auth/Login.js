@@ -6,12 +6,30 @@ import imgmail from "./Images/mail.png";
 import imglock from "./Images/lock.png";
 
 const Login = () => {
+  const [ loginEmail, setLoginEmail] = useState("");
+  const [loginPassword, setLoginPassword] = useState("");
+
+  function handleChangeEmail(event) {
+    setLoginEmail(event.target.value);
+    // console.warn(event.target.value);
+  }
+
+  function handleChangePassword(event){
+    setLoginPassword(event.target.value);
+    // console.log(event.target.value);
+  }
+
+  function handleSubmit(event) {
+    event.preventDefault();
+    alert('Email and password was submitted: ' + loginEmail + loginPassword);
+  }
+
   return (
     <div>
       <div className="login-layout">
         <div className="login-layout-l">
           <main className="form-signin">
-            <form style={{ lineHeight: "5rem" }}>
+            <form style={{ lineHeight: "5rem" }} onSubmit={handleSubmit} >
               <h1 className="createAcc">Login</h1>
 
               <label htmlFor="inputEmail" className="visually-hidden">
@@ -25,11 +43,12 @@ const Login = () => {
                   <img src={imgmail} className="userImg" alt="logo"></img>
                 </span>
                 <input
+                  required
+                  value={loginEmail}
+                  onChange={handleChangeEmail}
                   type="email"
                   class="form-control"
                   placeholder="Email"
-                  aria-label="Email"
-                  aria-describedby="basic-addon1"
                 />
               </div>
 
@@ -41,11 +60,12 @@ const Login = () => {
                   <img src={imglock} className="userImg" alt="logo"></img>
                 </span>
                 <input
-                  type="text"
+                  required
+                  value={loginPassword}
+                  onChange={handleChangePassword}
+                  type="password"
                   class="form-control"
                   placeholder="Password"
-                  aria-label="Password"
-                  aria-describedby="basic-addon1"
                 />
               </div>
 
