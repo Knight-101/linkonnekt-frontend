@@ -1,4 +1,4 @@
-const influencer = {
+const creator = {
   name: "Daksh",
   age: 19,
   bio: "hello Im Daksh from DDun and I study in BITSGoa",
