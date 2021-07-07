@@ -52,7 +52,6 @@ export default function CenteredTabs() {
           centered
         >
           <Tab label="Personal Info" />
-
           <Tab label="Add skills" />
           <Tab label="Authorisation" />
         </Tabs>

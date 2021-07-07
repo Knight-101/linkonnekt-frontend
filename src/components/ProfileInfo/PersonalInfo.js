@@ -3,11 +3,40 @@ import "./PersonalInfo.css";
 import TextField from "@material-ui/core/TextField";
 
 const PerosnalInfo = () => {
+  const [buttonClicked, setButtonClicked] = useState(0);
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [Address, setAddress] = useState(""); 
+  function handleSubmit() {
+    console.log(firstName, lastName, buttonClicked, Address);
+    //export this data from the API here
+  }
+  function handleFirstName(e) {
+    setFirstName(e.target.value);
+  }
+  function handleLastName(e) {
+    setLastName(e.target.value);
+  }
+  function handleAddress(e) {
+    setAddress(e.target.value);
+  }
+
+
   return (
     <div>
       <div id="personalInfo">
-        <TextField id="fName" label="First Name" />
-        <TextField id="lName" label="Last Name" />
+        <TextField
+          id="fName"
+          label="First Name"
+          value={firstName}
+          onChange={handleFirstName}
+        />
+        <TextField
+          id="lName"
+          label="Last Name"
+          value={lastName}
+          onChange={handleLastName}
+        />
         <TextField
           id="country"
           select
@@ -29,22 +58,30 @@ const PerosnalInfo = () => {
           // onChange={handleChange}
           // helperText="Please select your currency"
         ></TextField>
-        <TextField className="address" label="Address" />
+        <TextField className="address" label="Address" value={Address} onChange={handleAddress}/>
         <TextField id="pinCode" label="Pin Code" />
       </div>
       <div id="roleSelection">
         <h6>Select your role</h6>
         <div id="roles">
-          <button className="rolesOptions">Creator</button>
-          <button className="rolesOptions">Brand</button>
-          <button className="rolesOptions">Freelancer</button>
-          <button className="rolesOptions">Collaborator</button>
+          <button className="rolesOptions" onClick={() =>  setButtonClicked(1)}>
+            Creator
+          </button>
+          <button className="rolesOptions" onClick={() =>  setButtonClicked(2)}>
+            Brand
+          </button>
+          <button className="rolesOptions" onClick={() => setButtonClicked(3)}>
+            Freelancer
+          </button>
+          <button className="rolesOptions" onClick={() => setButtonClicked(4)}>
+            Collaborator
+          </button>
         </div>
         <div id="skip-next">
           <button id="skip" className="skip-next-btn">
             Skip
           </button>
-          <button id="next" className="skip-next-btn">
+          <button id="next" className="skip-next-btn" onClick={handleSubmit}>
             Next
           </button>
         </div>
