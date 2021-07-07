@@ -1,0 +1,12 @@
+.profileinfo-layout {
+  display: grid;
+  grid-template-columns: 2fr 5fr;
+  height: 100vh;
+  font-family: Poppins;
+  letter-spacing: 2px;
+  text-align: center;
+}
+
+.profileinfo-layout-l {
+  background-color: #457b9d;
+}
