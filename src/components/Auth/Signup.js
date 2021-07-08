@@ -63,8 +63,6 @@ const Signup = () => {
                   placeholder="Username"
                   value={loginUsername}
                   onChange={handleChangeUsername}
-                  // aria-label="Username"
-                  // aria-describedby="basic-addon1"
                 />
               </div>
 
@@ -81,9 +79,6 @@ const Signup = () => {
                   placeholder="Email"
                   value={loginEmail}
                   onChange={handleChangeEmail}
-
-                  // aria-label="Email"
-                  // aria-describedby="basic-addon1"
                 />
               </div>
 
@@ -100,8 +95,6 @@ const Signup = () => {
                   placeholder="Password"
                   value={loginPassword}
                   onChange={handleChangePassword}
-                  // aria-label="Password"
-                  // aria-describedby="basic-addon1"
                 />
               </div>
 

@@ -53,6 +53,7 @@ svg {
   position: relative;
   top: 30px;
   bottom: 0;
+  
 }
 
 .socials-link {
@@ -67,3 +68,9 @@ svg {
   text-align: center;
   margin-top: 50px;
 }
+
+.submit-button {
+  padding: 0.5rem;
+  margin: 1rem;
+}
+
