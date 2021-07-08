@@ -1,0 +1,49 @@
+:root{
+    --red: #E63946;
+    --offwhite: #F8F8F8;
+    --charl: #A8DADC;
+    --heavy-charl: #5DB3B6;
+    --light-charl: #D9EFF0;
+    --heavy-jb: #274659;
+    --jb: #457B9D;
+    --light-jb: #70A1C0;
+    --black: #2F3133;
+
+}
+h5{
+    color: var(--heavy-jb);
+    justify-content:space-around;
+}
+
+#input-boxes>*{
+    margin: 0.5rem;
+    border: 1px solid var(--offwhite);
+    padding:0.5rem;
+    background-color: var(--light-charl);
+}
+.profile{
+    /*relative margin and padding to outer element*/
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+}
+
+.profile-image{
+    width: 300px;
+    height: 300px;
+    border: 2px solid var(--offwhite);
+    align-self: center;
+    align-items:center;
+    border-radius:100%;
+    display: flex;
+}
+
+.camera{
+    border: 2px solid var(--red);
+    background-color: var(--red);
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+    align-self: flex-end;
+    justify-content: right;
+}

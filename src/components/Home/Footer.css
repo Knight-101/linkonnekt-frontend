@@ -68,3 +68,9 @@ svg {
   text-align: center;
   margin-top: 50px;
 }
+
+.submit-button {
+  padding: 0.5rem;
+  margin: 1rem;
+}
+

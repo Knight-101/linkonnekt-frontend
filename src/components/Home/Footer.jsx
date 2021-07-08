@@ -46,7 +46,7 @@ const Footer = () => {
             <form onSubmit={handleSubmit}>
             <input id="mail" placeholder="+91 12345 67890" value={phoneInput} onChange={handleInputChange} >
             </input>
-            <input type="submit" value="Submit" />
+            <input type="submit" value="Submit" class="submit-button"/>
             </form>
             <p>
               Linkonnekt is a network of Content Creators and makes discovery
@@ -87,7 +87,7 @@ const Footer = () => {
               >
                 <TwitterIcon fontSize="large" />
               </a>
-              <a href="" className="socials-link">
+              <a href="https://twitter.com/SanskarMohapat1" className="socials-link">
                 <FacebookIcon fontSize="large" />
               </a>
             </div>
