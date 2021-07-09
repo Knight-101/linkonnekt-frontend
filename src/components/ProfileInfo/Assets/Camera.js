@@ -9,6 +9,7 @@ const Camera = () => {
         viewBox="0 0 25 25"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
+        style={{ margin: "0 0 -15px" }}
       >
         <g clip-path="url(#clip0)">
           <path

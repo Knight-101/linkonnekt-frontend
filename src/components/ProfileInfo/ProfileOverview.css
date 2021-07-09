@@ -1,49 +1,73 @@
-:root{
-    --red: #E63946;
-    --offwhite: #F8F8F8;
-    --charl: #A8DADC;
-    --heavy-charl: #5DB3B6;
-    --light-charl: #D9EFF0;
-    --heavy-jb: #274659;
-    --jb: #457B9D;
-    --light-jb: #70A1C0;
-    --black: #2F3133;
-
+:root {
+  --red: #e63946;
+  --offwhite: #f8f8f8;
+  --charl: #a8dadc;
+  --heavy-charl: #5db3b6;
+  --light-charl: #d9eff0;
+  --heavy-jb: #274659;
+  --jb: #457b9d;
+  --light-jb: #70a1c0;
+  --black: #2f3133;
 }
-h5{
-    color: var(--heavy-jb);
-    justify-content:space-around;
-}
-
-#input-boxes>*{
-    margin: 0.5rem;
-    border: 1px solid var(--offwhite);
-    padding:0.5rem;
-    background-color: var(--light-charl);
-}
-.profile{
-    /*relative margin and padding to outer element*/
-    display: flex;
-    flex-direction: column;
-    flex-wrap: nowrap;
+h5 {
+  color: var(--heavy-jb);
+  justify-content: space-around;
 }
 
-.profile-image{
-    width: 300px;
-    height: 300px;
-    border: 2px solid var(--offwhite);
-    align-self: center;
-    align-items:center;
-    border-radius:100%;
-    display: flex;
+#input-boxes > * {
+  margin: 0.5rem;
+  border: 1px solid var(--offwhite);
+  padding: 0.5rem;
+  background-color: var(--light-charl);
+}
+.profile {
+  /*relative margin and padding to outer element*/
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
 }
 
-.camera{
-    border: 2px solid var(--red);
-    background-color: var(--red);
-    width: 50px;
-    height: 50px;
-    border-radius: 100%;
-    align-self: flex-end;
-    justify-content: right;
+.profile-image {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  width: 200px;
+  height: 200px;
+  border: 2px solid var(--offwhite);
+  align-self: center;
+  align-items: center;
+  border-radius: 100%;
+  display: flex;
+}
+#user-data {
+  padding: 1rem 2rem;
+  display: flex;
+  flex-direction: column;
+
+  align-content: space-between;
+  row-gap: 2rem;
+}
+.user-data-box {
+  border: 1px solid var(--offwhite);
+  background-color: var(--light-charl);
+  padding: 0.5rem 0.8rem;
+  display: flex;
+  flex-direction: row;
+  column-gap: 2rem;
+  text-align: center;
+  border-radius: 10px;
+  font-size: 1.1rem;
+}
+svg {
+  margin: 0 0 0;
+}
+
+.camera {
+  border: 2px solid var(--red);
+  background-color: var(--red);
+  width: 50px;
+  height: 50px;
+  border-radius: 100%;
+  align-self: flex-end;
+  justify-content: right;
+  align-items: center;
 }

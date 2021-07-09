@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import "./ProfileInfo.css";
-import Tabs from "./Tabs";
+import FreelancerTabs from "./Freelancer/FreelancerTabs";
 import ProfileOverview from "./ProfileOverview";
 
 const ProfileInfo = () => {
@@ -8,10 +8,14 @@ const ProfileInfo = () => {
     <div>
       <div className="profileinfo-layout">
         <div className="profileinfo-layout-l">
-          <ProfileOverview name="sansakar" number={343} email="daksh@gmail.com" />
+          <ProfileOverview
+            name="sansakar"
+            number={343}
+            email="daksh@gmail.com"
+          />
         </div>
         <div id="profileinfo-layout-r">
-          <Tabs />
+          <FreelancerTabs />
         </div>
       </div>
     </div>

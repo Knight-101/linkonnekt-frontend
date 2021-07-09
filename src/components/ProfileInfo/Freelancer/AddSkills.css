@@ -1,0 +1,54 @@
+.skills {
+  padding: 0 5rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: 5rem;
+  grid-row-gap: 2rem;
+}
+#tags-area {
+  grid-row: 2;
+  text-align: left;
+}
+#tag-box {
+  background-color: red;
+  color: white;
+  border-radius: 10px;
+}
+.tags {
+  width: 100%;
+}
+#portfolio {
+  grid-row: 3;
+  text-align: left;
+  justify-self: left;
+  grid-column: 1/2;
+}
+#portName {
+  border: none;
+  background-color: #f1f1f1;
+  padding: 0.8rem 0.8rem;
+  width: 400px;
+  border-radius: 5px;
+}
+#portDes {
+  border: none;
+  background-color: #f1f1f1;
+  grid-row: 4;
+  grid-column: 1/3;
+  width: 100%;
+  height: 150px;
+  padding: 1rem;
+}
+textarea:focus,
+input:focus {
+  outline: none;
+}
+#portImgs {
+  background-color: #f1f1f1;
+  width: 50%;
+  grid-row: 5;
+  height: 60px;
+  border-radius: 40px;
+  padding-top: 1rem;
+  cursor: pointer;
+}

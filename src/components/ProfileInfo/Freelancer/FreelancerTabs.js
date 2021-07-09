@@ -6,6 +6,8 @@ import Tab from "@material-ui/core/Tab";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
 import PerosnalInfo from "./PersonalInfo";
+import AddSkills from "./AddSkills";
+import LinkAccounts from "./LinkAccounts";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -53,17 +55,17 @@ export default function CenteredTabs() {
         >
           <Tab label="Personal Info" />
           <Tab label="Add skills" />
-          <Tab label="Authorisation" />
+          <Tab label="Link Accounts" />
         </Tabs>
       </Paper>
       <TabPanel value={value} index={0}>
         <PerosnalInfo />
       </TabPanel>
       <TabPanel value={value} index={1}>
-        Item Two
+        <AddSkills />
       </TabPanel>
       <TabPanel value={value} index={2}>
-        Item Three
+        <LinkAccounts />
       </TabPanel>
     </div>
   );
