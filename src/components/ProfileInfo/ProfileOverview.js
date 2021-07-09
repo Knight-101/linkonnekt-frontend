@@ -20,18 +20,6 @@ const ProfileOverview = (props) => {
           <Camera />
         </div>
       </div>
-      {/* <div id="input-boxes">
-      <User/>
-        <h5>
-           {props.name}
-        </h5>
-        <h5>
-          <Mail /> Email: {props.email}
-        </h5>
-        <h5>
-          <Phone /> Phone number : {props.number}
-        </h5>
-      </div> */}
       <div id="user-data">
         <div className="user-data-box">
           <User />
