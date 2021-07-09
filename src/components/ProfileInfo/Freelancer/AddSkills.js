@@ -4,41 +4,29 @@ import TextField from "@material-ui/core/TextField";
 import InputLabel from "@material-ui/core/InputLabel";
 import NativeSelect from "@material-ui/core/NativeSelect";
 import CloudUploadIcon from "@material-ui/icons/CloudUpload";
-
-const tagBox = (props) => {
-  return <div id="tag-box">{props.tagName}</div>;
-};
+import ContentWriter from './ContentWriter';
+import VideoEditor from './VideoEditor';
+import GraphicDesigner from './GraphicDesigner';
 
 const AddSkills = () => {
   const [buttonClicked, setButtonClicked] = useState(0);
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [Address, setAddress] = useState("");
-  const [tags, setTags] = useState([]);
+  const [projectTitle, setProjectTitle] = useState("");
+  const [projectDescription, setProjectDescription] = useState("");
+  const [choice, setChoice] = useState("");
+
   function handleSubmit() {
-    console.log(firstName, lastName, buttonClicked, Address);
+    console.log();
     //export this data from the API here
   }
-  function handleFirstName(e) {
-    setFirstName(e.target.value);
+  function handleProjectTitle(e) {
+    setProjectTitle(e.target.value);
   }
-  function handleLastName(e) {
-    setLastName(e.target.value);
+  function handleProjectDescription(e) {
+    setProjectDescription(e.target.value);
   }
-  function handleAddress(e) {
-    setAddress(e.target.value);
-  }
-  function handleTag(event) {
-    if (event.keyCode === 13 || event.keyCode === 32) {
-      const val = event.target.value;
-      console.log(val);
-      setTags((prevStates) => {
-        return [...prevStates, val];
-      });
-      // event.target.value = tags.map((item) => {
-      //   return <tagBox tagName={item} />;
-      // });
-    }
+  function handleChoice(e) {
+    setChoice(e.target.value);
+    console.log(choice);
   }
 
   return (
@@ -61,24 +49,35 @@ const AddSkills = () => {
               name: "age",
               id: "age-native-label-placeholder",
             }}
+            onChange={handleChoice}
           >
-            <option value="">None</option>
-            <option value={10}>Ten</option>
-            <option value={20}>Twenty</option>
-            <option value={30}>Thirty</option>
+            <option value="" disabled default>
+              Select one
+            </option>
+            <option value="Writer">Writer</option>
+            <option value="Graphic Designer">Graphic Designer</option>
+            <option value="Video Editor">Video Editor</option>
           </NativeSelect>
         </div>
-        <div id="tags-area">
-          <h5>Add relevant tags</h5>
-          <TextField className="tags" placeholder="tags" onKeyUp={handleTag} />
-        </div>
+        <br/>
+        {choice==="Writer" ? <ContentWriter /> : <br/>}
+        {choice==="Graphic Designer" ? <GraphicDesigner /> : <br/>}
+        {choice==="Video Editor" ? <VideoEditor /> : <br/>}
+
         <div id="portfolio">
           <h4 style={{ marginBottom: "1rem" }}>Portfolio</h4>
-          <input id="portName" placeholder="Name of Project"></input>
+          <input
+            id="portName"
+            placeholder="Name of Project"
+            value={projectTitle}
+            onChange={handleProjectTitle}
+          ></input>
         </div>
         <textarea
           id="portDes"
           placeholder="Describe your project in brief"
+          value={projectDescription}
+          onChange={handleProjectDescription}
         ></textarea>
         <div id="portImgs">
           <CloudUploadIcon /> Upload Images
