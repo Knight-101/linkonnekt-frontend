@@ -1,0 +1,45 @@
+.linkAcc {
+  padding: 0 5rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr 8fr;
+  grid-column-gap: 5rem;
+  grid-row-gap: 2rem;
+}
+#linkAccHeading {
+  text-align: left;
+  margin-bottom: 1rem;
+  letter-spacing: 1.5px;
+  grid-column: 1/4;
+  font-size: 1.2rem;
+}
+#insta {
+  grid-row: 2;
+}
+.socialRows {
+  justify-self: left;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.socialBtn {
+  border: solid #457b9d;
+  background-color: white;
+  color: #457b9d;
+  border-radius: 10px;
+  height: 50px;
+  width: 100px;
+}
+.socialBtn:hover {
+  border: solid #457b9d;
+  background-color: #457b9d;
+  color: white;
+  transition: 0.3s;
+}
+.socialName {
+  align-self: center;
+  color: #457b9d;
+}
+.align-r {
+  justify-self: right;
+  padding: 0 0;
+}

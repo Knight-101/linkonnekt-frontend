@@ -1,6 +1,9 @@
 import React, { useState, useEffect, useRef } from "react";
 import "./ProfileInfo.css";
 import FreelancerTabs from "./Freelancer/FreelancerTabs";
+import CreatorTabs from "./Creator/CreatorTabs";
+import BuyerTabs from "./Buyer/BuyerTabs";
+
 import ProfileOverview from "./ProfileOverview";
 
 const ProfileInfo = () => {
@@ -15,7 +18,7 @@ const ProfileInfo = () => {
           />
         </div>
         <div id="profileinfo-layout-r">
-          <FreelancerTabs />
+          <BuyerTabs />
         </div>
       </div>
     </div>

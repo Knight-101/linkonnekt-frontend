@@ -6,6 +6,8 @@ import Home from "./components/Home/Home";
 import EmailV from "./components/Verification/EmailV";
 import MobileV from "./components/Verification/MobileV";
 import ProfileInfo from "./components/ProfileInfo/ProfileInfo";
+import UserHome from "./components/UserHome/UserHome";
+import "./App.css";
 
 function App() {
   return (
@@ -30,6 +32,9 @@ function App() {
         </Route>
         <Route path="/profileinfo">
           <ProfileInfo />
+        </Route>
+        <Route path="/userhome">
+          <UserHome />
         </Route>
       </Switch>
     </Router>
