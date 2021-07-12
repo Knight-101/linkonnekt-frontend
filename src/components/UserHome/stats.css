@@ -1,0 +1,40 @@
+:root {
+    --red: #e63946;
+    --offwhite: #f8f8f8;
+    --charl: #a8dadc;
+    --heavy-charl: #5db3b6;
+    --light-charl: #d9eff0;
+    --heavy-jb: #274659;
+    --jb: #457b9d;
+    --light-jb: #70a1c0;
+    --black: #2f3133;
+  }  
+
+.flexbox{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.stat-most-imp{
+    margin: 1rem 1rem 1rem 1rem;
+    color: var(--heavy-jb);
+    font-weight: bolder;
+}
+
+.old-stats-div{
+    border: 1px solid var(--heavy-jb);
+    background-color: var(--offwhite);
+    text-align: center;
+    border-radius: 20px;
+}
+
+.old-stats-div>*{
+    margin: auto;
+    color: var(--heavy-jb);
+    margin: 0px;
+}
+
+
+
