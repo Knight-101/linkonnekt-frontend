@@ -6,6 +6,7 @@ import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import { Divider } from "@material-ui/core";
+import "./stats.css";
 
 const useStyles = makeStyles({
   root: {
@@ -13,6 +14,8 @@ const useStyles = makeStyles({
     background: "#E63946",
     opacity: "0.65",
     color: "white",
+    margin: 10
+
   },
   bullet: {
     display: "inline-block",
@@ -29,30 +32,31 @@ const useStyles = makeStyles({
 
 export default function Stats() {
   const classes = useStyles();
-
+  const DataArr = [
+    { id: 1, date: "Yesterday", amount: 10 },
+    { id: 2, date: "LastWeek", amount: 10 },
+    { id: 3, date: "LastMonth", amount: 10 },
+  ];
   return (
     <Card className={classes.root}>
       <CardContent>
-        {/* <Typography
-          className={classes.title}
-          color="textSecondary"
-          gutterBottom
-        >
-          Word of the Day
-        </Typography> */}
         <Typography variant="h5" component="h2">
-          New people
+          New Audience Captured
         </Typography>
-        {/* <Typography className={classes.pos} color="textSecondary">
-          adjective
-        </Typography> */}
         <Divider />
-        <Typography variant="body2" component="p">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque
-          et malesuada neque, quis iaculis massa. Donec lobortis odio vitae nisi
-          feugiat, a condimentum metus tempus.
-          {'"a benevolent smile"'}
-        </Typography>
+        <div>
+          <h3 className="stat-most-imp">1003</h3>
+        </div>
+        <div className="flexbox">
+          {DataArr.map((post) => (
+            <div key={post.id}>
+              <div> {post.date}</div>
+              <div className="old-stats-div">
+                <p>{post.amount}</p>
+              </div>
+            </div>
+          ))}
+        </div>
       </CardContent>
       <CardActions>
         <Button size="small">Learn More</Button>
