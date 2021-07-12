@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Login from "./components/Auth/Login";
 import Signup from "./components/Auth/Signup";
@@ -33,9 +33,26 @@ function App() {
         <Route path="/profileinfo">
           <ProfileInfo />
         </Route>
-        <Route path="/userhome">
-          <UserHome />
-        </Route>
+        <Route
+          path="/userhome/dashboard"
+          component={() => <UserHome item="Dashboard" />}
+        />
+        <Route
+          path="/userhome/search"
+          component={() => <UserHome item="Search" />}
+        />
+        <Route
+          path="/userhome/allprojects"
+          component={() => <UserHome item="AllProjects" />}
+        />
+        <Route
+          path="/userhome/wallet"
+          component={() => <UserHome item="Wallet" />}
+        />
+        <Route
+          path="/userhome/logout"
+          component={() => <UserHome item="LogOut" />}
+        />
       </Switch>
     </Router>
   );

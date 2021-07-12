@@ -76,6 +76,13 @@ const useStyles = makeStyles((theme) => ({
     fontSize: "30px",
     cursor: "pointer",
   },
+  link: {
+    color: "white",
+    textDecoration: "none",
+    "&:hover": {
+      color: "white",
+    },
+  },
 }));
 
 export default useStyles;
