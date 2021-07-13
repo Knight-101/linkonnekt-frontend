@@ -15,6 +15,7 @@ import useStyles from "./SidebarStyles";
 import AccountCircle from "@material-ui/icons/AccountCircle";
 import Sidebar from "./Sidebar";
 import Dashboard from "./Dashboard/Dashboard";
+import Search from "./Search/Search";
 
 function UserHome(props) {
   const { window } = props;
@@ -86,10 +87,10 @@ function UserHome(props) {
         </Hidden>
       </nav>
       {props.item === "Dashboard" && <Dashboard />}
-      {/* {props.item === "Search" && <Search />}
-      {props.item === "AllProjects" && <AllProjects />}
+      {props.item === "Search" && <Search />}
+      {/* {props.item === "AllProjects" && <AllProjects />}
       {props.item === "Wallet" && <Wallet />}
-      {props.item === "LogOut" && <LogOut />} */}
+      {props.item === "LogOut" && <LogOut />}  */}
     </div>
   );
 }

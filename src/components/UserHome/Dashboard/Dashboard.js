@@ -3,6 +3,7 @@ import useStyles from "../SidebarStyles";
 import Invitations from "./Invitation";
 import Collaborators from "./Collaborators";
 import Stats from "./Stats";
+import Matches from "./Matches";
 
 function Dashboard(props) {
   const classes = useStyles();

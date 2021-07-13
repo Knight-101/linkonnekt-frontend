@@ -28,7 +28,9 @@ export default function Invitations() {
 
   return (
     <Card className={classes.root}>
-      <h4 style={{ textAlign: "center" }}>Invitations for you</h4>
+      <h4 style={{ textAlign: "center", paddingTop: "0.5rem" }}>
+        Invitations for you
+      </h4>
       <CardActionArea>
         <CardMedia className={classes.media} image={imgsrc} title="img" />
         <CardContent>
