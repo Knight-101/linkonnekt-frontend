@@ -1,4 +1,7 @@
 import React, { useEffect, useState } from "react";
+import { useGoogleLogout } from "react-google-login";
+import { useDispatch } from "react-redux";
+import { logout } from "../../Redux/logoutAction";
 import DashboardIcon from "@material-ui/icons/Dashboard";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
@@ -10,8 +13,11 @@ import WalletIcon from "@material-ui/icons/AccountBalanceWallet";
 import LogoutIcon from "@material-ui/icons/ExitToApp";
 import useStyles from "./SidebarStyles";
 import { Link } from "react-router-dom";
+import { useHistory } from "react-router";
 
 const Sidebar = (props) => {
+  const dispatch = useDispatch();
+  const history = useHistory();
   const classes = useStyles();
   const [listitem, setListitem] = useState({
     Dashboard: true,
@@ -21,6 +27,9 @@ const Sidebar = (props) => {
     LogOut: false,
   });
 
+  const onFailure = (e) => {
+    console.log(e);
+  };
   useEffect(() => {
     setListitem((prev) => {
       const newList = prev;
@@ -34,6 +43,22 @@ const Sidebar = (props) => {
       };
     });
   }, [props.item]);
+
+  const onLogoutSuccess = () => {
+    const isTokenExists = localStorage.getItem("token");
+    if (isTokenExists) {
+      dispatch(logout());
+      localStorage.clear();
+      history.push("/");
+    }
+  };
+  const clientId =
+    "378065475011-nt3el8svf2r3d0h9sabche7sgcq4o83i.apps.googleusercontent.com";
+  const { signOut } = useGoogleLogout({
+    clientId,
+    onLogoutSuccess,
+    onFailure,
+  });
 
   return (
     <div>
@@ -74,7 +99,7 @@ const Sidebar = (props) => {
           </ListItem>
         </Link>
         <Link to="/userhome/logout" className={classes.link}>
-          <ListItem button selected={listitem.LogOut}>
+          <ListItem onClick={signOut} button selected={listitem.LogOut}>
             <ListItemIcon>
               <LogoutIcon className={classes.icons} />
             </ListItemIcon>

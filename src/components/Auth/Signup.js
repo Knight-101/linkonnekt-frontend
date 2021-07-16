@@ -1,51 +1,119 @@
 import React, { useState, useEffect, useRef } from "react";
+import axios from "axios";
+
 import "./Signup.css";
+import { useHistory } from "react-router";
+import { Link } from "react-router-dom";
+import Snackbar from "@material-ui/core/Snackbar";
+import MuiAlert from "@material-ui/lab/Alert";
 import imgsignup from "./Images/signupImg.png";
 import imguser from "./Images/user.png";
 import imgmail from "./Images/mail.png";
 import imglock from "./Images/lock.png";
+import SignupModal from "./SignupModal";
+
+function Alert(props) {
+  return <MuiAlert elevation={6} variant="filled" {...props} />;
+}
 
 const Signup = () => {
-  const [ loginUsername, setLoginUsername ] = useState("");
-  const [loginEmail, setLoginEmail] = useState("");
-  const [loginPassword, setLoginPassword] = useState("");
+  const history = useHistory();
+  const BASE_URL = "http://localhost:8000";
+  const [open, setOpen] = React.useState(false);
 
-  function handleChangeEmail(event) {
-    setLoginEmail(event.target.value);
-  }
+  const handleClose = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
 
-  function handleChangePassword(event){
-    setLoginPassword(event.target.value);
-  }
+    setOpen(false);
+  };
 
-  function handleChangeUsername(event){
-    setLoginUsername(event.target.value);
-  }
+  const [userData, setData] = useState({
+    username: "",
+    email: "",
+    password: "",
+  });
+  useEffect(() => {
+    const accessToken = localStorage.getItem("token");
+    const verified = localStorage.getItem("verified");
+    if (accessToken && !verified) {
+      history.push("/emailV");
+    }
+    if (accessToken && verified) {
+      history.push("/profileinfo");
+    }
+  }, [history]);
 
-  function handleSubmit(event) {
+  const handleChange = (event) => {
+    const { id, value } = event.target;
+    setData((prevData) => {
+      return {
+        ...prevData,
+        [id]: value,
+      };
+    });
+  };
+  const submitHandler = (event) => {
     event.preventDefault();
-    alert('Email and password was submitted: ' +loginUsername + loginEmail + loginPassword);
-  }
-
+    axios
+      .post(BASE_URL + "/auth/signup", userData)
+      .then((res) => {
+        if (res.data === "Email already exists") {
+          setOpen(true);
+          setData({
+            username: "",
+            email: "",
+            password: "",
+          });
+        }
+        if (res.data.ok) {
+          localStorage.setItem("token", res.data.token);
+          axios
+            .get(BASE_URL + "/auth/isEmailVerified", {
+              headers: { Authorization: res.data.token },
+            })
+            .then((response) => {
+              if (response.data.ok) {
+                history.push("/profileinfo");
+              } else {
+                history.push("/emailV");
+              }
+            });
+        } else {
+          console.log(res.data);
+          setData({
+            username: "",
+            email: "",
+            password: "",
+          });
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   return (
     <div>
       <div className="signup-layout">
         <div id="signup-layout-l">
           <div id="signup-layout-l-content">
-            <h1 style={{ fontWeight: "bold" }}>Welcome back!!</h1>
+            <h1 style={{ fontWeight: "bold" }}>Hello!!</h1>
             <img src={imgsignup} className="signupImg" alt="logo"></img>
             <p style={{ marginTop: "3rem" }}>
               To keep connected with us please login with your personal info
             </p>
             <a href="/login">
-              <button id="loginB">Login</button>
+              <Link to="/login" class="link">
+                <button id="loginB">Login</button>
+              </Link>
             </a>
           </div>
         </div>
         <div className="signup-layout-r">
           <main className="form-signin">
-            <form style={{ lineHeight: "5rem" }} onSubmit={handleSubmit}>
+            <form style={{ lineHeight: "5rem" }} onSubmit={submitHandler}>
               <h1 className="createAcc">Create Account</h1>
               <label htmlFor="firstName" className="visually-hidden">
                 username
@@ -59,10 +127,12 @@ const Signup = () => {
                 </span>
                 <input
                   type="text"
+                  required
                   class="form-control"
                   placeholder="Username"
-                  value={loginUsername}
-                  onChange={handleChangeUsername}
+                  id="username"
+                  value={userData.username}
+                  onChange={handleChange}
                 />
               </div>
 
@@ -75,10 +145,12 @@ const Signup = () => {
                 </span>
                 <input
                   type="email"
+                  required
                   class="form-control"
                   placeholder="Email"
-                  value={loginEmail}
-                  onChange={handleChangeEmail}
+                  id="email"
+                  value={userData.email}
+                  onChange={handleChange}
                 />
               </div>
 
@@ -91,10 +163,12 @@ const Signup = () => {
                 </span>
                 <input
                   type="password"
+                  required
                   class="form-control"
                   placeholder="Password"
-                  value={loginPassword}
-                  onChange={handleChangePassword}
+                  id="password"
+                  value={userData.password}
+                  onChange={handleChange}
                 />
               </div>
 
@@ -103,8 +177,17 @@ const Signup = () => {
               </button>
             </form>
           </main>
+          <hr></hr>
+          <p>OR</p>
+          <hr></hr>
+          <SignupModal />
         </div>
       </div>
+      <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
+        <Alert onClose={handleClose} severity="error">
+          Email already exists
+        </Alert>
+      </Snackbar>
     </div>
   );
 };

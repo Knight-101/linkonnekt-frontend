@@ -2,8 +2,14 @@
   padding: 0 5rem;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-column-gap: 5rem;
+  grid-column-gap: 4rem;
   grid-row-gap: 2rem;
+}
+.reach {
+  align-self: end;
+}
+.followers {
+  width: 100%;
 }
 #tags-area {
   grid-row: 2;

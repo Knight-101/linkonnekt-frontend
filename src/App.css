@@ -6,3 +6,6 @@ body {
   font-family: Poppins !important;
   font-weight: 300;
 }
+.link {
+  text-decoration: none;
+}

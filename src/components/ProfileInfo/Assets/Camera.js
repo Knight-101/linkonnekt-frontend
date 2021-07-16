@@ -2,7 +2,7 @@ import React from "react";
 
 const Camera = () => {
   return (
-    <div className="App">
+    <div className="App" id="cam">
       <svg
         width="25"
         height="25"

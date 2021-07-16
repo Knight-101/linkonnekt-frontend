@@ -1,0 +1,22 @@
+.rolesOptions {
+  padding: 1rem 1rem;
+  width: 100%;
+  color: #457b9d;
+  border: solid #457b9d;
+  background-color: white;
+
+  border-radius: 5px;
+}
+.rolesOptions:hover {
+  color: white;
+  background-color: #457b9d;
+  transition: 0.3s;
+}
+.rolesOptionSelected {
+  padding: 1rem 1rem;
+  width: 100%;
+  color: white;
+  background-color: #457b9d;
+  border: none;
+  border-radius: 5px;
+}

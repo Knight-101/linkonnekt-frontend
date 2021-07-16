@@ -1,51 +1,153 @@
 import React, { useState, useEffect, useRef } from "react";
+import GoogleLogin from "react-google-login";
 import "./Login.css";
+import axios from "axios";
+import { useHistory } from "react-router";
+import { Link } from "react-router-dom";
 import imglogin from "./Images/loginImg.png";
 import imguser from "./Images/user.png";
 import imgmail from "./Images/mail.png";
 import imglock from "./Images/lock.png";
+import { useDispatch, useSelector } from "react-redux";
+import { setData } from "../../Redux/userData/userDataActions";
 
 const Login = () => {
-  const [ loginEmail, setLoginEmail] = useState("");
-  const [loginPassword, setLoginPassword] = useState("");
+  const dispatch = useDispatch();
+  const BASE_URL = "http://localhost:8000";
+  const history = useHistory();
+  const [fail, setfail] = useState("");
+  const [userData, setuserData] = useState({
+    email: "",
+    password: "",
+  });
 
-  function handleChangeEmail(event) {
-    setLoginEmail(event.target.value);
-    // console.warn(event.target.value);
-  }
+  const handleChange = (event) => {
+    const { id, value } = event.target;
+    setuserData((prevData) => {
+      return {
+        ...prevData,
+        [id]: value,
+      };
+    });
+  };
 
-  function handleChangePassword(event){
-    setLoginPassword(event.target.value);
-    // console.log(event.target.value);
-  }
-
-  function handleSubmit(event) {
+  // useEffect(() => {
+  //   const accessToken = localStorage.getItem("token");
+  //   const verified = localStorage.getItem("verified");
+  //   if (accessToken && !verified) {
+  //     history.push("/emailV");
+  //   }
+  //   if (accessToken && verified) {
+  //     history.push("/profileinfo");
+  //   }
+  // });
+  const submitHandler = async (event) => {
     event.preventDefault();
-    alert('Email and password was submitted: ' + loginEmail + loginPassword);
-  }
+
+    await axios
+      .post(BASE_URL + "/auth/login", userData)
+      .then((res) => {
+        if (res.data === '"email" must be a valid email') {
+          setfail("Enter a valid email(abc@def.xy)");
+        } else {
+          if (res.data === "Email doesn't match our records") {
+            setfail("Email or Password does not match our records");
+          } else {
+            if (res.data === "invalid password") {
+              setfail("Email or Password does not match our records");
+            } else {
+              localStorage.setItem("token", res.data.token);
+
+              axios
+                .get(BASE_URL + "/auth/isEmailVerified", {
+                  headers: { Authorization: res.data.token },
+                })
+                .then((res) => {
+                  if (res.data.ok) {
+                    history.push("/profileinfo");
+                  } else {
+                    history.push("/emailV");
+                  }
+                })
+                .catch((error) => {
+                  console.log(error);
+                });
+            }
+          }
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  const CLIENT_ID =
+    "378065475011-nt3el8svf2r3d0h9sabche7sgcq4o83i.apps.googleusercontent.com";
+
+  const responseGoogle = async (response) => {
+    let accessToken = response.accessToken;
+    let email = response.profileObj.email;
+
+    //posting oauth data
+    await axios
+      .post(BASE_URL + "/auth/oauthlogin", {
+        access_token: accessToken,
+        email: email,
+      })
+      .then((res) => {
+        const username = res.data.user.username;
+        const email = res.data.user.email;
+        const role = res.data.user.role;
+        if (res.data.ok) {
+          localStorage.setItem("token", res.data.token);
+          axios
+            .get(BASE_URL + "/auth/isEmailVerified", {
+              headers: { Authorization: res.data.token },
+            })
+            .then((response) => {
+              if (response.data === "User not found") {
+                console.log("User not found");
+              }
+              if (response.data.ok) {
+                console.log(res.data);
+                dispatch(setData(username, email, role));
+                history.push("/profileinfo");
+              } else {
+                dispatch(setData(username, email));
+                history.push("/emailV");
+              }
+            });
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  const failureGoogle = (res) => {
+    console.log(res);
+  };
 
   return (
     <div>
       <div className="login-layout">
         <div className="login-layout-l">
           <main className="form-signin">
-            <form style={{ lineHeight: "5rem" }} onSubmit={handleSubmit} >
+            <form style={{ lineHeight: "5rem" }} onSubmit={submitHandler}>
               <h1 className="createAcc">Login</h1>
-
+              <p style={{ color: "red", marginBottom: "0" }}>{fail}</p>
               <label htmlFor="inputEmail" className="visually-hidden">
                 Email address
               </label>
-              <div
-                class="input-group mb-3  loginInput"
-                style={{ marginTop: "6rem" }}
-              >
+              <div class="input-group mb-3  loginInput">
                 <span class="input-group-text" id="basic-addon1">
                   <img src={imgmail} className="userImg" alt="logo"></img>
                 </span>
                 <input
                   required
-                  value={loginEmail}
-                  onChange={handleChangeEmail}
+                  value={userData.email}
+                  id="email"
+                  onChange={handleChange}
                   type="email"
                   class="form-control"
                   placeholder="Email"
@@ -61,8 +163,9 @@ const Login = () => {
                 </span>
                 <input
                   required
-                  value={loginPassword}
-                  onChange={handleChangePassword}
+                  value={userData.password}
+                  onChange={handleChange}
+                  id="password"
                   type="password"
                   class="form-control"
                   placeholder="Password"
@@ -74,16 +177,32 @@ const Login = () => {
               </button>
             </form>
           </main>
+          <hr></hr>
+          <p>OR</p>
+          <hr></hr>
+          <div id="google">
+            <GoogleLogin
+              className="aaa"
+              clientId={CLIENT_ID}
+              buttonText="Log in with Google"
+              onSuccess={responseGoogle}
+              onFailure={failureGoogle}
+              redirectUri={BASE_URL + "/profileinfo"}
+              cookiePolicy={"single_host_origin"}
+            />
+          </div>
         </div>
         <div id="login-layout-r">
           <div id="login-layout-r-content">
-            <h1 style={{ fontWeight: "bold" }}>Hello!!</h1>
+            <h1 style={{ fontWeight: "bold" }}>Welcome back!!</h1>
             <img src={imglogin} className="loginImg" alt="logo"></img>
             <p style={{ marginTop: "3rem" }}>
               Enter your personal details and start your journey with us
             </p>
             <a href="/signup">
-              <button id="loginB">Sign Up</button>
+              <Link to="/signup" class="link">
+                <button id="loginB">Sign Up</button>
+              </Link>
             </a>
           </div>
         </div>

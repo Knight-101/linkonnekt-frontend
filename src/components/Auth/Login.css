@@ -80,3 +80,7 @@
   color: #2f3033;
   transition: 0.5s;
 }
+
+#loginMarginTop {
+  margin-top: 6rem;
+}

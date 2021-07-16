@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
 import imgsrc from "./Mobile.png";
 import "./Head.css";
 
@@ -11,11 +12,17 @@ const Head = () => {
             <div>
               <h4 style={{ wordSpacing: "1rem" }}>Linkonnekt</h4>
             </div>
+
             <div className="grid-item">
-              <p id="login">Login</p>
+              <Link to="/login" class="link">
+                <p id="login">Login</p>
+              </Link>
             </div>
+
             <div className="grid-item">
-              <button id="signup">SignUp</button>
+              <Link to="/signup" class="link">
+                <button id="signup">SignUp</button>
+              </Link>
             </div>
           </div>
           <div className="head-mid">

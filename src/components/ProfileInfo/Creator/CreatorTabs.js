@@ -1,72 +1,115 @@
 import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import Paper from "@material-ui/core/Paper";
-import Tabs from "@material-ui/core/Tabs";
-import Tab from "@material-ui/core/Tab";
+import { makeStyles, createMuiTheme } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
-import Box from "@material-ui/core/Box";
+import Stepper from "@material-ui/core/Stepper";
+import Step from "@material-ui/core/Step";
+import StepLabel from "@material-ui/core/StepLabel";
+import Button from "@material-ui/core/Button";
 import PerosnalInfo from "./PersonalInfo";
 import Categories from "./Categories";
 import LinkAccounts from "./LinkAccounts";
 
-function TabPanel(props) {
-  const { children, value, index, ...other } = props;
+const useStyles = makeStyles((theme) => ({
+  root: {
+    width: "100%",
+  },
+  backButton: {
+    marginRight: theme.spacing(1),
+  },
+  instructions: {
+    marginTop: theme.spacing(1),
+    marginBottom: theme.spacing(1),
+  },
+  stepper: {
+    color: "#457b9d",
+  },
+}));
 
-  return (
-    <div
-      role="tabpanel"
-      hidden={value !== index}
-      id={`simple-tabpanel-${index}`}
-      aria-labelledby={`simple-tab-${index}`}
-      {...other}
-    >
-      {value === index && (
-        <Box p={3}>
-          <Typography>{children}</Typography>
-        </Box>
-      )}
-    </div>
-  );
+function getSteps() {
+  return ["Personal Info", "Add Categories", "Link Accounts"];
 }
 
-const useStyles = makeStyles({
-  root: {
-    flexGrow: 1,
-  },
-});
+function getStepContent(stepIndex, steps, handleBack, handleNext) {
+  switch (stepIndex) {
+    case 0:
+      return (
+        <PerosnalInfo
+          activeStep={stepIndex}
+          steps={steps}
+          handleBack={handleBack}
+          handleNext={handleNext}
+        />
+      );
+    case 1:
+      return (
+        <Categories
+          activeStep={stepIndex}
+          steps={steps}
+          handleBack={handleBack}
+          handleNext={handleNext}
+        />
+      );
+    case 2:
+      return (
+        <LinkAccounts
+          activeStep={stepIndex}
+          steps={steps}
+          handleBack={handleBack}
+          handleNext={handleNext}
+        />
+      );
+    default:
+      return "Unknown stepIndex";
+  }
+}
 
-export default function CenteredTabs() {
+export default function HorizontalLabelPositionBelowStepper() {
   const classes = useStyles();
-  const [value, setValue] = React.useState(0);
+  const [activeStep, setActiveStep] = React.useState(0);
+  const steps = getSteps();
 
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
+  const handleNext = () => {
+    setActiveStep((prevActiveStep) => prevActiveStep + 1);
+    console.log(activeStep);
+  };
+
+  const handleBack = () => {
+    setActiveStep((prevActiveStep) => prevActiveStep - 1);
+  };
+
+  const handleReset = () => {
+    setActiveStep(0);
   };
 
   return (
-    <div>
-      <Paper className={classes.root}>
-        <Tabs
-          value={value}
-          onChange={handleChange}
-          indicatorColor="primary"
-          textColor="primary"
-          centered
-        >
-          <Tab label="Personal Info" />
-          <Tab label="Categories" />
-          <Tab label="Link Accounts" />
-        </Tabs>
-      </Paper>
-      <TabPanel value={value} index={0}>
-        <PerosnalInfo />
-      </TabPanel>
-      <TabPanel value={value} index={1}>
-        <Categories />
-      </TabPanel>
-      <TabPanel value={value} index={2}>
-        <LinkAccounts />
-      </TabPanel>
+    <div className={classes.root}>
+      <Stepper
+        activeStep={activeStep}
+        className={classes.stepper}
+        alternativeLabel
+      >
+        {steps.map((label) => (
+          <Step key={label}>
+            <StepLabel>{label}</StepLabel>
+          </Step>
+        ))}
+      </Stepper>
+      <div>
+        {activeStep === steps.length ? (
+          <div>
+            <Typography className={classes.instructions}>
+              All steps completed
+            </Typography>
+            <Button onClick={handleReset}>Reset</Button>
+          </div>
+        ) : (
+          <div>
+            <Typography className={classes.instructions}>
+              {getStepContent(activeStep, steps, handleBack, handleNext)}
+            </Typography>
+          </div>
+        )}
+      </div>
     </div>
   );
 }

@@ -2,105 +2,102 @@ import React, { useState, useEffect, useRef } from "react";
 import "./PersonalInfo.css";
 import TextField from "@material-ui/core/TextField";
 import FormControl from "@material-ui/core/FormControl";
+import Button from "@material-ui/core/Button";
+import InputLabel from "@material-ui/core/InputLabel";
+import NativeSelect from "@material-ui/core/NativeSelect";
+import Countries from "../Assets/Countries";
 
-const PerosnalInfo = () => {
-  const [buttonClicked, setButtonClicked] = useState(0);
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [Address, setAddress] = useState("");
+const PerosnalInfo = (props) => {
+  const [profileInfo, setProfileInfo] = useState({
+    fName: "",
+    lName: "",
+    country: "",
+    state: "",
+    address: "",
+    pinCode: "",
+  });
+
+  function handleInput(e) {
+    const { id, value } = e.target;
+    setProfileInfo((prevData) => {
+      return {
+        ...prevData,
+        [id]: value,
+      };
+    });
+  }
   function handleSubmit() {
-    console.log(firstName, lastName, buttonClicked, Address);
+    // console.log(firstName, lastName, buttonClicked, Address);
+    console.log(profileInfo);
+    props.handleNext();
     //export this data from the API here
-  }
-  function handleFirstName(e) {
-    setFirstName(e.target.value);
-  }
-  function handleLastName(e) {
-    setLastName(e.target.value);
-  }
-  function handleAddress(e) {
-    setAddress(e.target.value);
   }
 
   return (
     <div>
-      <div id="personalInfo">
-        <TextField
-          id="fName"
-          label="First Name"
-          required
-          value={firstName}
-          onChange={handleFirstName}
-        />
-        <TextField
-          id="lName"
-          label="Last Name"
-          required
-          value={lastName}
-          onChange={handleLastName}
-        />
-        <TextField
-          id="country"
-          select
-          required
-          label="Country"
-          SelectProps={{
-            native: true,
-          }}
-          // onChange={handleChange}
-          // helperText="Please select your currency"
-        ></TextField>
-        <TextField
-          id="State"
-          select
-          required
-          label="State"
-          SelectProps={{
-            native: true,
-          }}
-          // value={currency}
-          // onChange={handleChange}
-          // helperText="Please select your currency"
-        ></TextField>
-        <TextField
-          className="address"
-          label="Address"
-          value={Address}
-          required
-          onChange={handleAddress}
-        />
-        <TextField id="pinCode" label="Pin Code" required />
-      </div>
-      <div id="roleSelection">
-        <h6>Select your role</h6>
-        <div id="roles">
-          <button className="rolesOptions" onClick={() => setButtonClicked(1)}>
-            Creator
-          </button>
-          <button className="rolesOptions" onClick={() => setButtonClicked(2)}>
-            Brand
-          </button>
-          <button className="rolesOptions" onClick={() => setButtonClicked(3)}>
-            Freelancer
-          </button>
-          <button className="rolesOptions" onClick={() => setButtonClicked(4)}>
-            Collaborator
-          </button>
+      <form onSubmit={handleSubmit}>
+        <div id="personalInfo">
+          <TextField
+            id="fName"
+            label="First Name"
+            required
+            value={profileInfo.fname}
+            onChange={handleInput}
+          />
+          <TextField
+            id="lName"
+            label="Last Name"
+            required
+            value={profileInfo.lname}
+            onChange={handleInput}
+          />
+          <div style={{ textAlign: "left" }}>
+            <InputLabel shrink htmlFor="country">
+              Country
+            </InputLabel>
+            <NativeSelect fullWidth id="country" onChange={handleInput}>
+              <Countries />
+            </NativeSelect>
+          </div>
+          <TextField
+            id="state"
+            required
+            label="State"
+            value={profileInfo.state}
+            // value={currency}
+            onChange={handleInput}
+            // helperText="Please select your currency"
+          />
+          <TextField
+            className="address"
+            label="Address"
+            id="address"
+            value={profileInfo.address}
+            required
+            onChange={handleInput}
+          />
+          <TextField
+            id="pinCode"
+            label="Pin Code"
+            value={profileInfo.pinCode}
+            required
+            onChange={handleInput}
+          />
         </div>
-        <div id="skip-next">
-          <button id="skip" className="skip-next-btn">
-            Skip
-          </button>
-          <button
-            id="next"
-            type="submit"
-            className="skip-next-btn"
-            onClick={handleSubmit}
+        <div className="back-next">
+          {/* <button
+            disabled={props.activeStep === 0}
+            onClick={props.handleBack}
+            className="back-next-btn"
+            id="back"
           >
-            Next
+            Back
+          </button> */}
+          <button className="back-next-btn" id="next" type="submit">
+            {props.activeStep === props.steps.length - 1 ? "Finish" : "Next"}
           </button>
         </div>
-      </div>
+      </form>
     </div>
   );
 };

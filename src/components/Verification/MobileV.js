@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React from "react";
 import "./MobileV.css";
 import imgmobile from "./Images/Mobile.png";
 
