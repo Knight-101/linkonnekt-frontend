@@ -80,3 +80,29 @@
   color: #2f3033;
   transition: 0.5s;
 }
+#rolesManual {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+
+  column-gap: 1rem;
+}
+.rolesOptionsManual {
+  color: #457b9d;
+  border: solid #457b9d;
+  background-color: white;
+  padding: 0;
+  line-height: 3rem;
+  border-radius: 5px;
+}
+.rolesOptionsManual:hover {
+  color: white;
+  background-color: #457b9d;
+  transition: 0.3s;
+}
+.rolesOptionSelectedManual {
+  color: white;
+  background-color: #457b9d;
+  border: none;
+  line-height: 3rem;
+  border-radius: 5px;
+}

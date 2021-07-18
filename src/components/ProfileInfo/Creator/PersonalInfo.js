@@ -6,49 +6,48 @@ import Button from "@material-ui/core/Button";
 import InputLabel from "@material-ui/core/InputLabel";
 import NativeSelect from "@material-ui/core/NativeSelect";
 import Countries from "../Assets/Countries";
+import { useDispatch, useSelector } from "react-redux";
+import { setProfileData } from "../../../Redux/profileInfo/profileInfoActions";
 
 const PerosnalInfo = (props) => {
-  const [profileInfo, setProfileInfo] = useState({
-    fName: "",
-    lName: "",
-    country: "",
-    state: "",
-    address: "",
-    pinCode: "",
-  });
-
+  const dispatch = useDispatch();
+  const personalInfoState = useSelector(
+    (state) => state.profileInfo.personalInfo
+  );
+  const [personalInfo, setPersonalInfo] = useState(personalInfoState);
   function handleInput(e) {
     const { id, value } = e.target;
-    setProfileInfo((prevData) => {
+    setPersonalInfo((prevData) => {
       return {
         ...prevData,
         [id]: value,
       };
     });
   }
-  function handleSubmit() {
-    // console.log(firstName, lastName, buttonClicked, Address);
-    console.log(profileInfo);
-    props.handleNext();
+  async function handleSubmit(e) {
+    e.preventDefault();
+    dispatch(setProfileData(personalInfo));
+    await props.handleNext();
     //export this data from the API here
   }
 
   return (
     <div>
-      <form onSubmit={handleSubmit}>
+      <form>
         <div id="personalInfo">
           <TextField
-            id="fName"
+            id="firstName"
             label="First Name"
             required
-            value={profileInfo.fname}
+            defaultValue={personalInfo.firstName}
+            value={personalInfo.firstName}
             onChange={handleInput}
           />
           <TextField
-            id="lName"
+            id="lastName"
             label="Last Name"
             required
-            value={profileInfo.lname}
+            value={personalInfo.lastName}
             onChange={handleInput}
           />
           <div style={{ textAlign: "left" }}>
@@ -56,6 +55,9 @@ const PerosnalInfo = (props) => {
               Country
             </InputLabel>
             <NativeSelect fullWidth id="country" onChange={handleInput}>
+              <option value={personalInfo.country} default>
+                {personalInfo.country}
+              </option>
               <Countries />
             </NativeSelect>
           </div>
@@ -63,7 +65,7 @@ const PerosnalInfo = (props) => {
             id="state"
             required
             label="State"
-            value={profileInfo.state}
+            value={personalInfo.state}
             // value={currency}
             onChange={handleInput}
             // helperText="Please select your currency"
@@ -72,14 +74,14 @@ const PerosnalInfo = (props) => {
             className="address"
             label="Address"
             id="address"
-            value={profileInfo.address}
+            value={personalInfo.address}
             required
             onChange={handleInput}
           />
           <TextField
-            id="pinCode"
+            id="pincode"
             label="Pin Code"
-            value={profileInfo.pinCode}
+            value={personalInfo.pincode}
             required
             onChange={handleInput}
           />
@@ -93,7 +95,12 @@ const PerosnalInfo = (props) => {
           >
             Back
           </button> */}
-          <button className="back-next-btn" id="next" type="submit">
+          <button
+            className="back-next-btn"
+            id="next"
+            type="submit"
+            onClick={handleSubmit}
+          >
             {props.activeStep === props.steps.length - 1 ? "Finish" : "Next"}
           </button>
         </div>

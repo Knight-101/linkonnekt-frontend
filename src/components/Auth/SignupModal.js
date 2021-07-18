@@ -9,6 +9,7 @@ import "./SignupModal.css";
 import { useHistory } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
 import { setData } from "../../Redux/userData/userDataActions";
+import { useGoogleLogout } from "react-google-login";
 
 const useStyles = makeStyles((theme) => ({
   modal: {
@@ -45,6 +46,13 @@ export default function SignupModal(props) {
     setRoleSelect(id);
     setrole(name);
   };
+  //for logout
+  const clientId =
+    "378065475011-nt3el8svf2r3d0h9sabche7sgcq4o83i.apps.googleusercontent.com";
+  const { signOut } = useGoogleLogout({
+    clientId,
+  });
+  //for login
   const CLIENT_ID =
     "378065475011-nt3el8svf2r3d0h9sabche7sgcq4o83i.apps.googleusercontent.com";
 
@@ -55,7 +63,7 @@ export default function SignupModal(props) {
     console.log(response);
     //posting oauth data
     await axios
-      .post(BASE_URL + "/auth/oauthlogin", {
+      .post(BASE_URL + "/auth/oauthsignup", {
         access_token: accessToken,
         email: email,
         role: role,
@@ -65,6 +73,12 @@ export default function SignupModal(props) {
           localStorage.setItem("token", res.data.token);
           dispatch(setData(username, email, role));
           history.push("/emailV");
+        }
+        if (res.data === "User already exists") {
+          signOut();
+          setOpen(false);
+
+          alert("User already exists");
         }
       })
       .catch((error) => {

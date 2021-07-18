@@ -5,47 +5,69 @@ import InputLabel from "@material-ui/core/InputLabel";
 import NativeSelect from "@material-ui/core/NativeSelect";
 import CloudUploadIcon from "@material-ui/icons/CloudUpload";
 import Button from "@material-ui/core/Button";
+import Platforms from "../Assets/Platforms";
+import { useDispatch, useSelector } from "react-redux";
+import { setCatData } from "../../../Redux/profileInfo/profileInfoActions";
 // import ContentWriter from "./ContentWriter";
 // import VideoEditor from "./VideoEditor";
 // import GraphicDesigner from "./GraphicDesigner";
 
 const Categories = (props) => {
-  const [categories, setCategories] = useState({
-    Category: "",
-    Platform: "",
-    Followers: "",
-    Subscribers: "",
-  });
+  const dispatch = useDispatch();
+  const categoriesState = useSelector((state) => state.profileInfo.categories);
+  const [categories, setCategories] = useState(categoriesState);
 
-  function handleSubmit() {
-    console.log();
-    props.handleNext();
+  const [NoP, setNoP] = useState(1);
+
+  async function handleSubmit() {
+    dispatch(setCatData(categories));
+    await props.handleNext();
     //export this data from the API here
   }
-  function handleChoice(e) {
-    const { id, value } = e.target;
+  function handleCategory(e) {
+    const { value } = e.target;
     setCategories((prevData) => {
       return {
         ...prevData,
-        [id]: value,
+        Category: value,
+      };
+    });
+  }
+  function handlePlatforms(e) {
+    const { id, value, name } = e.target;
+
+    setCategories((prevData) => {
+      // console.log(prevData.Platforms[id]);
+      // console.log({ ...prevData });
+      // const {Platforms} = prevData
+
+      return {
+        ...prevData,
+        Platforms: {
+          ...prevData.Platforms,
+          [id]: {
+            ...prevData.Platforms[id],
+            [name]: value,
+          },
+        },
       };
     });
   }
 
   return (
     <div>
-      <form onSubmit={handleSubmit}>
+      <form>
         <div className="skills">
-          <div>
+          <div className="category">
             <h5 style={{ textAlign: "left", marginBottom: "1rem" }}>
               Add your skills
             </h5>
             <InputLabel shrink htmlFor="category" style={{ textAlign: "left" }}>
               Select Category
             </InputLabel>
-            <NativeSelect fullWidth id="Category" onChange={handleChoice}>
-              <option value="" default>
-                Select one
+            <NativeSelect fullWidth id="Category" onChange={handleCategory}>
+              <option value={categories.Category} default>
+                {categories.Category}
               </option>
               <option value="Beauty">Beauty</option>
               <option value="Animals">Animals</option>
@@ -63,47 +85,44 @@ const Categories = (props) => {
               <option value="Technology">Technology</option>
               <option value="Vehicles">Vehicles</option>
             </NativeSelect>
-            <InputLabel
-              shrink
-              htmlFor="platform"
-              style={{ textAlign: "left", marginTop: "3rem" }}
+          </div>
+          <Platforms
+            id="P1"
+            handlePlatforms={handlePlatforms}
+            platform={categories.Platforms.P1.Platform}
+          />
+          {NoP >= 2 && (
+            <Platforms
+              id="P2"
+              handlePlatforms={handlePlatforms}
+              platform={categories.Platforms.P2.Platform}
+            />
+          )}
+          {NoP >= 3 && (
+            <Platforms
+              id="P3"
+              handlePlatforms={handlePlatforms}
+              platform={categories.Platforms.P3.Platform}
+            />
+          )}
+          {NoP >= 4 && (
+            <Platforms
+              id="P4"
+              handlePlatforms={handlePlatforms}
+              platform={categories.Platforms.P4.Platform}
+            />
+          )}
+          {NoP < 4 && (
+            <button
+              type="button"
+              onClick={() => {
+                setNoP(NoP + 1);
+                console.log(NoP);
+              }}
             >
-              Select your platform
-            </InputLabel>
-            <NativeSelect fullWidth id="Platform" onChange={handleChoice}>
-              <option value="" default>
-                Select one
-              </option>
-              <option value="YouTube">YouTube</option>
-              <option value="LinkedIn">LinkedIn</option>
-              <option value="Twitter">Twitter</option>
-              <option value="Instagram">Instagram</option>
-              <option value="Facebook">Facebook</option>
-            </NativeSelect>
-          </div>
-          <div className="reach">
-            {categories.Platform === "YouTube" && (
-              <TextField
-                className="followers"
-                id="Subscribers"
-                label="Subscribers"
-                type="Number"
-                required
-                onChange={handleChoice}
-              />
-            )}
-            {categories.Platform !== "YouTube" &&
-              categories.Platform !== "" && (
-                <TextField
-                  className="followers"
-                  id="Followers"
-                  label="Followers"
-                  type="Number"
-                  required
-                  onChange={handleChoice}
-                />
-              )}
-          </div>
+              Add more
+            </button>
+          )}
         </div>
         <div className="back-next">
           <button
@@ -114,12 +133,7 @@ const Categories = (props) => {
           >
             Back
           </button>
-          <button
-            className="back-next-btn"
-            id="next"
-            type="submit"
-            onClick={props.handleNext}
-          >
+          <button className="back-next-btn" id="next" onClick={handleSubmit}>
             {props.activeStep === props.steps.length - 1 ? "Finish" : "Next"}
           </button>
         </div>
