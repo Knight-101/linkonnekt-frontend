@@ -1,3 +1,15 @@
+:root {
+  --red: #e63946;
+  --offwhite: #f8f8f8;
+  --charl: #a8dadc;
+  --heavy-charl: #5db3b6;
+  --light-charl: #d9eff0;
+  --heavy-jb: #274659;
+  --jb: #457b9d;
+  --light-jb: #70a1c0;
+  --black: #2f3133;
+}
+
 .mid {
   padding: 1rem 5rem 0 5rem;
 
@@ -31,3 +43,8 @@
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, 1fr);
 }
+
+/* .about1img {
+  background: linear-gradient(209.36deg, rgba(69, 123, 157, 0.7) 0.03%, rgba(168, 218, 220, 0.7) 100.03%), #F8F8F8;
+}
+ */
