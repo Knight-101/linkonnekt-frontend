@@ -1,26 +1,22 @@
 .linkAcc {
   padding: 0 5rem;
-  display: grid;
-  grid-template-columns: 1fr 1fr 8fr;
-  grid-column-gap: 5rem;
-  grid-row-gap: 2rem;
+  display: flex;
+  flex-direction: column;
+  row-gap: 2rem;
 }
 #linkAccHeading {
   text-align: left;
   margin-bottom: 1rem;
   letter-spacing: 1.5px;
-  grid-column: 1/4;
   font-size: 1.2rem;
 }
-#insta {
-  grid-row: 2;
+.socialLink {
+  display: grid;
+  grid-template-columns: 0.5fr 1fr 6fr;
+  column-gap: 2rem;
+  /* justify-content: space-between; */
 }
-.socialRows {
-  justify-self: left;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
+
 .socialBtn {
   border: solid #457b9d;
   background-color: white;
@@ -42,4 +38,8 @@
 .align-r {
   justify-self: right;
   padding: 0 0;
+}
+.socialIcon {
+  height: 80px;
+  width: 80px;
 }

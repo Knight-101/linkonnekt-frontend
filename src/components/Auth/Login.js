@@ -9,6 +9,8 @@ import imgmail from "./Images/mail.png";
 import imglock from "./Images/lock.png";
 import { useDispatch } from "react-redux";
 import { setData } from "../../Redux/userData/userDataActions";
+import { logout } from "../../Redux/logoutAction";
+import { useGoogleLogout } from "react-google-login";
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -30,16 +32,6 @@ const Login = () => {
     });
   };
 
-  // useEffect(() => {
-  //   const accessToken = localStorage.getItem("token");
-  //   const verified = localStorage.getItem("verified");
-  //   if (accessToken && !verified) {
-  //     history.push("/emailV");
-  //   }
-  //   if (accessToken && verified) {
-  //     history.push("/profileinfo");
-  //   }
-  // });
   const submitHandler = async (event) => {
     event.preventDefault();
 
@@ -56,7 +48,8 @@ const Login = () => {
               setfail("Email or Password does not match our records");
             } else {
               localStorage.setItem("token", res.data.token);
-
+              const user = res.data.user;
+              dispatch(setData(user.username, user.email, user.role));
               axios
                 .get(BASE_URL + "/auth/isEmailVerified", {
                   headers: { Authorization: res.data.token },
@@ -79,9 +72,15 @@ const Login = () => {
         console.log(error);
       });
   };
-
+  //for log in
   const CLIENT_ID =
     "378065475011-nt3el8svf2r3d0h9sabche7sgcq4o83i.apps.googleusercontent.com";
+  //for log out
+  const clientId =
+    "378065475011-nt3el8svf2r3d0h9sabche7sgcq4o83i.apps.googleusercontent.com";
+  const { signOut } = useGoogleLogout({
+    clientId,
+  });
 
   const responseGoogle = async (response) => {
     let accessToken = response.accessToken;
@@ -94,28 +93,37 @@ const Login = () => {
         email: email,
       })
       .then((res) => {
-        const username = res.data.user.username;
-        const email = res.data.user.email;
-        const role = res.data.user.role;
         if (res.data.ok) {
+          const username = res.data.user.username;
+          const email = res.data.user.email;
+          const role = res.data.user.role;
+          const profileInfo = res.data.user.profileInfo;
           localStorage.setItem("token", res.data.token);
-          axios
-            .get(BASE_URL + "/auth/isEmailVerified", {
-              headers: { Authorization: res.data.token },
-            })
-            .then((response) => {
-              if (response.data === "User not found") {
-                console.log("User not found");
-              }
-              if (response.data.ok) {
-                console.log(res.data);
-                dispatch(setData(username, email, role));
-                history.push("/profileinfo");
-              } else {
-                dispatch(setData(username, email));
-                history.push("/emailV");
-              }
-            });
+          if (profileInfo) {
+            history.push("/userhome/dashboard");
+          } else {
+            axios
+              .get(BASE_URL + "/auth/isEmailVerified", {
+                headers: { Authorization: res.data.token },
+              })
+              .then((response) => {
+                if (response.data === "User not found") {
+                  console.log("User not found");
+                }
+                if (response.data.ok) {
+                  console.log(res.data);
+                  dispatch(setData(username, email, role));
+                  history.push("/profileinfo");
+                } else {
+                  dispatch(setData(username, email));
+                  history.push("/emailV");
+                }
+              });
+          }
+          if (res.data === "User not found") {
+            signOut();
+            setfail("User not found");
+          }
         }
       })
       .catch((error) => {

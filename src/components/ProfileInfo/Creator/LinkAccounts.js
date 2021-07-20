@@ -4,58 +4,143 @@ import instaIcon from "./socialIcons/insta.png";
 import fbIcon from "./socialIcons/fb.png";
 import snapIcon from "./socialIcons/snap.png";
 import ytIcon from "./socialIcons/youtube.png";
+import twitterIcon from "./socialIcons/Twitter.png";
+import linkedinIcon from "./socialIcons/LinkedIn.png";
 import Button from "@material-ui/core/Button";
+import { useSelector } from "react-redux";
+import TextField from "@material-ui/core/TextField";
+import axios from "axios";
+import { useHistory } from "react-router";
 
 const LinkAccounts = (props) => {
-  function handleSubmit() {
-    props.handleNext();
-    //export this data from the API here
+  const history = useHistory();
+  const platformsObj = useSelector(
+    (state) => state.profileInfo.categories.Platforms
+  );
+  const profileObj = useSelector((state) => state.profileInfo);
+  const BASE_URL = "http://localhost:8000";
+  const platforms = [
+    platformsObj.P1.Platform,
+    platformsObj.P2.Platform,
+    platformsObj.P3.Platform,
+    platformsObj.P3.Platform,
+  ];
+  const [socialUrls, setSocialUrls] = useState({
+    Instagram: "",
+    YouTube: "",
+    LinkedIn: "",
+    Twitter: "",
+    Facebook: "",
+  });
+  function handleChange(event) {
+    const { id, value } = event.target;
+    setSocialUrls((prevData) => {
+      return {
+        ...prevData,
+        [id]: value,
+      };
+    });
+  }
+
+  function handleSubmit(event) {
+    event.preventDefault();
+    const token = localStorage.getItem("token");
+    axios
+      .patch(BASE_URL + "/auth/profileinfo", {
+        headers: { Authorization: token },
+        profileObj,
+        socialUrls,
+      })
+      .then((res) => {
+        if (res.data.ok === 1) {
+          history.push("/userhome/dashboard");
+        }
+      });
   }
   return (
     <div>
-      <form onSubmit={handleSubmit}>
+      <form>
         <div className="linkAcc">
           <div id="linkAccHeading">
             <b>
               <p>Link your social media accounts</p>
             </b>
           </div>
-          <div id="insta" className="socialRows">
-            <img src={instaIcon} alt="icon" />
-          </div>
+          {platforms.includes("Instagram") && (
+            <div className="socialLink">
+              <img className="socialIcon" src={instaIcon} alt="icon" />
 
-          <h5 className="socialRows socialName">Instagram</h5>
+              <h5 className="socialName">Instagram</h5>
 
-          <div className="socialRows align-r">
-            <button className="socialBtn">Connect</button>
-          </div>
-          <div className="socialRows">
-            <img src={fbIcon} alt="icon" />
-          </div>
+              <TextField
+                id="Instagram"
+                className="url"
+                label="URL"
+                required
+                onChange={handleChange}
+              />
+            </div>
+          )}
+          {platforms.includes("Facebook") && (
+            <div className="socialLink">
+              <img className="socialIcon" src={fbIcon} alt="icon" />
 
-          <h5 className="socialRows socialName">Facebook</h5>
+              <h5 className="socialName">Facebook</h5>
 
-          <div className="socialRows align-r">
-            <button className="socialBtn">Connect</button>
-          </div>
-          <div className="socialRows">
-            <img src={snapIcon} alt="icon" />
-          </div>
+              <TextField
+                id="Facebook"
+                className="url"
+                label="URL"
+                required
+                onChange={handleChange}
+              />
+            </div>
+          )}
+          {platforms.includes("YouTube") && (
+            <div className="socialLink">
+              <img className="socialIcon" src={ytIcon} alt="icon" />
 
-          <h5 className="socialRows socialName">Snapchat</h5>
+              <h5 className="socialName">Youtube</h5>
 
-          <div className="socialRows align-r">
-            <button className="socialBtn">Connect</button>
-          </div>
-          <div className="socialRows">
-            <img src={ytIcon} alt="icon" />
-          </div>
+              <TextField
+                id="YouTube"
+                className="url"
+                label="URL"
+                required
+                onChange={handleChange}
+              />
+            </div>
+          )}
+          {platforms.includes("LinkedIn") && (
+            <div className="socialLink">
+              <img className="socialIcon" src={linkedinIcon} alt="icon" />
 
-          <h5 className="socialRows socialName">Youtube</h5>
+              <h5 className="socialName">LinkedIn</h5>
 
-          <div className="socialRows align-r">
-            <button className="socialBtn">Connect</button>
-          </div>
+              <TextField
+                id="LinkedIn"
+                className="url"
+                label="URL"
+                required
+                onChange={handleChange}
+              />
+            </div>
+          )}
+          {platforms.includes("Twitter") && (
+            <div className="socialLink">
+              <img className="socialIcon" src={twitterIcon} alt="icon" />
+
+              <h5 className="socialName">Twitter</h5>
+
+              <TextField
+                id="Twitter"
+                className="url"
+                label="URL"
+                required
+                onChange={handleChange}
+              />
+            </div>
+          )}
         </div>
         <div className="back-next">
           <button
@@ -66,7 +151,7 @@ const LinkAccounts = (props) => {
           >
             Back
           </button>
-          <button className="back-next-btn" id="next" type="submit">
+          <button className="back-next-btn" id="next" onClick={handleSubmit}>
             {props.activeStep === props.steps.length - 1 ? "Finish" : "Next"}
           </button>
         </div>

@@ -3,9 +3,6 @@ import React from "react";
 export default function Countries() {
   return (
     <>
-      <option value="" default>
-        Select one
-      </option>
       <option value="Afghanistan">Afghanistan</option>
       <option value="Albania">Albania</option>
       <option value="Algeria">Algeria</option>
