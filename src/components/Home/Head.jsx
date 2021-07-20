@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import imgsrc from "./Mobile.png";
 import "./Head.css";
-// import Vector from "./Vector";
+import Vector from "./Vector";
 const Head = () => {
   return (
     <div>
@@ -36,9 +36,9 @@ const Head = () => {
           </div>
         </div>
       </div>
-      {/* <div className="vector-header">
+      <div className="vector-header" style={{ height: "100%", width: "100%" }}>
         <Vector/>
-      </div> */}
+      </div>
     </div>
   );
 };

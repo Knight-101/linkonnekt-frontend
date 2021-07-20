@@ -12,7 +12,10 @@ body {
 }
 
 .head {
+  background: linear-gradient(180deg, var(--heavy-jb) 0%, var(--jb) 100%);
+
   font-size: 20px;
+  /* margin-bottom: 1px; */
 }
 
 .headContent {
