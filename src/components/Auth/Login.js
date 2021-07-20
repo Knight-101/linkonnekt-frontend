@@ -1,14 +1,13 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState} from "react";
 import GoogleLogin from "react-google-login";
 import "./Login.css";
 import axios from "axios";
 import { useHistory } from "react-router";
 import { Link } from "react-router-dom";
 import imglogin from "./Images/loginImg.png";
-import imguser from "./Images/user.png";
 import imgmail from "./Images/mail.png";
 import imglock from "./Images/lock.png";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { setData } from "../../Redux/userData/userDataActions";
 
 const Login = () => {
