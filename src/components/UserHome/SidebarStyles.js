@@ -74,6 +74,14 @@ const useStyles = makeStyles((theme) => ({
     marginRight: "25px",
     color: "#457B9D",
     fontSize: "30px",
+    borderRadius: "100%",
+    cursor: "pointer",
+  },
+  DPIcon: {
+    marginRight: "25px",
+    height: "50px",
+    width: "50px",
+    borderRadius: "100%",
     cursor: "pointer",
   },
   link: {

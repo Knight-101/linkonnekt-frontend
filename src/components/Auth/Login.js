@@ -1,4 +1,4 @@
-import React, { useState} from "react";
+import React, { useState } from "react";
 import GoogleLogin from "react-google-login";
 import "./Login.css";
 import axios from "axios";
@@ -8,7 +8,7 @@ import imglogin from "./Images/loginImg.png";
 import imgmail from "./Images/mail.png";
 import imglock from "./Images/lock.png";
 import { useDispatch } from "react-redux";
-import { setData } from "../../Redux/userData/userDataActions";
+import { setData, setImg } from "../../Redux/userData/userDataActions";
 import { logout } from "../../Redux/logoutAction";
 import { useGoogleLogout } from "react-google-login";
 
@@ -49,6 +49,7 @@ const Login = () => {
             } else {
               localStorage.setItem("token", res.data.token);
               const user = res.data.user;
+              const profileInfo = res.data.user.profileInfo;
               dispatch(setData(user.username, user.email, user.role));
               axios
                 .get(BASE_URL + "/auth/isEmailVerified", {
@@ -56,7 +57,11 @@ const Login = () => {
                 })
                 .then((res) => {
                   if (res.data.ok) {
-                    history.push("/profileinfo");
+                    if (profileInfo) {
+                      history.push("/userhome/dashboard");
+                    } else {
+                      history.push("/profileinfo");
+                    }
                   } else {
                     history.push("/emailV");
                   }
@@ -98,6 +103,7 @@ const Login = () => {
           const email = res.data.user.email;
           const role = res.data.user.role;
           const profileInfo = res.data.user.profileInfo;
+          const profileImg = res.data.user.profileImg;
           localStorage.setItem("token", res.data.token);
           if (profileInfo) {
             history.push("/userhome/dashboard");
@@ -113,6 +119,7 @@ const Login = () => {
                 if (response.data.ok) {
                   console.log(res.data);
                   dispatch(setData(username, email, role));
+                  dispatch(setImg(profileImg));
                   history.push("/profileinfo");
                 } else {
                   dispatch(setData(username, email));

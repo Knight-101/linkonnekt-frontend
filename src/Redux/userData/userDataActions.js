@@ -1,4 +1,4 @@
-import { SET_DATA } from "./userDataTypes";
+import { SET_DATA, SET_IMG } from "./userDataTypes";
 
 export const setData = (username, email, role) => {
   return {
@@ -7,6 +7,15 @@ export const setData = (username, email, role) => {
       username: username,
       email: email,
       role: role,
+    },
+  };
+};
+
+export const setImg = (img) => {
+  return {
+    type: SET_IMG,
+    payload: {
+      profileImg: img,
     },
   };
 };

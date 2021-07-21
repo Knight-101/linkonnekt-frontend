@@ -16,12 +16,14 @@ import AccountCircle from "@material-ui/icons/AccountCircle";
 import Sidebar from "./Sidebar";
 import Dashboard from "./Dashboard/Dashboard";
 import Search from "./Search/Search";
+import { useDispatch, useSelector } from "react-redux";
 
 function UserHome(props) {
   const { window } = props;
   const classes = useStyles();
   const theme = useTheme();
   const [mobileOpen, setMobileOpen] = React.useState(false);
+  const profileImgUrl = useSelector((state) => state.userData.profileImg);
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
@@ -50,7 +52,8 @@ function UserHome(props) {
             <div className={classes.topRight}>
               <ChatBubbleIcon className={classes.topIcons} />
               <NotificationsIcon className={classes.topIcons} />
-              <AccountCircle className={classes.topIcons} />
+              {/* <AccountCircle className={classes.topIcons} /> */}
+              <img src={profileImgUrl} alt="dp" className={classes.DPIcon} />
             </div>
           </div>
         </Toolbar>
