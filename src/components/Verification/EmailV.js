@@ -159,11 +159,12 @@ const EmailV = () => {
           <a
             href="/signup"
             style={{ textDecoration: "none", paddingLeft: "5px" }}
+            onClick={sendMail}
           >
             Resend
           </a>
         </p>
-        <p>
+        {/* <p>
           Don't know this email?
           <a
             href="/resend"
@@ -171,7 +172,7 @@ const EmailV = () => {
           >
             Change mail
           </a>
-        </p>
+        </p> */}
       </div>
       <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
         <Alert onClose={handleClose} severity="error">

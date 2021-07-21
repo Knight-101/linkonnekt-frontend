@@ -4,41 +4,63 @@ import Camera from "./Assets/Camera.js";
 import Mail from "./Assets/Mail.js";
 import Phone from "./Assets/Phone.js";
 import User from "./Assets/User.js";
-import DefaultDp from "./Image.jpg";
-// import { InputAdornment } from "@material-ui/core";
-// import IconButton from "@material-ui/core/IconButton";
-// import Input from "@material-ui/core/Input";
-// import Grid from "@material-ui/core/Grid";
-// import AccountCircle from "@material-ui/icons/AccountCircle";
-// import TextField from "@material-ui/core/TextField";
+import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
+import { setImg } from "../../Redux/userData/userDataActions";
 
 const ProfileOverview = (props) => {
-  const [DP, setDP] = useState(DefaultDp);
+  const dispatch = useDispatch();
+  const profileImgUrl = useSelector((state) => state.userData.profileImg);
+  const BASE_URL = "http://localhost:8000";
+  const [DP, setDP] = useState(profileImgUrl);
 
-  const DPChange = (event) => {
-    const newDP = event.target.value;
-    console.log(newDP);
-    setDP(newDP);
+  const DPChange = () => {
+    const form = document.querySelector("#myDPForm");
+    const token = localStorage.getItem("token");
+    var formData = new FormData(form);
+    axios
+      .post(BASE_URL + "/auth/uploadDP", formData, {
+        headers: {
+          Authorization: token,
+        },
+      })
+      .then((res) => {
+        if (res.data === "Images Only!") {
+          alert("Image Only!!");
+        }
+        if (res.data.ok) {
+          console.log(BASE_URL + res.data.path);
+          setDP(BASE_URL + "/" + res.data.path);
+          dispatch(setImg(BASE_URL + "/" + res.data.path));
+        } else {
+          console.log(res.data);
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   return (
     <div className="profile">
       <div>
         {/* Image comes here */}
-        <img src={DefaultDp} alt="dp" className="profile-image" />
+        <img src={DP} alt="dp" className="profile-image" />
         {/* <div className="camera"> */}
         {/* <Camera /> */}
         {/* <div className="DPinput"> */}
-        <input
-          type="file"
-          id="myDP"
-          name="filename"
-          hidden
-          onChange={DPChange}
-        />
-        <label className="DPlabel" for="myDP">
-          <Camera />
-        </label>
+        <form id="myDPForm">
+          <input
+            type="file"
+            id="myDP"
+            name="DisplayPicture"
+            hidden
+            onChange={DPChange}
+          />
+          <label className="DPlabel" for="myDP">
+            Change Image
+          </label>
+        </form>
         {/* </div> */}
         {/* </div> */}
       </div>

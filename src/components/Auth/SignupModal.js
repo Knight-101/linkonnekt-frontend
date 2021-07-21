@@ -8,7 +8,7 @@ import axios from "axios";
 import "./SignupModal.css";
 import { useHistory } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
-import { setData } from "../../Redux/userData/userDataActions";
+import { setData, setImg } from "../../Redux/userData/userDataActions";
 import { useGoogleLogout } from "react-google-login";
 
 const useStyles = makeStyles((theme) => ({
@@ -60,18 +60,22 @@ export default function SignupModal(props) {
     let accessToken = response.accessToken;
     let email = response.profileObj.email;
     let username = response.profileObj.givenName;
+    let profileImg = response.profileObj.imageUrl;
     console.log(response);
+    console.log(profileImg);
     //posting oauth data
     await axios
       .post(BASE_URL + "/auth/oauthsignup", {
         access_token: accessToken,
         email: email,
         role: role,
+        profileImg: profileImg,
       })
-      .then((res) => {
+      .then(async (res) => {
         if (res.data.ok) {
           localStorage.setItem("token", res.data.token);
           dispatch(setData(username, email, role));
+          dispatch(setImg(profileImg));
           history.push("/emailV");
         }
         if (res.data === "User already exists") {

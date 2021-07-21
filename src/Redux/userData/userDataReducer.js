@@ -1,9 +1,10 @@
-import { SET_DATA } from "./userDataTypes";
+import { SET_DATA, SET_IMG } from "./userDataTypes";
 
 const initialState = {
   username: "",
   email: "",
   role: "",
+  profileImg: "http://localhost:8000/public/uploads/Default.jpg",
 };
 
 const userDataReducer = (state = initialState, action) => {
@@ -15,7 +16,11 @@ const userDataReducer = (state = initialState, action) => {
         email: action.payload.email,
         role: action.payload.role,
       };
-
+    case SET_IMG:
+      return {
+        ...state,
+        profileImg: action.payload.profileImg,
+      };
     default:
       return state;
   }
