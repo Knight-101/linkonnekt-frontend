@@ -8,6 +8,9 @@ import Typography from "@material-ui/core/Typography";
 import imgsrc from "./Image.jpg";
 import { makeStyles } from "@material-ui/core/styles";
 import ChatIcon from "@material-ui/icons/Chat";
+import YouTubeIcon from '@material-ui/icons/YouTube';
+import InstagramIcon from '@material-ui/icons/Instagram';
+import FacebookIcon from '@material-ui/icons/Facebook';
 
 const useStyles = makeStyles({
   design_h3: {
@@ -35,10 +38,19 @@ const useStyles = makeStyles({
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
+    padding: "10px",
+
   },
+  icon_flex: {
+    display: "flex",
+    flexDirection: "column",
+  },
+  padding: {
+    height: "1rem",
+  }
 });
 
-export default function Matches() {
+export default function Usercard() {
   const classes = useStyles();
 
   return (
@@ -55,18 +67,33 @@ export default function Matches() {
         <CardMedia className={classes.media} image={imgsrc} title="img" />
         <CardActionArea disabled>
           <CardContent>
-            <h3 className={classes.design_h3}> Ankit </h3>
-            <h4 className={classes.design_h4}> DU CIC </h4>
+            <h3 className={classes.design_h3}> Naval Ravikant </h3>
+            <h4 className={classes.design_h4}> Entrepreneur </h4>
             <Typography variant="body2" color="textSecondary" component="p">
-              Hello, Im a student of CIC and make content related to designing
-              and UI/UX. Lorem ipsum dolor sit amet non. Lorem ipsum dolor sit
-              amet non.
+              Lorem ipsum dolor sit amet non. Lorem ipsum dolor sit amet non.
+              Lorem ipsum dolor sit amet non. Lorem ipsum dolor sit amet non.
+              Lorem ipsum dolor sit amet non. Lorem ipsum dolor sit amet non.
             </Typography>
           </CardContent>
         </CardActionArea>
         <CardActions>
-          <div className={classes.message}>
-            <ChatIcon htmlColor="#ffffff"></ChatIcon>
+          <div className={classes.icon_flex}>
+            <div className={classes.message}>
+              <ChatIcon htmlColor="#ffffff"></ChatIcon>
+            </div>
+            <div className={classes.padding}/>
+            <div className={classes.message}>
+              <YouTubeIcon htmlColor="#ffffff"></YouTubeIcon>
+            </div>
+            <div className={classes.padding}/>
+            <div className={classes.message}>
+              <InstagramIcon htmlColor="#ffffff"></InstagramIcon>
+            </div>
+            <div className={classes.padding}/>
+
+            <div className={classes.message}>
+              <FacebookIcon htmlColor="#ffffff"></FacebookIcon>
+            </div>
           </div>
         </CardActions>
       </Card>
