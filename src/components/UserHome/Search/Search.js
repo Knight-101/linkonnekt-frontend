@@ -1,24 +1,27 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import useStyles from "../SidebarStyles";
-import CreatorCard from "./CreatorCard";
 import Sort from "./Sort";
+import UserCard from "./UserCard";
+import Filters from "./Filters";
 
 function Dashboard(props) {
   const classes = useStyles();
   return (
     <main className={classes.content}>
       <Sort />
-      <div
-        className={classes.toolbar}
-        style={{ gridTemplateColumns: "3fr 3fr 3fr", gridGap: "0.8rem" }}
-      >
-        <CreatorCard />
-        <CreatorCard />
-        <CreatorCard />
-        <CreatorCard />
-        <CreatorCard />
-        <CreatorCard />
-        <CreatorCard />
+      <div style={{ display: "flex", flexDirection: "Row" }}>
+        <div
+          className={classes.toolbar}
+          style={{ display: "flex", flexDirection: "Column" }}
+        >
+          <UserCard />
+          <UserCard />
+          <UserCard />
+          <UserCard />
+          <UserCard />
+          <UserCard />
+        </div>
+        <Filters />
       </div>
     </main>
   );
