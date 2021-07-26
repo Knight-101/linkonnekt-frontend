@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React from "react";
 import imgsrc3 from "./about3.png";
 import imgsrc2 from "./about2.png";
 import imgsrc1 from "./about1.png";
@@ -11,6 +11,7 @@ import imgcat6 from "./CategoryImages/Cat6.png";
 import imgcat7 from "./CategoryImages/Cat7.png";
 import imgcat8 from "./CategoryImages/Cat8.png";
 import "./Middle.css";
+import Faq from "./Faq";
 
 const arr = [
   imgcat1,
@@ -47,7 +48,7 @@ const Middle = () => {
           <div>
               <img src={imgsrc3} className="about3img" alt="logo"></img>
             </div>
-            <div>
+            <div className="aboutimg">
               <img src={imgsrc2} className="about2img" alt="logo"></img>
             </div>
           </div>
@@ -64,6 +65,7 @@ const Middle = () => {
             ))}
           </div>
         </div>
+        <Faq></Faq>
       </div>
     </div>
   );

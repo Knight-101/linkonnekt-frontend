@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import AppBar from "@material-ui/core/AppBar";
 import CssBaseline from "@material-ui/core/CssBaseline";
-import Divider from "@material-ui/core/Divider";
+// import Divider from "@material-ui/core/Divider";
 import Drawer from "@material-ui/core/Drawer";
 import Hidden from "@material-ui/core/Hidden";
 import IconButton from "@material-ui/core/IconButton";
@@ -12,11 +12,11 @@ import { useTheme } from "@material-ui/core/styles";
 import NotificationsIcon from "@material-ui/icons/Notifications";
 import ChatBubbleIcon from "@material-ui/icons/ChatBubble";
 import useStyles from "./SidebarStyles";
-import AccountCircle from "@material-ui/icons/AccountCircle";
+// import AccountCircle from "@material-ui/icons/AccountCircle";
 import Sidebar from "./Sidebar";
 import Dashboard from "./Dashboard/Dashboard";
 import Search from "./Search/Search";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 
 function UserHome(props) {
   const { window } = props;

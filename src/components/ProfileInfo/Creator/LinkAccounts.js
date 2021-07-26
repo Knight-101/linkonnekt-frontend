@@ -1,12 +1,10 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState } from "react";
 import "./LinkAccounts.css";
 import instaIcon from "./socialIcons/insta.png";
 import fbIcon from "./socialIcons/fb.png";
-import snapIcon from "./socialIcons/snap.png";
 import ytIcon from "./socialIcons/youtube.png";
 import twitterIcon from "./socialIcons/Twitter.png";
 import linkedinIcon from "./socialIcons/LinkedIn.png";
-import Button from "@material-ui/core/Button";
 import { useSelector } from "react-redux";
 import TextField from "@material-ui/core/TextField";
 import axios from "axios";

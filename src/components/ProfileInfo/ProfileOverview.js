@@ -1,8 +1,8 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState } from "react";
 import "./ProfileOverview.css";
-import Camera from "./Assets/Camera.js";
+// import Camera from "./Assets/Camera.js";
 import Mail from "./Assets/Mail.js";
-import Phone from "./Assets/Phone.js";
+// import Phone from "./Assets/Phone.js";
 import User from "./Assets/User.js";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";

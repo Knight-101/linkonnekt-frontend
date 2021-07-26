@@ -1,10 +1,10 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState } from "react";
 import "./Categories.css";
-import TextField from "@material-ui/core/TextField";
+// import TextField from "@material-ui/core/TextField";
 import InputLabel from "@material-ui/core/InputLabel";
 import NativeSelect from "@material-ui/core/NativeSelect";
-import CloudUploadIcon from "@material-ui/icons/CloudUpload";
-import Button from "@material-ui/core/Button";
+// import CloudUploadIcon from "@material-ui/icons/CloudUpload";
+// import Button from "@material-ui/core/Button";
 import Platforms from "../Assets/Platforms";
 import { useDispatch, useSelector } from "react-redux";
 import { setCatData } from "../../../Redux/profileInfo/profileInfoActions";

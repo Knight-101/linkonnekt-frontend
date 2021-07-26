@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import "./CompanyInfo.css";
 import TextField from "@material-ui/core/TextField";
-import FormControl from "@material-ui/core/FormControl";
 
 const PerosnalInfo = () => {
   const [buttonClicked, setButtonClicked] = useState(0);

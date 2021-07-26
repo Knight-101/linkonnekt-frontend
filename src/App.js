@@ -8,14 +8,13 @@ import MobileV from "./components/Verification/MobileV";
 import ProfileInfo from "./components/ProfileInfo/ProfileInfo";
 import UserHome from "./components/UserHome/UserHome";
 import AuthRoute from "./components/AuthRoute";
+import Profile from "./components/Profile/Profile";
 import "./App.css";
 
 function App() {
   return (
     <Router>
       <Switch>
-        {/* <AuthRoute path="/main/checkout" exact component={CheckOut} /> */}
-
         <Route exact path="/">
           <Home />
         </Route>
@@ -28,6 +27,15 @@ function App() {
         <AuthRoute path="/emailV" exact component={EmailV} />
         <AuthRoute path="/mobileV" exact component={MobileV} />
         <AuthRoute path="/profileinfo" exact component={ProfileInfo} />
+        <AuthRoute
+          path="/profile/about"
+          component={() => <Profile item="About" />}
+        />
+        <AuthRoute
+          path="/profile/social"
+          component={() => <Profile item="SocialMedia" />}
+        />
+
         <AuthRoute
           path="/userhome/dashboard"
           component={() => <UserHome item="Dashboard" />}
@@ -48,6 +56,7 @@ function App() {
           path="/userhome/logout"
           component={() => <UserHome item="LogOut" />}
         />
+        
       </Switch>
     </Router>
   );

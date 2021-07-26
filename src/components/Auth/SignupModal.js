@@ -7,7 +7,7 @@ import GoogleLogin from "react-google-login";
 import axios from "axios";
 import "./SignupModal.css";
 import { useHistory } from "react-router";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { setData, setImg } from "../../Redux/userData/userDataActions";
 import { useGoogleLogout } from "react-google-login";
 

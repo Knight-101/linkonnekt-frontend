@@ -1,5 +1,5 @@
 import React from "react";
-import { makeStyles, createMuiTheme } from "@material-ui/core/styles";
+import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import Stepper from "@material-ui/core/Stepper";
 import Step from "@material-ui/core/Step";
