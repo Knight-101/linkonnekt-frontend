@@ -8,9 +8,10 @@ import Typography from "@material-ui/core/Typography";
 import imgsrc from "./Image.jpg";
 import { makeStyles } from "@material-ui/core/styles";
 import ChatIcon from "@material-ui/icons/Chat";
-import YouTubeIcon from '@material-ui/icons/YouTube';
-import InstagramIcon from '@material-ui/icons/Instagram';
-import FacebookIcon from '@material-ui/icons/Facebook';
+import YouTubeIcon from "@material-ui/icons/YouTube";
+import InstagramIcon from "@material-ui/icons/Instagram";
+import FacebookIcon from "@material-ui/icons/Facebook";
+import LinkedInIcon from "@material-ui/icons/LinkedIn";
 
 const useStyles = makeStyles({
   design_h3: {
@@ -39,7 +40,6 @@ const useStyles = makeStyles({
     justifyContent: "center",
     alignItems: "center",
     padding: "10px",
-
   },
   icon_flex: {
     display: "flex",
@@ -47,10 +47,10 @@ const useStyles = makeStyles({
   },
   padding: {
     height: "1rem",
-  }
+  },
 });
 
-export default function Usercard() {
+export default function Usercard(props) {
   const classes = useStyles();
 
   return (
@@ -64,11 +64,11 @@ export default function Usercard() {
       }}
     >
       <Card className={classes.flex} style={{ backgroundColor: "#a8dadc" }}>
-        <CardMedia className={classes.media} image={imgsrc} title="img" />
+        <CardMedia className={classes.media} image={props.image} title="img" />
         <CardActionArea disabled>
           <CardContent>
-            <h3 className={classes.design_h3}> Naval Ravikant </h3>
-            <h4 className={classes.design_h4}> Entrepreneur </h4>
+            <h3 className={classes.design_h3}> {props.name} </h3>
+            <h4 className={classes.design_h4}>Category : {props.category} </h4>
             <Typography variant="body2" color="textSecondary" component="p">
               Lorem ipsum dolor sit amet non. Lorem ipsum dolor sit amet non.
               Lorem ipsum dolor sit amet non. Lorem ipsum dolor sit amet non.
@@ -78,22 +78,42 @@ export default function Usercard() {
         </CardActionArea>
         <CardActions>
           <div className={classes.icon_flex}>
-            <div className={classes.message}>
+            {/* <div className={classes.message}>
               <ChatIcon htmlColor="#ffffff"></ChatIcon>
-            </div>
-            <div className={classes.padding}/>
-            <div className={classes.message}>
-              <YouTubeIcon htmlColor="#ffffff"></YouTubeIcon>
-            </div>
-            <div className={classes.padding}/>
-            <div className={classes.message}>
-              <InstagramIcon htmlColor="#ffffff"></InstagramIcon>
-            </div>
-            <div className={classes.padding}/>
+            </div> */}
+            <div className={classes.padding} />
+            {props.YouTube && (
+              <div className={classes.message}>
+                <a href={props.YouTube}>
+                  <YouTubeIcon htmlColor="#ffffff"></YouTubeIcon>
+                </a>
+              </div>
+            )}
+            <div className={classes.padding} />
+            {props.Instagram && (
+              <div className={classes.message}>
+                <a href={props.Instagram}>
+                  <InstagramIcon htmlColor="#ffffff"></InstagramIcon>
+                </a>
+              </div>
+            )}
 
-            <div className={classes.message}>
-              <FacebookIcon htmlColor="#ffffff"></FacebookIcon>
-            </div>
+            <div className={classes.padding} />
+            {props.Facebook && (
+              <div className={classes.message}>
+                <a href={props.Facebook}>
+                  <FacebookIcon htmlColor="#ffffff"></FacebookIcon>
+                </a>
+              </div>
+            )}
+            <div className={classes.padding} />
+            {props.Linkedin && (
+              <div className={classes.message}>
+                <a href={props.LinkedIn}>
+                  <LinkedInIcon htmlColor="#ffffff"></LinkedInIcon>
+                </a>
+              </div>
+            )}
           </div>
         </CardActions>
       </Card>

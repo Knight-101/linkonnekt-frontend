@@ -74,7 +74,8 @@ const Categories = (props) => {
               <option value="Business">Business</option>
               <option value="Entertainment">Entertainment</option>
               <option value="Family">Family</option>
-              <option value="Fashion">Food</option>
+              <option value="Fashion">Fashion</option>
+              <option value="Food">Food</option>
               <option value="Health">Health</option>
               <option value="Home">Home</option>
               <option value="Lifestyle">Lifestyle</option>

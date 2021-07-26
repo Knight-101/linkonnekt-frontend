@@ -1,30 +1,69 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import useStyles from "../SidebarStyles";
 import Sort from "./Sort";
 import UserCard from "./UserCard";
 import Filters from "./Filters";
+import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
 
-function Dashboard(props) {
+function Search(props) {
+  const dispatch = useDispatch();
+  const BASE_URL = "http://localhost:8000";
   const classes = useStyles();
+  const [creatorsArray, setcreatorsArray] = useState([]);
+  const [categoryFilter, setCategoryFilter] = useState("");
+  const [creatorType, setCreatorType] = useState("");
+  const [loading, setloading] = useState(true);
+  useEffect(() => {
+    axios
+      .get(BASE_URL + "/creator/list")
+      .then((res) => {
+        setcreatorsArray(res.data);
+        setloading(false);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
   return (
     <main className={classes.content}>
-      <Sort />
-      <div style={{ display: "flex", flexDirection: "Row" }}>
-        <div
-          className={classes.toolbar}
-          style={{ display: "flex", flexDirection: "Column" }}
-        >
-          <UserCard />
-          <UserCard />
-          <UserCard />
-          <UserCard />
-          <UserCard />
-          <UserCard />
+      <Sort setNewCreators={setcreatorsArray} />
+      {loading ? (
+        <h5>Loading....</h5>
+      ) : (
+        <div style={{ display: "grid", gridTemplateColumns: "5fr 2fr" }}>
+          {creatorsArray.length !== 0 ? (
+            <div
+              className={classes.toolbar}
+              style={{ display: "flex", flexDirection: "Column" }}
+            >
+              {creatorsArray.map((creator, index) => (
+                <UserCard
+                  key={index}
+                  name={
+                    creator.profileInfo.personalInfo.firstName +
+                    " " +
+                    creator.profileInfo.personalInfo.lastName
+                  }
+                  category={creator.profileInfo.categories.Category}
+                  image={creator.profileImg}
+                />
+              ))}
+            </div>
+          ) : (
+            <div>
+              <h3>No user found</h3>
+            </div>
+          )}
+          <Filters
+            setNewCreators={setcreatorsArray}
+            creatorType={setCreatorType}
+          />
         </div>
-        <Filters />
-      </div>
+      )}
     </main>
   );
 }
 
-export default Dashboard;
+export default Search;

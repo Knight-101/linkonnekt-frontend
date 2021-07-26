@@ -7,7 +7,9 @@ import FormLabel from "@material-ui/core/FormLabel";
 import Radio from "@material-ui/core/Radio";
 import { makeStyles } from "@material-ui/core/styles";
 import Checkbox from "@material-ui/core/Checkbox";
-export default function Filter() {
+import axios from "axios";
+
+export default function Filter(props) {
   const useStyles = makeStyles({
     sidebar: {
       width: "100%",
@@ -30,7 +32,8 @@ export default function Filter() {
   });
 
   const classes = useStyles();
-  const [value, setValue] = React.useState("female");
+  const BASE_URL = "http://localhost:8000";
+  const [value, setValue] = React.useState("");
   const [state, setState] = React.useState({
     nano: true,
     micro: false,
@@ -38,9 +41,30 @@ export default function Filter() {
     mega: false,
   });
 
-  const handleChange = (event) => {
+  const handleCategory = (event) => {
+    const cat = event.target.value;
+    setValue(cat);
+    cat === "All"
+      ? axios
+          .get(BASE_URL + "/creator/list")
+          .then((res) => {
+            props.setNewCreators(res.data);
+          })
+          .catch((err) => {
+            console.log(err);
+          })
+      : axios
+          .get(BASE_URL + "/creator/list/category/" + cat)
+          .then((res) => {
+            props.setNewCreators(res.data);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+  };
+
+  const handleCreatorType = (event) => {
     setState({ ...state, [event.target.name]: event.target.checked });
-    setValue(event.target.value);
   };
 
   const { nano, micro, mini, mega } = state;
@@ -49,45 +73,119 @@ export default function Filter() {
     <div className={classes.sidebar}>
       <FormControl component="fieldset">
         <div className={classes.group}>
-          <FormLabel component="legend">Gender</FormLabel>
+          <FormLabel component="legend">Categories</FormLabel>
           <RadioGroup
             aria-label="gender"
             name="gender1"
             value={value}
-            onChange={handleChange}
+            onChange={handleCategory}
           >
+            <FormControlLabel value="All" control={<Radio />} label="All" />
             <FormControlLabel
-              value="female"
+              value="Beauty"
               control={<Radio />}
-              label="Female"
+              label="Beauty"
             />
-            <FormControlLabel value="male" control={<Radio />} label="Male" />
-            <FormControlLabel value="other" control={<Radio />} label="Other" />
+            <FormControlLabel
+              value="Animals"
+              control={<Radio />}
+              label="Animals"
+            />
+            <FormControlLabel
+              value="Business"
+              control={<Radio />}
+              label="Business"
+            />
+            <FormControlLabel
+              value="Entertainment"
+              control={<Radio />}
+              label="Entertainment"
+            />
+            <FormControlLabel
+              value="Family"
+              control={<Radio />}
+              label="Family"
+            />
+            <FormControlLabel
+              value="Fashion"
+              control={<Radio />}
+              label="Fashion"
+            />
+            <FormControlLabel value="Food" control={<Radio />} label="Food" />
+            <FormControlLabel
+              value="Health"
+              control={<Radio />}
+              label="Health"
+            />
+            <FormControlLabel value="Home" control={<Radio />} label="Home" />
+            <FormControlLabel
+              value="Lifestyle"
+              control={<Radio />}
+              label="Lifestyle"
+            />
+            <FormControlLabel value="Music" control={<Radio />} label="Music" />
+            <FormControlLabel
+              value="Outdoor Activities"
+              control={<Radio />}
+              label="Outdoor Activities"
+            />
+            <FormControlLabel
+              value="Society"
+              control={<Radio />}
+              label="Society"
+            />
+            <FormControlLabel value="Sport" control={<Radio />} label="Sport" />
+            <FormControlLabel
+              value="Technology"
+              control={<Radio />}
+              label="Technology"
+            />
+            <FormControlLabel
+              value="Vehicles"
+              control={<Radio />}
+              label="Vehicles"
+            />
           </RadioGroup>
         </div>
         <div className={classes.group}>
           <FormLabel component="legend">Creator Type</FormLabel>
           <FormControlLabel
             control={
-              <Checkbox checked={nano} onChange={handleChange} name="nano" />
+              <Checkbox
+                checked={nano}
+                onChange={handleCreatorType}
+                name="nano"
+              />
             }
             label="Nano Creator"
           />
           <FormControlLabel
             control={
-              <Checkbox checked={micro} onChange={handleChange} name="micro" />
+              <Checkbox
+                checked={micro}
+                onChange={handleCreatorType}
+                name="micro"
+              />
             }
             label="Micro Creator"
           />
           <FormControlLabel
             control={
-              <Checkbox checked={mini} onChange={handleChange} name="mini" />
+              <Checkbox
+                checked={mini}
+                onChange={handleCreatorType}
+                name="mini"
+              />
             }
             label="Mini Creator"
           />
           <FormControlLabel
             control={
-              <Checkbox checked={mega} onChange={handleChange} name="mega" />
+              <Checkbox
+                checked={mega}
+                onChange={handleCreatorType}
+                name="mega"
+              />
             }
             label="Mega Creator"
           />

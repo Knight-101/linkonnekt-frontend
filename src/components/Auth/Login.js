@@ -11,6 +11,10 @@ import { useDispatch } from "react-redux";
 import { setData, setImg } from "../../Redux/userData/userDataActions";
 import { logout } from "../../Redux/logoutAction";
 import { useGoogleLogout } from "react-google-login";
+import {
+  setProfileData,
+  setCatData,
+} from "../../Redux/profileInfo/profileInfoActions";
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -106,6 +110,10 @@ const Login = () => {
           const profileImg = res.data.user.profileImg;
           localStorage.setItem("token", res.data.token);
           if (profileInfo) {
+            dispatch(setData(username, email, role));
+            dispatch(setImg(profileImg));
+            dispatch(setProfileData(profileInfo.personalInfo));
+            dispatch(setCatData(profileInfo.categories));
             history.push("/userhome/dashboard");
           } else {
             axios
@@ -122,7 +130,7 @@ const Login = () => {
                   dispatch(setImg(profileImg));
                   history.push("/profileinfo");
                 } else {
-                  dispatch(setData(username, email));
+                  dispatch(setData(username, email, role));
                   history.push("/emailV");
                 }
               });
