@@ -1,9 +1,9 @@
-import React, { useState, useEffect, useRef } from "react";
+import React from "react";
 import "./ProfileInfo.css";
 import FreelancerTabs from "./Freelancer/FreelancerTabs";
 import CreatorTabs from "./Creator/CreatorTabs";
 import BuyerTabs from "./Buyer/BuyerTabs";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import ProfileOverview from "./ProfileOverview";
 
 const ProfileInfo = () => {

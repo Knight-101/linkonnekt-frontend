@@ -1,0 +1,5 @@
+.parentContainer{
+    display: flex;
+    margin: auto;
+    align-self: center;
+}

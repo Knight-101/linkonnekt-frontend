@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import useStyles from "../SidebarStyles";
 import Invitations from "./Invitation";
 import Collaborators from "./Collaborators";
 import Stats from "./Stats";
-import Matches from "./Matches";
+// import Matches from "./Matches";
 
 function Dashboard(props) {
   const classes = useStyles();

@@ -4,12 +4,12 @@ import CardActionArea from "@material-ui/core/CardActionArea";
 import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
-import Button from "@material-ui/core/Button";
+// import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import imgsrc from "./Image.jpg";
 import { makeStyles } from "@material-ui/core/styles";
 import ChatIcon from "@material-ui/icons/Chat";
-import SvgIcon from "@material-ui/core/SvgIcon";
+// import SvgIcon from "@material-ui/core/SvgIcon";
 
 const useStyles = makeStyles({
   design_h3: {
