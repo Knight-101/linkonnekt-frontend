@@ -14,6 +14,7 @@ function Search(props) {
   const [categoryFilter, setCategoryFilter] = useState("");
   const [creatorType, setCreatorType] = useState("");
   const [loading, setloading] = useState(true);
+
   useEffect(() => {
     axios
       .get(BASE_URL + "/creator/list")
@@ -48,6 +49,11 @@ function Search(props) {
                   }
                   category={creator.profileInfo.categories.Category}
                   image={creator.profileImg}
+                  YouTube={creator.profileInfo.socialLinks.YouTube}
+                  LinkedIn={creator.profileInfo.socialLinks.LinkedIn}
+                  Instagram={creator.profileInfo.socialLinks.Instagram}
+                  Facebook={creator.profileInfo.socialLinks.Facebook}
+                  Twitter={creator.profileInfo.socialLinks.Twitter}
                 />
               ))}
             </div>

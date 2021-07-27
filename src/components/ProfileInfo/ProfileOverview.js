@@ -10,6 +10,7 @@ import { setImg } from "../../Redux/userData/userDataActions";
 
 const ProfileOverview = (props) => {
   const dispatch = useDispatch();
+
   const profileImgUrl = useSelector((state) => state.userData.profileImg);
   const BASE_URL = "http://localhost:8000";
   const [DP, setDP] = useState(profileImgUrl);
@@ -29,9 +30,8 @@ const ProfileOverview = (props) => {
           alert("Image Only!!");
         }
         if (res.data.ok) {
-          console.log(BASE_URL + res.data.path);
           setDP(BASE_URL + "/" + res.data.path);
-          dispatch(setImg(BASE_URL + "/" + res.data.path));
+          dispatch(setImg(res.data.path));
         } else {
           console.log(res.data);
         }

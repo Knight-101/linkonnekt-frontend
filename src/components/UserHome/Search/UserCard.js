@@ -51,6 +51,7 @@ const useStyles = makeStyles({
 });
 
 export default function Usercard(props) {
+  console.log(props);
   const classes = useStyles();
 
   return (
@@ -84,7 +85,7 @@ export default function Usercard(props) {
             <div className={classes.padding} />
             {props.YouTube && (
               <div className={classes.message}>
-                <a href={props.YouTube}>
+                <a href={props.YouTube} target="__blank">
                   <YouTubeIcon htmlColor="#ffffff"></YouTubeIcon>
                 </a>
               </div>
@@ -92,7 +93,7 @@ export default function Usercard(props) {
             <div className={classes.padding} />
             {props.Instagram && (
               <div className={classes.message}>
-                <a href={props.Instagram}>
+                <a href={props.Instagram} target="__blank">
                   <InstagramIcon htmlColor="#ffffff"></InstagramIcon>
                 </a>
               </div>
@@ -101,15 +102,15 @@ export default function Usercard(props) {
             <div className={classes.padding} />
             {props.Facebook && (
               <div className={classes.message}>
-                <a href={props.Facebook}>
+                <a href={props.Facebook} target="__blank">
                   <FacebookIcon htmlColor="#ffffff"></FacebookIcon>
                 </a>
               </div>
             )}
             <div className={classes.padding} />
-            {props.Linkedin && (
+            {props.LinkedIn && (
               <div className={classes.message}>
-                <a href={props.LinkedIn}>
+                <a href={props.LinkedIn} target="__blank">
                   <LinkedInIcon htmlColor="#ffffff"></LinkedInIcon>
                 </a>
               </div>

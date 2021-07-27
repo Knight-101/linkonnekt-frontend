@@ -5,7 +5,7 @@ import { makeStyles } from "@material-ui/core/styles";
 const useStyles = makeStyles((theme) => ({
   search: {
     backgroundColor: "#f1f1f1",
-    width: "25rem",
+    width: "75%",
     height: "2.5rem",
     border: "1px solid #274659",
     marginRight: "10rem",

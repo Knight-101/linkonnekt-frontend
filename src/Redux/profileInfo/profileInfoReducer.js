@@ -1,4 +1,4 @@
-import { SET_PERSONAL_DATA, SET_CAT_DATA } from "./profileInfoTypes";
+import { SET_PERSONAL_DATA, SET_CAT_DATA, SET_URL } from "./profileInfoTypes";
 
 const initialState = {
   personalInfo: {
@@ -34,6 +34,13 @@ const initialState = {
       },
     },
   },
+  socialLinks: {
+    Instagram: "",
+    Facebook: "",
+    LinkedIn: "",
+    Twitter: "",
+    YouTube: "",
+  },
 };
 
 const profileInfoReducer = (state = initialState, action) => {
@@ -62,6 +69,18 @@ const profileInfoReducer = (state = initialState, action) => {
             P3: { ...action.payload.Platforms.P3 },
             P4: { ...action.payload.Platforms.P4 },
           },
+        },
+      };
+    case SET_URL:
+      return {
+        ...state,
+
+        socialLinks: {
+          Instagram: action.payload.Instagram,
+          Facebook: action.payload.Facebook,
+          LinkedIn: action.payload.LinkedIn,
+          Twitter: action.payload.Twitter,
+          YouTube: action.payload.YouTube,
         },
       };
 

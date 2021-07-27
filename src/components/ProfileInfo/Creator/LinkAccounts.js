@@ -5,13 +5,15 @@ import fbIcon from "./socialIcons/fb.png";
 import ytIcon from "./socialIcons/youtube.png";
 import twitterIcon from "./socialIcons/Twitter.png";
 import linkedinIcon from "./socialIcons/LinkedIn.png";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import TextField from "@material-ui/core/TextField";
 import axios from "axios";
 import { useHistory } from "react-router";
+import { setUrls } from "../../../Redux/profileInfo/profileInfoActions";
 
 const LinkAccounts = (props) => {
   const history = useHistory();
+  const dispatch = useDispatch();
   const platformsObj = useSelector(
     (state) => state.profileInfo.categories.Platforms
   );
@@ -30,6 +32,7 @@ const LinkAccounts = (props) => {
     Twitter: "",
     Facebook: "",
   });
+  const [complete, setComplete] = useState(false);
   function handleChange(event) {
     const { id, value } = event.target;
     setSocialUrls((prevData) => {
@@ -40,14 +43,18 @@ const LinkAccounts = (props) => {
     });
   }
 
-  function handleSubmit(event) {
+  async function handleSubmit(event) {
     event.preventDefault();
+    dispatch(setUrls(socialUrls));
+    setComplete(true);
+  }
+
+  if (complete) {
     const token = localStorage.getItem("token");
     axios
       .patch(BASE_URL + "/auth/profileinfo", {
         headers: { Authorization: token },
         profileObj,
-        socialUrls,
       })
       .then((res) => {
         if (res.data.ok === 1) {

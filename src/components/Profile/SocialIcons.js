@@ -11,12 +11,22 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     flex: "row",
     textAlign: "center",
-    padding: "1rem 3rem",
+    padding: "2.5rem 3rem 1.5rem 3rem",
     justifyContent: "space-evenly",
   },
   Icons: {
     color: "#274659",
-    fontSize: "60px",
+    fontSize: "45px",
+  },
+  platformData: {
+    "&:hover": {
+      opacity: 0.8,
+      cursor: "pointer",
+    },
+  },
+  popularity: {
+    margin: 0,
+    marginTop: "10px",
   },
 }));
 
@@ -24,11 +34,24 @@ export default function SocialIcons() {
   const classes = useStyles();
   return (
     <div className={classes.IconContainer}>
-      <FacebookIcon className={classes.Icons} />
-      <LinkedInIcon className={classes.Icons} />
-      <TwitterIcon className={classes.Icons} />
-      <InstagramIcon className={classes.Icons} />
-      <YouTubeIcon className={classes.Icons} />
+      <div className={classes.platformData}>
+        <FacebookIcon className={classes.Icons} />
+        <p className={classes.popularity}>
+          <b>50k</b>
+        </p>
+      </div>
+      <div className={classes.platformData}>
+        <LinkedInIcon className={classes.Icons} />
+      </div>
+      <div className={classes.platformData}>
+        <TwitterIcon className={classes.Icons} />
+      </div>
+      <div className={classes.platformData}>
+        <InstagramIcon className={classes.Icons} />
+      </div>
+      <div className={classes.platformData}>
+        <YouTubeIcon className={classes.Icons} />
+      </div>
     </div>
   );
 }

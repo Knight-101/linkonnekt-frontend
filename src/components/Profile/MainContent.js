@@ -19,10 +19,10 @@ const useStyles = makeStyles((theme) => ({
   name: {
     display: "inline-block",
     margin: "0.5rem 2rem",
-    fontSize: "2rem",
+    fontSize: "1.8rem",
   },
   place: {
-    fontSize: "1rem",
+    fontSize: "0.75rem",
     margin: "0.5rem 2rem",
     display: "inline-block",
   },
@@ -31,12 +31,16 @@ const useStyles = makeStyles((theme) => ({
     color: "#5db3b6",
     fontSize: "1rem",
   },
+  platforms: {
+    textAlign: "center",
+    marginTop: "1rem",
+  },
   ButtonContainer: {
     display: "flex",
     flex: "row",
     textAlign: "center",
     justifyContent: "space-evenly",
-    margin: "1rem 2rem",
+    margin: "1.2rem 2rem",
   },
   buttonFirst: {
     backgroundColor: "#457b9d",
@@ -54,7 +58,7 @@ export default function MainContent() {
   const classes = useStyles();
   return (
     <div className={classes.element}>
-      <Typography variant="h2" className={classes.name} component="h1">
+      {/* <Typography variant="h2" className={classes.name} component="h1">
         Daksh Goel
       </Typography>
       <Typography variant="h4" className={classes.place} component="h4">
@@ -62,10 +66,15 @@ export default function MainContent() {
         Dehradun
       </Typography>
       <Typography variant="h4" className={classes.vocation} component="h4">
-        Student
+        Creator
       </Typography>
+      <Typography variant="h4" className={classes.vocation} component="h4">
+        Beauty
+      </Typography> */}
       <Divider />
-
+      <Typography variant="h5" className={classes.platforms} component="h5">
+        <u>Platforms</u>
+      </Typography>
       <SocialIcons />
       <Divider />
 
@@ -73,7 +82,7 @@ export default function MainContent() {
         <Button
           variant="contained"
           className={classes.buttonFirst}
-          size="large"
+          size="small"
           startIcon={<MessageIcon />}
         >
           Send Message
@@ -81,7 +90,7 @@ export default function MainContent() {
         <Button
           className={classes.buttonSecond}
           variant="outlined"
-          size="large"
+          size="small"
           startIcon={<ReportProblemIcon />}
         >
           BookMark User
@@ -89,12 +98,13 @@ export default function MainContent() {
         <Button
           variant="outlined"
           className={classes.buttonThird}
-          size="large"
+          size="small"
           startIcon={<BookmarkIcon />}
         >
           Report User
         </Button>
       </div>
+      <Divider />
     </div>
   );
 }

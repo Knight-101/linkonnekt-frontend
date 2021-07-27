@@ -1,44 +1,60 @@
-import React from "react";
+import React, { useState } from "react";
+// import "./ProfileOverview.css";
+// import Camera from "./Assets/Camera.js";
+// import Mail from "./Assets/Mail.js";
+// import Phone from "./Assets/Phone.js";
+// import User from "./Assets/User.js";
+import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
 
-import { makeStyles } from "@material-ui/core/styles";
+const ProfileOverview = (props) => {
+  const dispatch = useDispatch();
+  const profileImgUrl = useSelector((state) => state.userData.profileImg);
+  const BASE_URL = "http://localhost:8000";
+  const [DP, setDP] = useState(profileImgUrl);
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    // display: "flex",
-  },
-  title: {
-    fontColor: "white",
-    padding: "10px",
-    alignItems: "center",
-  },
-  width: {
-    // display: "flex",
-    padding: "2rem",
-    background: "#457b9d",
-    width: "340px",
-    height: "100vh",
-  },
-  image: {
-    marginTop: "2rem",
-    marginBottom: "1rem",
-    width: "200px",
-    height: "200px",
-    border: `2px solid #f8f8f8`,
-    alignSelf: "center",
-    alignItems: "center",
-    borderRadius: "100%",
-  },
-}));
-
-function ProfileSidebar() {
-  const classes = useStyles();
   return (
-    <div className={classes.width}>
-      <div className={classes.toolbar} />
-      <div className={classes.title}>Linkonnekt</div>
-      <div className={classes.image}>{/* image goes here */}</div>
+    <div className="profile">
+      <div>
+        {/* Image comes here */}
+        <img src={DP} alt="dp" className="profile-image" />
+        {/* <div className="camera"> */}
+        {/* <Camera /> */}
+        {/* <div className="DPinput"> */}
+        {/* <form id="myDPForm">
+          <input
+            type="file"
+            id="myDP"
+            name="DisplayPicture"
+            hidden
+          />
+          <label className="DPlabel" for="myDP">
+            Change Image
+          </label>
+        </form> */}
+        {/* </div> */}
+        {/* </div> */}
+      </div>
+      <div id="user-data">
+        <div className="user-data-box" style={{ justifyContent: "center" }}>
+          <h4>Sanskar Mohapatra</h4>
+        </div>
+        <div className="user-data-box">
+          {/* <User />
+          {props.name} */}
+          <h5>Creator</h5>
+        </div>
+        <div className="user-data-box">
+          {/* <Mail /> {props.email} */}Entertainment
+        </div>
+        <div className="user-data-box">
+          {/* <User />
+          {props.name} */}
+          <h5>Mdhya Pradesh</h5>
+        </div>
+      </div>
     </div>
   );
-}
+};
 
-export default ProfileSidebar;
+export default ProfileOverview;

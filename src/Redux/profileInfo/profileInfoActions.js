@@ -1,4 +1,4 @@
-import { SET_PERSONAL_DATA, SET_CAT_DATA } from "./profileInfoTypes";
+import { SET_PERSONAL_DATA, SET_CAT_DATA, SET_URL } from "./profileInfoTypes";
 
 export const setProfileData = (personalInfo) => {
   return {
@@ -41,6 +41,19 @@ export const setCatData = (categories) => {
           Subscribers: categories.Platforms.P4.Subscribers,
         },
       },
+    },
+  };
+};
+
+export const setUrls = (urls) => {
+  return {
+    type: SET_URL,
+    payload: {
+      Instagram: urls.Instagram,
+      Facebook: urls.Facebook,
+      LinkedIn: urls.LinkedIn,
+      Twitter: urls.Twitter,
+      YouTube: urls.YouTube,
     },
   };
 };

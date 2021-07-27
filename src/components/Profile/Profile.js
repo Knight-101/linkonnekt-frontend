@@ -12,23 +12,30 @@ import MainContent from "./MainContent";
 import Search from "./Search";
 import About from "./About";
 import SocialMedia from "./SocialMedia";
+import UserBioTabs from "./userBio";
+import { Divider } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   outer: {
     display: "grid",
-    gridTemplateColumns: "1fr 10fr",
+    gridTemplateColumns: "2fr 7fr",
+  },
+  Sidebar: {
+    backgroundColor: "#457b9d",
+    height: "100vh",
   },
   topRight: {
-    display: "flex",
-    flexDirection: "row",
-    justifyContent: "flex-end",
+    display: "grid",
+    gridTemplateColumns: "10fr 1fr 1fr",
+    padding: "0 3.5rem",
   },
   topIcons: {
     marginRight: "25px",
     color: "#457B9D",
-    fontSize: "30px",
+    fontSize: "35px",
     borderRadius: "100%",
     cursor: "pointer",
+    justifySelf: "right",
   },
   mainContent: {
     padding: "2rem",
@@ -44,13 +51,16 @@ export default function Profile(props) {
       </div>
       <div className={classes.mainContent}>
         <div className={classes.topRight}>
-            <Search/>
+          <Search />
           <ChatBubbleIcon className={classes.topIcons} />
           <NotificationsIcon className={classes.topIcons} />
         </div>
         <MainContent />
-        {props.item === "About" && <About />}
-      {props.item === "SocialMedia" && <SocialMedia />}
+        {/* <Divider /> */}
+        <UserBioTabs />
+
+        {/* {props.item === "About" && <About />}
+        {props.item === "SocialMedia" && <SocialMedia />} */}
       </div>
     </div>
   );

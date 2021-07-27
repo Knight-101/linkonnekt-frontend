@@ -23,6 +23,7 @@ function UserHome(props) {
   const classes = useStyles();
   const theme = useTheme();
   const [mobileOpen, setMobileOpen] = React.useState(false);
+  const BASE_URL = "http://localhost:8000";
   const profileImgUrl = useSelector((state) => state.userData.profileImg);
 
   const handleDrawerToggle = () => {
