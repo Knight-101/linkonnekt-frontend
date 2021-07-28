@@ -51,7 +51,6 @@ const useStyles = makeStyles({
 });
 
 export default function Usercard(props) {
-  console.log(props);
   const classes = useStyles();
 
   return (
