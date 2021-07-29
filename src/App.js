@@ -10,6 +10,7 @@ import UserHome from "./components/UserHome/UserHome";
 import AuthRoute from "./components/AuthRoute";
 import Profile from "./components/Profile/Profile";
 import "./App.css";
+import UserProfile from "./components/UserProfile/UserProfile";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
         <AuthRoute path="/mobileV" exact component={MobileV} />
         <AuthRoute path="/profileinfo" exact component={ProfileInfo} />
         <AuthRoute path="/creatorprofile" component={Profile} />
+        <AuthRoute path="/userprofile" component={UserProfile} />
         <AuthRoute
           path="/userhome/dashboard"
           component={() => <UserHome item="Dashboard" />}

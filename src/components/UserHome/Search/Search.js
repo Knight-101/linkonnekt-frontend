@@ -11,7 +11,7 @@ function Search(props) {
   const BASE_URL = "http://localhost:8000";
   const classes = useStyles();
   const [creatorsArray, setcreatorsArray] = useState([]);
-  const [categoryFilter, setCategoryFilter] = useState("");
+  const email = useSelector((state) => state.userData.email);
   const [creatorType, setCreatorType] = useState("");
   const [loading, setloading] = useState(true);
 
@@ -39,24 +39,27 @@ function Search(props) {
               style={{ display: "flex", flexDirection: "Column" }}
             >
               {creatorsArray &&
-                creatorsArray.map((creator, index) => (
-                  <UserCard
-                    key={index}
-                    name={
-                      creator.profileInfo.personalInfo.firstName +
-                      " " +
-                      creator.profileInfo.personalInfo.lastName
-                    }
-                    category={creator.profileInfo.categories.Category}
-                    image={creator.profileImg}
-                    YouTube={creator.profileInfo.socialLinks.YouTube}
-                    LinkedIn={creator.profileInfo.socialLinks.LinkedIn}
-                    Instagram={creator.profileInfo.socialLinks.Instagram}
-                    Facebook={creator.profileInfo.socialLinks.Facebook}
-                    Twitter={creator.profileInfo.socialLinks.Twitter}
-                    creator={creator}
-                  />
-                ))}
+                creatorsArray.map(
+                  (creator, index) =>
+                    creator.email !== email && (
+                      <UserCard
+                        key={index}
+                        name={
+                          creator.profileInfo.personalInfo.firstName +
+                          " " +
+                          creator.profileInfo.personalInfo.lastName
+                        }
+                        category={creator.profileInfo.categories.Category}
+                        image={creator.profileImg}
+                        YouTube={creator.profileInfo.socialLinks.YouTube}
+                        LinkedIn={creator.profileInfo.socialLinks.LinkedIn}
+                        Instagram={creator.profileInfo.socialLinks.Instagram}
+                        Facebook={creator.profileInfo.socialLinks.Facebook}
+                        Twitter={creator.profileInfo.socialLinks.Twitter}
+                        creator={creator}
+                      />
+                    )
+                )}
             </div>
           ) : (
             <div>

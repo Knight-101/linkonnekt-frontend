@@ -1,13 +1,15 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import Divider from "@material-ui/core/Divider";
+import { useDispatch, useSelector } from "react-redux";
 // import ListItemText from "@material-ui/core/ListItemText";
 // import ListItemAvatar from "@material-ui/core/ListItemAvatar";
 // import Avatar from "@material-ui/core/Avatar";
 // import Typography from "@material-ui/core/Typography";
 import Matches from "./Matches";
+import axios from "axios";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -29,35 +31,49 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Collaborators() {
   const classes = useStyles();
+  const BASE_URL = "http://localhost:8000";
+  const profileObj = useSelector((state) => state.profileInfo);
+  const email = useSelector((state) => state.userData.email);
+  console.log(email);
+  const cat = profileObj.categories.Category;
+  const [matchesArray, setMatchesArray] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get(BASE_URL + "/creator/list/category/" + cat)
+      .then((res) => {
+        setMatchesArray(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
 
   return (
     <List className={classes.root}>
       <h4 style={{ paddingLeft: "1rem", textAlign: "center" }}>
         Interesting people to collab
       </h4>
-      <ListItem alignItems="flex-start">
-        <Matches />
-      </ListItem>
-      <Divider />
-      <ListItem alignItems="flex-start">
-        <Matches />
-      </ListItem>
-      <Divider />
-      <ListItem alignItems="flex-start">
-        <Matches />
-      </ListItem>
-      <Divider />
-      <ListItem alignItems="flex-start">
-        <Matches />
-      </ListItem>
-      <Divider />
-      <ListItem alignItems="flex-start">
-        <Matches />
-      </ListItem>
-      <Divider />
-      <ListItem alignItems="flex-start">
-        <Matches />
-      </ListItem>
+      {matchesArray ? (
+        matchesArray.map(
+          (creator, index) =>
+            creator.email !== email && (
+              <ListItem key={index} alignItems="flex-start">
+                <Matches
+                  name={
+                    creator.profileInfo.personalInfo.firstName +
+                    " " +
+                    creator.profileInfo.personalInfo.lastName
+                  }
+                  image={creator.profileImg}
+                />
+                <Divider />
+              </ListItem>
+            )
+        )
+      ) : (
+        <h6>No user found</h6>
+      )}
     </List>
   );
 }

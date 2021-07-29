@@ -56,7 +56,9 @@ function UserHome(props) {
               <ChatBubbleIcon className={classes.topIcons} />
               <NotificationsIcon className={classes.topIcons} />
               {/* <AccountCircle className={classes.topIcons} /> */}
-              <img src={profileImgUrl} alt="dp" className={classes.DPIcon} />
+              <a href="/userprofile">
+                <img src={profileImgUrl} alt="dp" className={classes.DPIcon} />
+              </a>
             </div>
           </div>
         </Toolbar>

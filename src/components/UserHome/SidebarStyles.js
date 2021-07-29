@@ -49,7 +49,7 @@ const useStyles = makeStyles((theme) => ({
     textAlign: "left",
     padding: "20px 0 0 16px",
     marginBottom: "2rem",
-    fontSize: "1.3rem",
+    fontSize: "1.5rem",
     fontWeight: "bold",
     letterSpacing: "5px",
   },
