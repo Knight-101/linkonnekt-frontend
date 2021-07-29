@@ -9,15 +9,13 @@ import { useDispatch, useSelector } from "react-redux";
 
 const ProfileOverview = (props) => {
   const dispatch = useDispatch();
-  const profileImgUrl = useSelector((state) => state.userData.profileImg);
   const BASE_URL = "http://localhost:8000";
-  const [DP, setDP] = useState(profileImgUrl);
 
   return (
     <div className="profile">
       <div>
         {/* Image comes here */}
-        <img src={DP} alt="dp" className="profile-image" />
+        <img src={props.image} alt="dp" className="profile-image" />
         {/* <div className="camera"> */}
         {/* <Camera /> */}
         {/* <div className="DPinput"> */}
@@ -37,20 +35,21 @@ const ProfileOverview = (props) => {
       </div>
       <div id="user-data">
         <div className="user-data-box" style={{ justifyContent: "center" }}>
-          <h4>Sanskar Mohapatra</h4>
+          <h4>{props.name}</h4>
         </div>
         <div className="user-data-box">
           {/* <User />
           {props.name} */}
-          <h5>Creator</h5>
+          <h5>{props.role}</h5>
         </div>
         <div className="user-data-box">
-          {/* <Mail /> {props.email} */}Entertainment
+          {/* <Mail /> {props.email} */}
+          {props.category}
         </div>
         <div className="user-data-box">
           {/* <User />
           {props.name} */}
-          <h5>Mdhya Pradesh</h5>
+          <h5>{props.location}</h5>
         </div>
       </div>
     </div>

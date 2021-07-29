@@ -8,6 +8,7 @@ import MessageIcon from "@material-ui/icons/Message";
 import ReportProblemIcon from "@material-ui/icons/ReportProblem";
 import BookmarkIcon from "@material-ui/icons/Bookmark";
 import Divider from "@material-ui/core/Divider";
+import { useState } from "react";
 
 const useStyles = makeStyles((theme) => ({
   element: {
@@ -54,28 +55,86 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function MainContent() {
+export default function MainContent(props) {
   const classes = useStyles();
+  const socialObj = { ...props.creator.profileInfo.categories.Platforms };
+  const userPlatformsArray = [];
+  for (const key in socialObj) {
+    socialObj[key].Platform &&
+      userPlatformsArray.push({
+        ...socialObj[key],
+        url: props.creator.profileInfo.socialLinks[socialObj[key].Platform],
+      });
+  }
+
+  const YouTube = () => {
+    for (let i = 0; i < userPlatformsArray.length; i++) {
+      const item = userPlatformsArray[i];
+      if (item.Platform === "YouTube") {
+        return {
+          url: item.url,
+          Subscribers: item.Subscribers,
+        };
+      }
+    }
+  };
+  const LinkedIn = () => {
+    for (let i = 0; i < userPlatformsArray.length; i++) {
+      const item = userPlatformsArray[i];
+      if (item.Platform === "LinkedIn") {
+        return {
+          url: item.url,
+          Followers: item.Followers,
+        };
+      }
+    }
+  };
+  const Instagram = () => {
+    for (let i = 0; i < userPlatformsArray.length; i++) {
+      const item = userPlatformsArray[i];
+      if (item.Platform === "Instagram") {
+        return {
+          url: item.url,
+          Followers: item.Followers,
+        };
+      }
+    }
+  };
+  const Facebook = () => {
+    for (let i = 0; i < userPlatformsArray.length; i++) {
+      const item = userPlatformsArray[i];
+      if (item.Platform === "Facebook") {
+        return {
+          url: item.url,
+          Followers: item.Followers,
+        };
+      }
+    }
+  };
+  const Twitter = () => {
+    for (let i = 0; i < userPlatformsArray.length; i++) {
+      const item = userPlatformsArray[i];
+      if (item.Platform === "Twitter") {
+        return {
+          url: item.url,
+          Followers: item.Followers,
+        };
+      }
+    }
+  };
   return (
     <div className={classes.element}>
-      {/* <Typography variant="h2" className={classes.name} component="h1">
-        Daksh Goel
-      </Typography>
-      <Typography variant="h4" className={classes.place} component="h4">
-        <LocationOnIcon />
-        Dehradun
-      </Typography>
-      <Typography variant="h4" className={classes.vocation} component="h4">
-        Creator
-      </Typography>
-      <Typography variant="h4" className={classes.vocation} component="h4">
-        Beauty
-      </Typography> */}
       <Divider />
       <Typography variant="h5" className={classes.platforms} component="h5">
         <u>Platforms</u>
       </Typography>
-      <SocialIcons />
+      <SocialIcons
+        YouTube={YouTube()}
+        LinkedIn={LinkedIn()}
+        Instagram={Instagram()}
+        Facebook={Facebook()}
+        Twitter={Twitter()}
+      />
       <Divider />
 
       <div className={classes.ButtonContainer}>

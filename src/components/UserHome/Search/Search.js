@@ -54,6 +54,7 @@ function Search(props) {
                     Instagram={creator.profileInfo.socialLinks.Instagram}
                     Facebook={creator.profileInfo.socialLinks.Facebook}
                     Twitter={creator.profileInfo.socialLinks.Twitter}
+                    creator={creator}
                   />
                 ))}
             </div>

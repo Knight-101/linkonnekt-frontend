@@ -27,15 +27,7 @@ function App() {
         <AuthRoute path="/emailV" exact component={EmailV} />
         <AuthRoute path="/mobileV" exact component={MobileV} />
         <AuthRoute path="/profileinfo" exact component={ProfileInfo} />
-        <AuthRoute
-          path="/profile/about"
-          component={() => <Profile item="About" />}
-        />
-        <AuthRoute
-          path="/profile/social"
-          component={() => <Profile item="SocialMedia" />}
-        />
-
+        <AuthRoute path="/creatorprofile" component={Profile} />
         <AuthRoute
           path="/userhome/dashboard"
           component={() => <UserHome item="Dashboard" />}
@@ -56,7 +48,6 @@ function App() {
           path="/userhome/logout"
           component={() => <UserHome item="LogOut" />}
         />
-        
       </Switch>
     </Router>
   );

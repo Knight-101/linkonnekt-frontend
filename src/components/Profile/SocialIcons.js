@@ -30,28 +30,82 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SocialIcons() {
+export default function SocialIcons(props) {
   const classes = useStyles();
   return (
     <div className={classes.IconContainer}>
-      <div className={classes.platformData}>
-        <FacebookIcon className={classes.Icons} />
-        <p className={classes.popularity}>
-          <b>50k</b>
-        </p>
-      </div>
-      <div className={classes.platformData}>
-        <LinkedInIcon className={classes.Icons} />
-      </div>
-      <div className={classes.platformData}>
-        <TwitterIcon className={classes.Icons} />
-      </div>
-      <div className={classes.platformData}>
-        <InstagramIcon className={classes.Icons} />
-      </div>
-      <div className={classes.platformData}>
-        <YouTubeIcon className={classes.Icons} />
-      </div>
+      {props.Facebook ? (
+        <div className={classes.platformData}>
+          <a href={props.Facebook} target="_blank" rel="noreferrer">
+            <FacebookIcon className={classes.Icons} />
+          </a>
+          <p className={classes.popularity}>
+            <b>{props.Facebook.Followers}</b>
+          </p>
+        </div>
+      ) : (
+        <div className={classes.platformData}>
+          <FacebookIcon className={classes.Icons} disabled />
+        </div>
+      )}
+
+      {props.LinkedIn ? (
+        <div className={classes.platformData}>
+          <a href={props.LinkedIn} target="_blank" rel="noreferrer">
+            <LinkedInIcon className={classes.Icons} />
+          </a>
+          <p className={classes.popularity}>
+            <b>{props.LinkedIn.Followers}</b>
+          </p>
+        </div>
+      ) : (
+        <div className={classes.platformData}>
+          <LinkedInIcon className={classes.Icons} />
+        </div>
+      )}
+      {props.Twitter ? (
+        <div className={classes.platformData}>
+          <a href={props.Twitter} target="_blank" rel="noreferrer">
+            <TwitterIcon className={classes.Icons} />
+          </a>
+          <p className={classes.popularity}>
+            <b>{props.Twitter.Followers}</b>
+          </p>
+        </div>
+      ) : (
+        <div className={classes.platformData}>
+          <TwitterIcon className={classes.Icons} />
+        </div>
+      )}
+      {props.Instagram ? (
+        <div className={classes.platformData}>
+          <a href={props.Instagram} target="_blank" rel="noreferrer">
+            <InstagramIcon className={classes.Icons} />
+          </a>
+          <p className={classes.popularity}>
+            <b>{props.Instagram.Followers}</b>
+          </p>
+        </div>
+      ) : (
+        <div className={classes.platformData}>
+          <InstagramIcon className={classes.Icons} />
+        </div>
+      )}
+
+      {props.YouTube ? (
+        <div className={classes.platformData}>
+          <a href={props.YouTube} target="_blank" rel="noreferrer">
+            <YouTubeIcon className={classes.Icons} />
+          </a>
+          <p className={classes.popularity}>
+            <b>{props.YouTube.Subscribers}</b>
+          </p>
+        </div>
+      ) : (
+        <div className={classes.platformData}>
+          <YouTubeIcon className={classes.Icons} />
+        </div>
+      )}
     </div>
   );
 }

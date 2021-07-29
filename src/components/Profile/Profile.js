@@ -44,10 +44,21 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Profile(props) {
   const classes = useStyles();
+  const creator = JSON.parse(localStorage.getItem("profileData"));
   return (
     <div className={classes.outer}>
       <div className={classes.Sidebar}>
-        <ProfileSidebar />
+        <ProfileSidebar
+          name={
+            creator.profileInfo.personalInfo.firstName +
+            " " +
+            creator.profileInfo.personalInfo.lastName
+          }
+          role={creator.role}
+          category={creator.profileInfo.categories.Category}
+          location={creator.profileInfo.personalInfo.state}
+          image={creator.profileImg}
+        />
       </div>
       <div className={classes.mainContent}>
         <div className={classes.topRight}>
@@ -55,7 +66,7 @@ export default function Profile(props) {
           <ChatBubbleIcon className={classes.topIcons} />
           <NotificationsIcon className={classes.topIcons} />
         </div>
-        <MainContent />
+        <MainContent creator={creator} />
         {/* <Divider /> */}
         <UserBioTabs />
 
