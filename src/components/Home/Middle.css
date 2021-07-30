@@ -45,6 +45,11 @@
   text-align: center;
 }
 
+.category>h2{
+  text-align: left;
+  margin-left: 6rem;
+}
+
 .categories {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -88,4 +93,10 @@
 
 h3{
  text-align: center;
+}
+
+.middleAlign{
+  display: flex;
+  justify-content: space-around;
+  margin: 2rem 2rem 2rem 2rem;
 }
