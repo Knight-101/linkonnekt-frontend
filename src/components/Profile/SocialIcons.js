@@ -14,10 +14,27 @@ const useStyles = makeStyles((theme) => ({
     padding: "2.5rem 3rem 1.5rem 3rem",
     justifyContent: "space-evenly",
   },
-  Icons: {
-    color: "#274659",
+  Youtube: {
+    color: "red",
     fontSize: "45px",
   },
+  Facebook: {
+    color: "blue",
+    fontSize: "45px",
+  },
+  Twitter: {
+    color: "blue",
+    fontSize: "45px",
+  },
+  Insta: {
+    color: "orange",
+    fontSize: "45px",
+  },
+  Linkedin: {
+    color: "blue",
+    fontSize: "45px",
+  },
+
   platformData: {
     "&:hover": {
       opacity: 0.8,

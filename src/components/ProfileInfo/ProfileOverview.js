@@ -10,7 +10,6 @@ import { setImg } from "../../Redux/userData/userDataActions";
 
 const ProfileOverview = (props) => {
   const dispatch = useDispatch();
-
   const profileImgUrl = useSelector((state) => state.userData.profileImg);
   const BASE_URL = "http://localhost:8000";
   const [DP, setDP] = useState(profileImgUrl);
@@ -32,7 +31,8 @@ const ProfileOverview = (props) => {
         if (res.data.ok) {
           setDP(BASE_URL + "/" + res.data.path);
           dispatch(setImg(res.data.path));
-        } else {
+        } 
+        else {
           console.log(res.data);
         }
       })
