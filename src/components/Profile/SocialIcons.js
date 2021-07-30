@@ -14,10 +14,27 @@ const useStyles = makeStyles((theme) => ({
     padding: "2.5rem 3rem 1.5rem 3rem",
     justifyContent: "space-evenly",
   },
-  Icons: {
-    color: "#274659",
+  Youtube: {
+    color: "red",
     fontSize: "45px",
   },
+  Facebook: {
+    color: "blue",
+    fontSize: "45px",
+  },
+  Twitter: {
+    color: "blue",
+    fontSize: "45px",
+  },
+  Insta: {
+    color: "orange",
+    fontSize: "45px",
+  },
+  Linkedin: {
+    color: "blue",
+    fontSize: "45px",
+  },
+
   platformData: {
     "&:hover": {
       opacity: 0.8,
@@ -35,22 +52,22 @@ export default function SocialIcons() {
   return (
     <div className={classes.IconContainer}>
       <div className={classes.platformData}>
-        <FacebookIcon className={classes.Icons} />
+        <FacebookIcon className={classes.Facebook} />
         <p className={classes.popularity}>
           <b>50k</b>
         </p>
       </div>
       <div className={classes.platformData}>
-        <LinkedInIcon className={classes.Icons} />
+        <LinkedInIcon className={classes.Linkedin} />
       </div>
       <div className={classes.platformData}>
-        <TwitterIcon className={classes.Icons} />
+        <TwitterIcon className={classes.Twitter} />
       </div>
       <div className={classes.platformData}>
-        <InstagramIcon className={classes.Icons} />
+        <InstagramIcon className={classes.Insta} />
       </div>
       <div className={classes.platformData}>
-        <YouTubeIcon className={classes.Icons} />
+        <YouTubeIcon className={classes.Youtube} />
       </div>
     </div>
   );

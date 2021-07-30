@@ -16,7 +16,7 @@ const useStyles = makeStyles({
     fontWeight: "bold",
   },
   design_h4: {
-    fontWeight: "bold",
+    // fontWeight: "bold",
   },
   media: {
     height: "200px",
@@ -27,7 +27,7 @@ const useStyles = makeStyles({
     display: "flex",
     borderRadius: "30px",
     alignItems: "flex-start",
-    padding: "30px",
+    padding: "1rem",
   },
   message: {
     width: "50px",

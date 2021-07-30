@@ -71,6 +71,7 @@ const Signup = () => {
       };
     });
   };
+
   const submitHandler = (event) => {
     event.preventDefault();
     axios
