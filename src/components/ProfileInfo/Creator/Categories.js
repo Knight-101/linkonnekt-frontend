@@ -7,10 +7,10 @@ import NativeSelect from "@material-ui/core/NativeSelect";
 // import Button from "@material-ui/core/Button";
 import Platforms from "../Assets/Platforms";
 import { useDispatch, useSelector } from "react-redux";
-import { setCatData } from "../../../Redux/profileInfo/profileInfoActions";
-// import ContentWriter from "./ContentWriter";
-// import VideoEditor from "./VideoEditor";
-// import GraphicDesigner from "./GraphicDesigner";
+import {
+  setCatData,
+  setPopularity,
+} from "../../../Redux/profileInfo/profileInfoActions";
 
 const Categories = (props) => {
   const dispatch = useDispatch();
@@ -20,7 +20,20 @@ const Categories = (props) => {
   const [NoP, setNoP] = useState(1);
 
   async function handleSubmit() {
+    const popularityObj = { ...categories.Platforms };
+    const nums = [];
+    for (const key in popularityObj) {
+      const followers = popularityObj[key].Followers;
+      const subscribers = popularityObj[key].Subscribers;
+      if (followers || subscribers) {
+        followers ? nums.push(followers) : nums.push(subscribers);
+      } else {
+        nums.push(0);
+      }
+    }
+    const max = Math.max(...nums);
     dispatch(setCatData(categories));
+    dispatch(setPopularity(max));
     await props.handleNext();
     //export this data from the API here
   }

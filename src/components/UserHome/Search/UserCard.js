@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import Card from "@material-ui/core/Card";
 import CardActionArea from "@material-ui/core/CardActionArea";
 import CardActions from "@material-ui/core/CardActions";
@@ -12,6 +13,7 @@ import YouTubeIcon from "@material-ui/icons/YouTube";
 import InstagramIcon from "@material-ui/icons/Instagram";
 import FacebookIcon from "@material-ui/icons/Facebook";
 import LinkedInIcon from "@material-ui/icons/LinkedIn";
+import { useHistory } from "react-router";
 
 const useStyles = makeStyles({
   design_h3: {
@@ -51,8 +53,12 @@ const useStyles = makeStyles({
 });
 
 export default function Usercard(props) {
-  console.log(props);
   const classes = useStyles();
+  const history = useHistory();
+  const cardClick = () => {
+    localStorage.setItem("profileData", JSON.stringify(props.creator));
+    history.push("/creatorprofile");
+  };
 
   return (
     <div
@@ -66,9 +72,10 @@ export default function Usercard(props) {
     >
       <Card className={classes.flex} style={{ backgroundColor: "#a8dadc" }}>
         <CardMedia className={classes.media} image={props.image} title="img" />
-        <CardActionArea disabled>
+        <CardActionArea onClick={cardClick}>
           <CardContent>
             <h3 className={classes.design_h3}> {props.name} </h3>
+
             <h4 className={classes.design_h4}>Category : {props.category} </h4>
             <Typography variant="body2" color="textSecondary" component="p">
               Lorem ipsum dolor sit amet non. Lorem ipsum dolor sit amet non.
@@ -77,6 +84,7 @@ export default function Usercard(props) {
             </Typography>
           </CardContent>
         </CardActionArea>
+
         <CardActions>
           <div className={classes.icon_flex}>
             {/* <div className={classes.message}>

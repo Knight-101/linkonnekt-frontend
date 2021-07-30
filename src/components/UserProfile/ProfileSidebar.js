@@ -28,7 +28,6 @@ const ProfileOverview = (props) => {
   const dispatch = useDispatch();
   const BASE_URL = "http://localhost:8000";
   const classes = useStyles();
-
   return (
     <div className="profile">
       <Link to="/userhome/dashboard" className={classes.title}>
@@ -38,6 +37,22 @@ const ProfileOverview = (props) => {
       <div>
         {/* Image comes here */}
         <img src={props.image} alt="dp" className="profile-image" />
+        {/* <div className="camera"> */}
+        {/* <Camera /> */}
+        {/* <div className="DPinput"> */}
+        {/* <form id="myDPForm">
+          <input
+            type="file"
+            id="myDP"
+            name="DisplayPicture"
+            hidden
+          />
+          <label className="DPlabel" for="myDP">
+            Change Image
+          </label>
+        </form> */}
+        {/* </div> */}
+        {/* </div> */}
       </div>
       <div id="user-data">
         <div className="user-data-box" style={{ justifyContent: "center" }}>

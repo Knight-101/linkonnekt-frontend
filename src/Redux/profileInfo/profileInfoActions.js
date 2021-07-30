@@ -1,4 +1,9 @@
-import { SET_PERSONAL_DATA, SET_CAT_DATA, SET_URL } from "./profileInfoTypes";
+import {
+  SET_PERSONAL_DATA,
+  SET_CAT_DATA,
+  SET_URL,
+  SET_POP,
+} from "./profileInfoTypes";
 
 export const setProfileData = (personalInfo) => {
   return {
@@ -54,6 +59,15 @@ export const setUrls = (urls) => {
       LinkedIn: urls.LinkedIn,
       Twitter: urls.Twitter,
       YouTube: urls.YouTube,
+    },
+  };
+};
+
+export const setPopularity = (popularity) => {
+  return {
+    type: SET_POP,
+    payload: {
+      popularity: popularity,
     },
   };
 };

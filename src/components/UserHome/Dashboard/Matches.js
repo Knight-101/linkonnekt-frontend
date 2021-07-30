@@ -40,7 +40,7 @@ const useStyles = makeStyles({
   },
 });
 
-export default function Matches() {
+export default function Matches(props) {
   const classes = useStyles();
 
   return (
@@ -54,11 +54,11 @@ export default function Matches() {
       }}
     >
       <Card className={classes.flex} style={{ backgroundColor: "#a8dadc" }}>
-        <CardMedia className={classes.media} image={imgsrc} title="img" />
+        <CardMedia className={classes.media} image={props.image} title="img" />
         <CardActionArea disabled>
           <CardContent>
-            <h3 className={classes.design_h3}> Ankit </h3>
-            <h4 className={classes.design_h4}> DU CIC </h4>
+            <h3 className={classes.design_h3}> {props.name} </h3>
+            {/* <h4 className={classes.design_h4}> DU CIC </h4> */}
             <Typography variant="body2" color="textSecondary" component="p">
               Hello, Im a student of CIC and make content related to designing
               and UI/UX. Lorem ipsum dolor sit amet non. Lorem ipsum dolor sit

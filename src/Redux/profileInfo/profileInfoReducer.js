@@ -1,4 +1,9 @@
-import { SET_PERSONAL_DATA, SET_CAT_DATA, SET_URL } from "./profileInfoTypes";
+import {
+  SET_PERSONAL_DATA,
+  SET_CAT_DATA,
+  SET_URL,
+  SET_POP,
+} from "./profileInfoTypes";
 
 const initialState = {
   personalInfo: {
@@ -41,6 +46,7 @@ const initialState = {
     Twitter: "",
     YouTube: "",
   },
+  popularity: 0,
 };
 
 const profileInfoReducer = (state = initialState, action) => {
@@ -82,6 +88,12 @@ const profileInfoReducer = (state = initialState, action) => {
           Twitter: action.payload.Twitter,
           YouTube: action.payload.YouTube,
         },
+      };
+    case SET_POP:
+      return {
+        ...state,
+
+        popularity: action.payload.popularity,
       };
 
     default:

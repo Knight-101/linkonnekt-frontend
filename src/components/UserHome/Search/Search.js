@@ -11,14 +11,14 @@ function Search(props) {
   const BASE_URL = "http://localhost:8000";
   const classes = useStyles();
   const [creatorsArray, setcreatorsArray] = useState([]);
-  const [categoryFilter, setCategoryFilter] = useState("");
+  const email = useSelector((state) => state.userData.email);
   const [creatorType, setCreatorType] = useState("");
   const [loading, setloading] = useState(true);
 
   useEffect(() => {
     axios
       .get(BASE_URL + "/creator/list")
-      .then((res) => {
+      .then(async (res) => {
         setcreatorsArray(res.data);
         setloading(false);
         console.log(res.data);
@@ -27,10 +27,9 @@ function Search(props) {
         console.log(err);
       });
   }, []);
-
   return (
     <main className={classes.content}>
-      <Sort setNewCreators={setcreatorsArray} />
+      <Sort setNewCreators={setcreatorsArray} creatorsArray={creatorsArray} />
       {loading ? (
         <h5>Loading....</h5>
       ) : (
@@ -40,23 +39,28 @@ function Search(props) {
               className={classes.toolbar}
               style={{ display: "flex", flexDirection: "Column" }}
             >
-              {creatorsArray.map((creator, index) => (
-                <UserCard
-                  key={index}
-                  name={
-                    creator.profileInfo.personalInfo.firstName +
-                    " " +
-                    creator.profileInfo.personalInfo.lastName
-                  }
-                  category={creator.profileInfo.categories.Category}
-                  image={creator.profileImg}
-                  YouTube={creator.profileInfo.socialLinks.YouTube}
-                  LinkedIn={creator.profileInfo.socialLinks.LinkedIn}
-                  Instagram={creator.profileInfo.socialLinks.Instagram}
-                  Facebook={creator.profileInfo.socialLinks.Facebook}
-                  Twitter={creator.profileInfo.socialLinks.Twitter}
-                />
-              ))}
+              {creatorsArray &&
+                creatorsArray.map(
+                  (creator, index) =>
+                    creator.email !== email && (
+                      <UserCard
+                        key={index}
+                        name={
+                          creator.profileInfo.personalInfo.firstName +
+                          " " +
+                          creator.profileInfo.personalInfo.lastName
+                        }
+                        category={creator.profileInfo.categories.Category}
+                        image={creator.profileImg}
+                        YouTube={creator.profileInfo.socialLinks.YouTube}
+                        LinkedIn={creator.profileInfo.socialLinks.LinkedIn}
+                        Instagram={creator.profileInfo.socialLinks.Instagram}
+                        Facebook={creator.profileInfo.socialLinks.Facebook}
+                        Twitter={creator.profileInfo.socialLinks.Twitter}
+                        creator={creator}
+                      />
+                    )
+                )}
             </div>
           ) : (
             <div>

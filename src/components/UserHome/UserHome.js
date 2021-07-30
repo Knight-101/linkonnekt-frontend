@@ -25,6 +25,8 @@ function UserHome(props) {
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const BASE_URL = "http://localhost:8000";
   const profileImgUrl = useSelector((state) => state.userData.profileImg);
+  const profileObj = useSelector((state) => state.profileInfo);
+  const fname = profileObj.personalInfo.firstName;
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
@@ -48,13 +50,15 @@ function UserHome(props) {
           </IconButton>
           <div className={classes.top}>
             <Typography className={classes.welcome}>
-              Welcome,<span className={classes.name}>Sanskar!</span>
+              Welcome,<span className={classes.name}>{fname}!</span>
             </Typography>
             <div className={classes.topRight}>
               <ChatBubbleIcon className={classes.topIcons} />
               <NotificationsIcon className={classes.topIcons} />
               {/* <AccountCircle className={classes.topIcons} /> */}
-              <img src={profileImgUrl} alt="dp" className={classes.DPIcon} />
+              <a href="/userprofile">
+                <img src={profileImgUrl} alt="dp" className={classes.DPIcon} />
+              </a>
             </div>
           </div>
         </Toolbar>

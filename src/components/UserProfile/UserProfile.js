@@ -8,6 +8,7 @@ import ChatBubbleIcon from "@material-ui/icons/ChatBubble";
 // import Toolbar from "@material-ui/core/Toolbar";
 // import AppBar from "@material-ui/core/AppBar";
 // import Typography from "@material-ui/core/Typography";
+import { useDispatch, useSelector } from "react-redux";
 import MainContent from "./MainContent";
 import Search from "./Search";
 import About from "./About";
@@ -42,9 +43,10 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Profile(props) {
+export default function UserProfile(props) {
   const classes = useStyles();
-  const creator = JSON.parse(localStorage.getItem("profileData"));
+  // const creator = JSON.parse(localStorage.getItem("profileData"));
+  const creator = useSelector((state) => state);
   return (
     <div className={classes.outer}>
       <div className={classes.Sidebar}>
@@ -54,10 +56,10 @@ export default function Profile(props) {
             " " +
             creator.profileInfo.personalInfo.lastName
           }
-          role={creator.role}
+          role={creator.userData.role}
           category={creator.profileInfo.categories.Category}
           location={creator.profileInfo.personalInfo.state}
-          image={creator.profileImg}
+          image={creator.userData.profileImg}
         />
       </div>
       <div className={classes.mainContent}>

@@ -32,22 +32,45 @@ const useStyles = makeStyles((theme) => ({
 export default function Sort(props) {
   const classes = useStyles();
   const BASE_URL = "http://localhost:8000";
-  const [state, setState] = React.useState({
-    age: "",
-    name: "hai",
-  });
-  const [search, setSearch] = useState("");
+  const [sortProperty, setSortProperty] = useState("");
+
+  function lowToHigh(property) {
+    return function (a, b) {
+      if (a.profileInfo[property] > b.profileInfo[property]) return 1;
+      else if (a.profileInfo[property] < b.profileInfo[property]) return -1;
+      return 0;
+    };
+  }
+  function highToLow(property) {
+    return function (a, b) {
+      if (a.profileInfo[property] < b.profileInfo[property]) return 1;
+      else if (a.profileInfo[property] > b.profileInfo[property]) return -1;
+      return 0;
+    };
+  }
 
   const handleChange = (event) => {
-    const name = event.target.name;
-    setState({
-      ...state,
-      [name]: event.target.value,
-    });
+    const value = parseInt(event.target.value);
+    console.log(props.creatorsArray);
+    setSortProperty(value);
+    switch (value) {
+      case 1:
+        props.setNewCreators(
+          [...props.creatorsArray].sort(lowToHigh("popularity"))
+        );
+        break;
+      case 2:
+        props.setNewCreators(
+          [...props.creatorsArray].sort(highToLow("popularity"))
+        );
+        break;
+
+      default:
+        break;
+    }
   };
   const handleSearch = (event) => {
     const name = document.querySelector("#search").value;
-    console.log(name);
     axios
       .get(BASE_URL + "/creator/list/name/" + name)
       .then((res) => {
@@ -78,14 +101,14 @@ export default function Sort(props) {
           Sort by:-
         </p>
         <NativeSelect
-          value={state.age}
+          value={sortProperty}
           onChange={handleChange}
-          name="age"
+          name="sortProperty"
           className={classes.selectEmpty}
           inputProps={{ "aria-label": "age" }}
         >
-          <option value="">Popularity-High to Low</option>
-          <option value="">Popularity-Low to High</option>
+          <option value="1">Popularity-High to Low</option>
+          <option value="2">Popularity-Low to High</option>
         </NativeSelect>
       </FormControl>
     </div>
