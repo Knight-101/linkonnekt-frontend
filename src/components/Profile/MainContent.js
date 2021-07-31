@@ -5,10 +5,13 @@ import LocationOnIcon from "@material-ui/icons/LocationOn";
 import SocialIcons from "./SocialIcons";
 import Button from "@material-ui/core/Button";
 import MessageIcon from "@material-ui/icons/Message";
+import EmailIcon from "@material-ui/icons/Email";
 import ReportProblemIcon from "@material-ui/icons/ReportProblem";
 import BookmarkIcon from "@material-ui/icons/Bookmark";
 import Divider from "@material-ui/core/Divider";
 import { useState } from "react";
+import axios from "axios";
+import SendMailModal from "./SendMailModal";
 
 const useStyles = makeStyles((theme) => ({
   element: {
@@ -57,6 +60,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function MainContent(props) {
   const classes = useStyles();
+  const BASE_URL = "http://localhost:8000";
   const socialObj = { ...props.creator.profileInfo.categories.Platforms };
   const userPlatformsArray = [];
   for (const key in socialObj) {
@@ -122,6 +126,7 @@ export default function MainContent(props) {
       }
     }
   };
+
   return (
     <div className={classes.element}>
       <Divider />
@@ -138,14 +143,7 @@ export default function MainContent(props) {
       <Divider />
 
       <div className={classes.ButtonContainer}>
-        <Button
-          variant="contained"
-          className={classes.buttonFirst}
-          size="small"
-          startIcon={<MessageIcon />}
-        >
-          Send Message
-        </Button>
+        <SendMailModal email={props.creator.email} />
         <Button
           className={classes.buttonSecond}
           variant="outlined"

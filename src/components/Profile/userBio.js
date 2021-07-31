@@ -52,6 +52,7 @@ const useStyles = makeStyles((theme) => ({
   },
   appBar: {
     backgroundColor: "white",
+    boxShadow: "none",
   },
   bioItem: {
     color: "black",
@@ -76,18 +77,18 @@ export default function UserBioTabs() {
           aria-label="simple tabs example"
         >
           <Tab label="About" className={classes.bioItem} {...a11yProps(0)} />
-          <Tab label="Item Two" className={classes.bioItem} {...a11yProps(1)} />
+          {/* <Tab label="Item Two" className={classes.bioItem} {...a11yProps(1)} /> */}
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0}>
         <About />
       </TabPanel>
-      <TabPanel value={value} index={1}>
+      {/* <TabPanel value={value} index={1}>
         Item Two
       </TabPanel>
       <TabPanel value={value} index={2}>
         Item Three
-      </TabPanel>
+      </TabPanel> */}
     </div>
   );
 }

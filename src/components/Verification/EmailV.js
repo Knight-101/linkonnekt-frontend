@@ -48,7 +48,6 @@ const EmailV = () => {
       })
       .then((res) => {
         if (res.data.ok) {
-          console.log(res.data.code);
           setHash(res.data.code);
           setmail(true);
         } else {

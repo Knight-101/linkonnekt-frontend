@@ -137,7 +137,7 @@ export default function MainContent(props) {
       />
       <Divider />
 
-      <div className={classes.ButtonContainer}>
+      {/* <div className={classes.ButtonContainer}>
         <Button
           variant="contained"
           className={classes.buttonFirst}
@@ -162,7 +162,7 @@ export default function MainContent(props) {
         >
           Report User
         </Button>
-      </div>
+      </div> */}
       <Divider />
     </div>
   );

@@ -9,6 +9,7 @@ import Typography from "@material-ui/core/Typography";
 import imgsrc from "./Image.jpg";
 import { makeStyles } from "@material-ui/core/styles";
 import ChatIcon from "@material-ui/icons/Chat";
+import { useHistory } from "react-router";
 // import SvgIcon from "@material-ui/core/SvgIcon";
 
 const useStyles = makeStyles({
@@ -42,6 +43,11 @@ const useStyles = makeStyles({
 
 export default function Matches(props) {
   const classes = useStyles();
+  const history = useHistory();
+  const cardClick = () => {
+    localStorage.setItem("profileData", JSON.stringify(props.creator));
+    history.push("/creatorprofile");
+  };
 
   return (
     <div
@@ -55,7 +61,7 @@ export default function Matches(props) {
     >
       <Card className={classes.flex} style={{ backgroundColor: "#a8dadc" }}>
         <CardMedia className={classes.media} image={props.image} title="img" />
-        <CardActionArea disabled>
+        <CardActionArea onClick={cardClick}>
           <CardContent>
             <h3 className={classes.design_h3}> {props.name} </h3>
             {/* <h4 className={classes.design_h4}> DU CIC </h4> */}

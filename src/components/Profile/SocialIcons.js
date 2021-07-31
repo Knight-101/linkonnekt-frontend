@@ -41,6 +41,9 @@ const useStyles = makeStyles((theme) => ({
       cursor: "pointer",
     },
   },
+  Icons: {
+    fontSize: "40px",
+  },
   popularity: {
     margin: 0,
     marginTop: "10px",
@@ -62,7 +65,7 @@ export default function SocialIcons(props) {
         </div>
       ) : (
         <div className={classes.platformData}>
-          <FacebookIcon className={classes.Icons} disabled />
+          <FacebookIcon className={classes.Icons} />
         </div>
       )}
 

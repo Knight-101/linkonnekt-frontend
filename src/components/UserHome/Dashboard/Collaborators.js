@@ -66,6 +66,7 @@ export default function Collaborators() {
                     creator.profileInfo.personalInfo.lastName
                   }
                   image={creator.profileImg}
+                  creator={creator}
                 />
                 <Divider />
               </ListItem>
