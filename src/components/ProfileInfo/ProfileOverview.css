@@ -22,7 +22,7 @@ h5 {
   margin-bottom: 1rem;
   width: 200px;
   height: 200px;
-  border: 2px solid var(--offwhite);
+  /* border: 2px solid var(--offwhite); */
   align-self: center;
   align-items: center;
   border-radius: 100%;

@@ -59,7 +59,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function UserBioTabs() {
+export default function UserBioTabs(props) {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
 
@@ -77,11 +77,18 @@ export default function UserBioTabs() {
           aria-label="simple tabs example"
         >
           <Tab label="About" className={classes.bioItem} {...a11yProps(0)} />
+          {/* <Tab label="Item Two" className={classes.bioItem} {...a11yProps(1)} /> */}
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0}>
-        <About />
+        <About about={props.about} />
       </TabPanel>
+      {/* <TabPanel value={value} index={1}>
+        Item Two
+      </TabPanel>
+      <TabPanel value={value} index={2}>
+        Item Three
+      </TabPanel> */}
     </div>
   );
 }

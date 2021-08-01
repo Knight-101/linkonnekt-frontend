@@ -13,8 +13,7 @@ export const setProfileData = (personalInfo) => {
       lastName: personalInfo.lastName,
       country: personalInfo.country,
       state: personalInfo.state,
-      address: personalInfo.address,
-      pincode: personalInfo.pincode,
+      about: personalInfo.about,
     },
   };
 };

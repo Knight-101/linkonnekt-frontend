@@ -63,7 +63,7 @@ function getStepContent(stepIndex, steps, handleBack, handleNext) {
   }
 }
 
-export default function HorizontalLabelPositionBelowStepper() {
+export default function CreatorTabs() {
   const classes = useStyles();
   const [activeStep, setActiveStep] = React.useState(0);
   const steps = getSteps();

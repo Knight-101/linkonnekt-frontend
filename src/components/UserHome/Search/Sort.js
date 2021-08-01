@@ -26,6 +26,13 @@ const useStyles = makeStyles((theme) => ({
   },
   searchButton: {
     alignSelf: "flex-end",
+    border: "none",
+    padding: "0.1rem 1rem",
+    fontSize: "0.9rem",
+    boxShadow: "0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24)",
+    "&:hover": {
+      boxShadow: "0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23)",
+    },
   },
 }));
 

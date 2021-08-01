@@ -9,6 +9,7 @@ export default function Platforms(props) {
       <div>
         <InputLabel
           shrink
+          required
           htmlFor="platform"
           style={{ textAlign: "left", marginTop: "3rem" }}
         >
@@ -16,6 +17,7 @@ export default function Platforms(props) {
         </InputLabel>
         <NativeSelect
           fullWidth
+          required
           id={props.id}
           name="Platform"
           onChange={props.handlePlatforms}

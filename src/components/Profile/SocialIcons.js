@@ -14,25 +14,25 @@ const useStyles = makeStyles((theme) => ({
     padding: "2.5rem 3rem 1.5rem 3rem",
     justifyContent: "space-evenly",
   },
-  Youtube: {
+  YouTube: {
     color: "red",
-    fontSize: "45px",
+    fontSize: "40px",
   },
   Facebook: {
     color: "blue",
-    fontSize: "45px",
+    fontSize: "40px",
   },
   Twitter: {
     color: "blue",
-    fontSize: "45px",
+    fontSize: "40px",
   },
   Insta: {
     color: "orange",
-    fontSize: "45px",
+    fontSize: "40px",
   },
-  Linkedin: {
+  LinkedIn: {
     color: "blue",
-    fontSize: "45px",
+    fontSize: "40px",
   },
 
   platformData: {
@@ -56,8 +56,8 @@ export default function SocialIcons(props) {
     <div className={classes.IconContainer}>
       {props.Facebook ? (
         <div className={classes.platformData}>
-          <a href={props.Facebook} target="_blank" rel="noreferrer">
-            <FacebookIcon className={classes.Icons} />
+          <a href={props.Facebook.url} target="_blank" rel="noreferrer">
+            <FacebookIcon className={classes.Facebook} />
           </a>
           <p className={classes.popularity}>
             <b>{props.Facebook.Followers}</b>
@@ -65,14 +65,14 @@ export default function SocialIcons(props) {
         </div>
       ) : (
         <div className={classes.platformData}>
-          <FacebookIcon className={classes.Icons} />
+          <FacebookIcon className={classes.Icons} disabled />
         </div>
       )}
 
       {props.LinkedIn ? (
         <div className={classes.platformData}>
-          <a href={props.LinkedIn} target="_blank" rel="noreferrer">
-            <LinkedInIcon className={classes.Icons} />
+          <a href={props.LinkedIn.url} target="_blank" rel="noreferrer">
+            <LinkedInIcon className={classes.LinkedIn} />
           </a>
           <p className={classes.popularity}>
             <b>{props.LinkedIn.Followers}</b>
@@ -85,8 +85,8 @@ export default function SocialIcons(props) {
       )}
       {props.Twitter ? (
         <div className={classes.platformData}>
-          <a href={props.Twitter} target="_blank" rel="noreferrer">
-            <TwitterIcon className={classes.Icons} />
+          <a href={props.Twitter.url} target="_blank" rel="noreferrer">
+            <TwitterIcon className={classes.Twitter} />
           </a>
           <p className={classes.popularity}>
             <b>{props.Twitter.Followers}</b>
@@ -99,8 +99,8 @@ export default function SocialIcons(props) {
       )}
       {props.Instagram ? (
         <div className={classes.platformData}>
-          <a href={props.Instagram} target="_blank" rel="noreferrer">
-            <InstagramIcon className={classes.Icons} />
+          <a href={props.Instagram.url} target="_blank" rel="noreferrer">
+            <InstagramIcon className={classes.Instagram} />
           </a>
           <p className={classes.popularity}>
             <b>{props.Instagram.Followers}</b>
@@ -114,8 +114,8 @@ export default function SocialIcons(props) {
 
       {props.YouTube ? (
         <div className={classes.platformData}>
-          <a href={props.YouTube} target="_blank" rel="noreferrer">
-            <YouTubeIcon className={classes.Icons} />
+          <a href={props.YouTube.url} target="_blank" rel="noreferrer">
+            <YouTubeIcon className={classes.YouTube} />
           </a>
           <p className={classes.popularity}>
             <b>{props.YouTube.Subscribers}</b>

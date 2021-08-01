@@ -34,7 +34,6 @@ export default function Collaborators() {
   const BASE_URL = "http://localhost:8000";
   const profileObj = useSelector((state) => state.profileInfo);
   const email = useSelector((state) => state.userData.email);
-  console.log(email);
   const cat = profileObj.categories.Category;
   const [matchesArray, setMatchesArray] = useState([]);
 
@@ -65,8 +64,15 @@ export default function Collaborators() {
                     " " +
                     creator.profileInfo.personalInfo.lastName
                   }
+                  category={creator.profileInfo.categories.Category}
+                  about={creator.profileInfo.personalInfo.about}
                   image={creator.profileImg}
-                  creator={creator}
+                  YouTube={creator.profileInfo.socialLinks.YouTube}
+                  LinkedIn={creator.profileInfo.socialLinks.LinkedIn}
+                  Instagram={creator.profileInfo.socialLinks.Instagram}
+                  Facebook={creator.profileInfo.socialLinks.Facebook}
+                  Twitter={creator.profileInfo.socialLinks.Twitter}
+                  username={creator.username}
                 />
                 <Divider />
               </ListItem>

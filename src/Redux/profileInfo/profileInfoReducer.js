@@ -11,8 +11,7 @@ const initialState = {
     lastName: "",
     country: "",
     state: "",
-    address: "",
-    pincode: "",
+    about: "",
   },
   categories: {
     Category: "",
@@ -59,8 +58,7 @@ const profileInfoReducer = (state = initialState, action) => {
           lastName: action.payload.lastName,
           country: action.payload.country,
           state: action.payload.state,
-          address: action.payload.address,
-          pincode: action.payload.pincode,
+          about: action.payload.about,
         },
       };
     case SET_CAT_DATA:

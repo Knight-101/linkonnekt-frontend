@@ -10,6 +10,8 @@ import { useHistory } from "react-router";
 import { useDispatch } from "react-redux";
 import { setData, setImg } from "../../Redux/userData/userDataActions";
 import { useGoogleLogout } from "react-google-login";
+import CloseIcon from "@material-ui/icons/Close";
+import { Button } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   modal: {
@@ -61,8 +63,6 @@ export default function SignupModal(props) {
     let email = response.profileObj.email;
     let username = response.profileObj.givenName;
     let profileImg = response.profileObj.imageUrl;
-    console.log(response);
-    console.log(profileImg);
     //posting oauth data
     await axios
       .post(BASE_URL + "/auth/oauthsignup", {
@@ -96,8 +96,8 @@ export default function SignupModal(props) {
 
   return (
     <div>
-      <button type="button" onClick={handleOpen}>
-        Sign in with Google
+      <button className="signUpGoogle" type="button" onClick={handleOpen}>
+        Sign up with Google
       </button>
       <Modal
         aria-labelledby="transition-modal-title"
@@ -113,6 +113,15 @@ export default function SignupModal(props) {
       >
         <Fade in={open}>
           <div className={classes.paper}>
+            <CloseIcon
+              style={{
+                position: "relative",
+                left: "180px",
+                bottom: "10px",
+                cursor: "pointer",
+              }}
+              onClick={() => setOpen(false)}
+            />
             <h4>Select your role</h4>
             <hr></hr>
             <ul id="roles">
@@ -129,28 +138,30 @@ export default function SignupModal(props) {
                 </button>
               </li>
               <li className="roleInput">
-                <button
+                <Button
                   name="Freelancer"
                   id="2"
+                  disabled
                   className={
                     roleSelect === "2" ? "rolesOptionSelected" : "rolesOptions"
                   }
                   onClick={roleClick}
                 >
                   Freelancer
-                </button>
+                </Button>
               </li>
               <li className="roleInput">
-                <button
+                <Button
                   name="Brand"
                   id="3"
+                  disabled
                   className={
                     roleSelect === "3" ? "rolesOptionSelected" : "rolesOptions"
                   }
                   onClick={roleClick}
                 >
                   Brand
-                </button>
+                </Button>
               </li>
             </ul>
             <hr></hr>

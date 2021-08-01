@@ -28,7 +28,7 @@ function App() {
         <AuthRoute path="/emailV" exact component={EmailV} />
         <AuthRoute path="/mobileV" exact component={MobileV} />
         <AuthRoute path="/profileinfo" exact component={ProfileInfo} />
-        <AuthRoute path="/creatorprofile" component={Profile} />
+        <AuthRoute path="/profile/:username" component={Profile} />
         <AuthRoute path="/userprofile" component={UserProfile} />
         <AuthRoute
           path="/userhome/dashboard"

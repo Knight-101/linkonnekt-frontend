@@ -149,6 +149,7 @@ export default function MainContent(props) {
           variant="outlined"
           size="small"
           startIcon={<ReportProblemIcon />}
+          disabled
         >
           BookMark User
         </Button>
@@ -157,6 +158,7 @@ export default function MainContent(props) {
           className={classes.buttonThird}
           size="small"
           startIcon={<BookmarkIcon />}
+          disabled
         >
           Report User
         </Button>

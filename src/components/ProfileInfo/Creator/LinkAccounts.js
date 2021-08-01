@@ -64,7 +64,7 @@ const LinkAccounts = (props) => {
   }
   return (
     <div>
-      <form>
+      <form onSubmit={handleSubmit}>
         <div className="linkAcc">
           <div id="linkAccHeading">
             <b>
@@ -156,7 +156,7 @@ const LinkAccounts = (props) => {
           >
             Back
           </button>
-          <button className="back-next-btn" id="next" onClick={handleSubmit}>
+          <button className="back-next-btn" id="next">
             {props.activeStep === props.steps.length - 1 ? "Finish" : "Next"}
           </button>
         </div>

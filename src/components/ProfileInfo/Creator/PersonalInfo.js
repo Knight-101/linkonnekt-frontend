@@ -33,7 +33,7 @@ const PerosnalInfo = (props) => {
 
   return (
     <div>
-      <form>
+      <form onSubmit={handleSubmit}>
         <div id="personalInfo">
           <TextField
             id="firstName"
@@ -51,10 +51,15 @@ const PerosnalInfo = (props) => {
             onChange={handleInput}
           />
           <div style={{ textAlign: "left" }}>
-            <InputLabel shrink htmlFor="country">
+            <InputLabel required shrink htmlFor="country">
               Country
             </InputLabel>
-            <NativeSelect fullWidth id="country" onChange={handleInput}>
+            <NativeSelect
+              required
+              fullWidth
+              id="country"
+              onChange={handleInput}
+            >
               <option value={personalInfo.country} default>
                 {personalInfo.country}
               </option>
@@ -70,21 +75,16 @@ const PerosnalInfo = (props) => {
             onChange={handleInput}
             // helperText="Please select your currency"
           />
-          <TextField
-            className="address"
-            label="Address"
-            id="address"
-            value={personalInfo.address}
+        </div>
+        <div class="aboutUser">
+          <h5 className="aboutUserHead">Tell us about yourself</h5>
+          <textarea
+            id="about"
             required
+            value={personalInfo.about}
             onChange={handleInput}
-          />
-          <TextField
-            id="pincode"
-            label="Pin Code"
-            value={personalInfo.pincode}
-            required
-            onChange={handleInput}
-          />
+            className="aboutUserContent"
+          ></textarea>
         </div>
         <div className="back-next">
           {/* <button
@@ -95,12 +95,7 @@ const PerosnalInfo = (props) => {
           >
             Back
           </button> */}
-          <button
-            className="back-next-btn"
-            id="next"
-            type="submit"
-            onClick={handleSubmit}
-          >
+          <button className="back-next-btn" id="next" type="submit">
             {props.activeStep === props.steps.length - 1 ? "Finish" : "Next"}
           </button>
         </div>

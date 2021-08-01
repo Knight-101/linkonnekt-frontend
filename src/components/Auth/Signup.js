@@ -12,6 +12,7 @@ import imguser from "./Images/user.png";
 import imgmail from "./Images/mail.png";
 import imglock from "./Images/lock.png";
 import SignupModal from "./SignupModal";
+import { Button } from "@material-ui/core";
 
 function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
@@ -138,9 +139,10 @@ const Signup = () => {
                 >
                   Creator
                 </button>
-                <button
+                <Button
                   name="Freelancer"
                   id="2"
+                  disabled
                   className={
                     roleSelect === "2"
                       ? "rolesOptionSelectedManual"
@@ -149,9 +151,10 @@ const Signup = () => {
                   onClick={roleClick}
                 >
                   Freelancer
-                </button>
-                <button
+                </Button>
+                <Button
                   name="Brand"
+                  disabled
                   id="3"
                   className={
                     roleSelect === "3"
@@ -161,7 +164,7 @@ const Signup = () => {
                   onClick={roleClick}
                 >
                   Brand
-                </button>
+                </Button>
               </div>
               <label htmlFor="firstName" className="visually-hidden">
                 username

@@ -50,10 +50,6 @@ const Categories = (props) => {
     const { id, value, name } = e.target;
 
     setCategories((prevData) => {
-      // console.log(prevData.Platforms[id]);
-      // console.log({ ...prevData });
-      // const {Platforms} = prevData
-
       return {
         ...prevData,
         Platforms: {
@@ -69,16 +65,26 @@ const Categories = (props) => {
 
   return (
     <div>
-      <form>
+      <form onSubmit={handleSubmit}>
         <div className="skills">
           <div className="category">
             <h5 style={{ textAlign: "left", marginBottom: "1rem" }}>
               Add your skills
             </h5>
-            <InputLabel shrink htmlFor="category" style={{ textAlign: "left" }}>
+            <InputLabel
+              required
+              shrink
+              htmlFor="category"
+              style={{ textAlign: "left" }}
+            >
               Select Category
             </InputLabel>
-            <NativeSelect fullWidth id="Category" onChange={handleCategory}>
+            <NativeSelect
+              required
+              fullWidth
+              id="Category"
+              onChange={handleCategory}
+            >
               <option value={categories.Category} default>
                 {categories.Category}
               </option>
@@ -129,6 +135,7 @@ const Categories = (props) => {
           {NoP < 4 && (
             <button
               type="button"
+              id="addMore"
               onClick={() => {
                 setNoP(NoP + 1);
                 console.log(NoP);
@@ -147,7 +154,7 @@ const Categories = (props) => {
           >
             Back
           </button>
-          <button className="back-next-btn" id="next" onClick={handleSubmit}>
+          <button className="back-next-btn" id="next">
             {props.activeStep === props.steps.length - 1 ? "Finish" : "Next"}
           </button>
         </div>
