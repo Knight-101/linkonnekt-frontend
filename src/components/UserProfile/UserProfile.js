@@ -6,13 +6,9 @@ import NotificationsIcon from "@material-ui/icons/Notifications";
 import ChatBubbleIcon from "@material-ui/icons/ChatBubble";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 import { useHistory } from "react-router";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import MainContent from "./MainContent";
-import Search from "./Search";
-import About from "./About";
-import SocialMedia from "./SocialMedia";
 import UserBioTabs from "./UserBioTabs";
-import { Divider } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   outer: {

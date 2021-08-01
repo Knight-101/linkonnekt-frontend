@@ -9,8 +9,6 @@ import Snackbar from "@material-ui/core/Snackbar";
 import MuiAlert from "@material-ui/lab/Alert";
 import CloseIcon from "@material-ui/icons/Close";
 import axios from "axios";
-import { useHistory } from "react-router";
-import { useDispatch } from "react-redux";
 
 function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
@@ -50,8 +48,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function SendMailModal(props) {
-  const history = useHistory();
-  const dispatch = useDispatch();
   const BASE_URL = "http://localhost:8000";
   const classes = useStyles();
   const [open, setOpen] = useState(false);

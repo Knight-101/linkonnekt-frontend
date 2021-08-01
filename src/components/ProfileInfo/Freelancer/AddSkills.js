@@ -1,15 +1,13 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState } from "react";
 import "./AddSkills.css";
-import TextField from "@material-ui/core/TextField";
 import InputLabel from "@material-ui/core/InputLabel";
 import NativeSelect from "@material-ui/core/NativeSelect";
 import CloudUploadIcon from "@material-ui/icons/CloudUpload";
-import ContentWriter from './ContentWriter';
-import VideoEditor from './VideoEditor';
-import GraphicDesigner from './GraphicDesigner';
+import ContentWriter from "./ContentWriter";
+import VideoEditor from "./VideoEditor";
+import GraphicDesigner from "./GraphicDesigner";
 
 const AddSkills = () => {
-  const [buttonClicked, setButtonClicked] = useState(0);
   const [projectTitle, setProjectTitle] = useState("");
   const [projectDescription, setProjectDescription] = useState("");
   const [choice, setChoice] = useState("");
@@ -59,10 +57,10 @@ const AddSkills = () => {
             <option value="Video Editor">Video Editor</option>
           </NativeSelect>
         </div>
-        <br/>
-        {choice==="Writer" ? <ContentWriter /> : <br/>}
-        {choice==="Graphic Designer" ? <GraphicDesigner /> : <br/>}
-        {choice==="Video Editor" ? <VideoEditor /> : <br/>}
+        <br />
+        {choice === "Writer" ? <ContentWriter /> : <br />}
+        {choice === "Graphic Designer" ? <GraphicDesigner /> : <br />}
+        {choice === "Video Editor" ? <VideoEditor /> : <br />}
 
         <div id="portfolio">
           <h4 style={{ marginBottom: "1rem" }}>Portfolio</h4>

@@ -9,7 +9,6 @@ import imgmail from "./Images/mail.png";
 import imglock from "./Images/lock.png";
 import { useDispatch } from "react-redux";
 import { setData, setImg } from "../../Redux/userData/userDataActions";
-import { logout } from "../../Redux/logoutAction";
 import { useGoogleLogout } from "react-google-login";
 import {
   setProfileData,

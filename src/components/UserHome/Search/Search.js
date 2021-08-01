@@ -4,16 +4,14 @@ import Sort from "./Sort";
 import UserCard from "./UserCard";
 import Filters from "./Filters";
 import axios from "axios";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import Loader from "../../ProfileInfo/Assets/Loader";
 
 function Search(props) {
-  const dispatch = useDispatch();
   const BASE_URL = "http://localhost:8000";
   const classes = useStyles();
   const [creatorsArray, setcreatorsArray] = useState([]);
   const email = useSelector((state) => state.userData.email);
-  const [creatorType, setCreatorType] = useState("");
   const [loading, setloading] = useState(true);
 
   useEffect(() => {
@@ -28,7 +26,6 @@ function Search(props) {
         console.log(err);
       });
   }, []);
-  console.log(creatorsArray);
   return (
     <div>
       {loading ? (
@@ -49,7 +46,8 @@ function Search(props) {
                 {creatorsArray &&
                   creatorsArray.map(
                     (creator, index) =>
-                      creator.email !== email && (
+                      creator.email !== email &&
+                      creator.profileInfo && (
                         <UserCard
                           key={index}
                           name={
@@ -75,10 +73,7 @@ function Search(props) {
                 <h3>No user found</h3>
               </div>
             )}
-            <Filters
-              setNewCreators={setcreatorsArray}
-              creatorType={setCreatorType}
-            />
+            <Filters setNewCreators={setcreatorsArray} />
           </div>
         </main>
       )}

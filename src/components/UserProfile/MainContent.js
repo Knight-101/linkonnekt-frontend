@@ -1,14 +1,8 @@
 import React from "react";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
-import LocationOnIcon from "@material-ui/icons/LocationOn";
 import SocialIcons from "./SocialIcons";
-import Button from "@material-ui/core/Button";
-import MessageIcon from "@material-ui/icons/Message";
-import ReportProblemIcon from "@material-ui/icons/ReportProblem";
-import BookmarkIcon from "@material-ui/icons/Bookmark";
 import Divider from "@material-ui/core/Divider";
-import { useState } from "react";
 
 const useStyles = makeStyles((theme) => ({
   element: {

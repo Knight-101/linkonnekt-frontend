@@ -1,17 +1,17 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState } from "react";
 import LinkedInIcon from "@material-ui/icons/LinkedIn";
 import TwitterIcon from "@material-ui/icons/Twitter";
 import FacebookIcon from "@material-ui/icons/Facebook";
 import "./Footer.css";
 
 const Footer = () => {
-  const [phoneInput, setPhoneInput] = useState('');
+  const [phoneInput, setPhoneInput] = useState("");
   function handleInputChange(event) {
     setPhoneInput(event.target.value);
   }
 
   function handleSubmit(event) {
-    alert('A number was submitted: ' + phoneInput);
+    alert("A number was submitted: " + phoneInput);
     event.preventDefault();
   }
   return (
@@ -44,9 +44,13 @@ const Footer = () => {
           <div className="foot-left">
             <p id="subscribe">Request a Callback</p>
             <form onSubmit={handleSubmit}>
-            <input id="mail" placeholder="+91 12345 67890" value={phoneInput} onChange={handleInputChange} >
-            </input>
-            <input type="submit" value="Submit" class="submit-button"/>
+              <input
+                id="mail"
+                placeholder="+91 12345 67890"
+                value={phoneInput}
+                onChange={handleInputChange}
+              ></input>
+              <input type="submit" value="Submit" class="submit-button" />
             </form>
             <p>
               Linkonnekt is a network of Content Creators and makes discovery
@@ -87,7 +91,10 @@ const Footer = () => {
               >
                 <TwitterIcon fontSize="large" />
               </a>
-              <a href="https://twitter.com/SanskarMohapat1" className="socials-link">
+              <a
+                href="https://twitter.com/SanskarMohapat1"
+                className="socials-link"
+              >
                 <FacebookIcon fontSize="large" />
               </a>
             </div>

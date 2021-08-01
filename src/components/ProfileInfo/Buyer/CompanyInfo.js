@@ -1,22 +1,21 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState } from "react";
 import "./CompanyInfo.css";
 import TextField from "@material-ui/core/TextField";
 
 const PerosnalInfo = () => {
-  const [buttonClicked, setButtonClicked] = useState(0);
   const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
+  // const [lastName, setLastName] = useState("");
   const [Address, setAddress] = useState("");
   function handleSubmit() {
-    console.log(firstName, lastName, buttonClicked, Address);
+    // console.log(firstName, lastName, buttonClicked, Address);
     //export this data from the API here
   }
   function handleFirstName(e) {
     setFirstName(e.target.value);
   }
-  function handleLastName(e) {
-    setLastName(e.target.value);
-  }
+  // function handleLastName(e) {
+  //   setLastName(e.target.value);
+  // }
   function handleAddress(e) {
     setAddress(e.target.value);
   }

@@ -3,11 +3,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import Divider from "@material-ui/core/Divider";
-import { useDispatch, useSelector } from "react-redux";
-// import ListItemText from "@material-ui/core/ListItemText";
-// import ListItemAvatar from "@material-ui/core/ListItemAvatar";
-// import Avatar from "@material-ui/core/Avatar";
-// import Typography from "@material-ui/core/Typography";
+import { useSelector } from "react-redux";
 import Matches from "./Matches";
 import axios from "axios";
 
@@ -41,12 +37,17 @@ export default function Collaborators() {
     axios
       .get(BASE_URL + "/creator/list/category/" + cat)
       .then((res) => {
+        for (let i = 0; i < res.data.length; i++) {
+          if (res.data[i].email === email) {
+            res.data.pop(res.data[i]);
+          }
+        }
         setMatchesArray(res.data);
       })
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+  }, [cat, email]);
 
   return (
     <List className={classes.root}>
@@ -79,7 +80,9 @@ export default function Collaborators() {
             )
         )
       ) : (
-        <h6>No user found</h6>
+        <ListItem>
+          <h1>No user found</h1>
+        </ListItem>
       )}
     </List>
   );

@@ -1,16 +1,11 @@
 import React from "react";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
-import LocationOnIcon from "@material-ui/icons/LocationOn";
 import SocialIcons from "./SocialIcons";
 import Button from "@material-ui/core/Button";
-import MessageIcon from "@material-ui/icons/Message";
-import EmailIcon from "@material-ui/icons/Email";
 import ReportProblemIcon from "@material-ui/icons/ReportProblem";
 import BookmarkIcon from "@material-ui/icons/Bookmark";
 import Divider from "@material-ui/core/Divider";
-import { useState } from "react";
-import axios from "axios";
 import SendMailModal from "./SendMailModal";
 
 const useStyles = makeStyles((theme) => ({
@@ -60,7 +55,6 @@ const useStyles = makeStyles((theme) => ({
 
 export default function MainContent(props) {
   const classes = useStyles();
-  const BASE_URL = "http://localhost:8000";
   const socialObj = { ...props.creator.profileInfo.categories.Platforms };
   const userPlatformsArray = [];
   for (const key in socialObj) {

@@ -1,5 +1,4 @@
 import React from "react";
-import useStyles from "../SidebarStyles";
 import RadioGroup from "@material-ui/core/RadioGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import FormControl from "@material-ui/core/FormControl";

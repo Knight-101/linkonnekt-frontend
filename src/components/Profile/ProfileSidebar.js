@@ -1,12 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-// import "./ProfileOverview.css";
-// import Camera from "./Assets/Camera.js";
-// import Mail from "./Assets/Mail.js";
-// import Phone from "./Assets/Phone.js";
-// import User from "./Assets/User.js";
-import axios from "axios";
-import { useDispatch, useSelector } from "react-redux";
 import { Divider } from "@material-ui/core";
 import { Link } from "react-router-dom";
 
@@ -25,8 +18,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const ProfileOverview = (props) => {
-  const dispatch = useDispatch();
-  const BASE_URL = "http://localhost:8000";
   const classes = useStyles();
 
   return (

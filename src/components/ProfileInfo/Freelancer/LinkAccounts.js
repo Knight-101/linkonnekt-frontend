@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React from "react";
 import "./LinkAccounts.css";
 import instaIcon from "./socialIcons/insta.png";
 import fbIcon from "./socialIcons/fb.png";

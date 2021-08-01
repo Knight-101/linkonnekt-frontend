@@ -9,7 +9,6 @@ import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import SearchIcon from "@material-ui/icons/Search";
 import ProjectsIcon from "@material-ui/icons/Schedule";
-import WalletIcon from "@material-ui/icons/AccountBalanceWallet";
 import LogoutIcon from "@material-ui/icons/ExitToApp";
 import useStyles from "./SidebarStyles";
 import { Link } from "react-router-dom";
