@@ -5,7 +5,7 @@ import FormControl from "@material-ui/core/FormControl";
 import FormLabel from "@material-ui/core/FormLabel";
 import Radio from "@material-ui/core/Radio";
 import { makeStyles } from "@material-ui/core/styles";
-import Checkbox from "@material-ui/core/Checkbox";
+// import Checkbox from "@material-ui/core/Checkbox";
 import axios from "axios";
 
 export default function Filter(props) {
@@ -14,8 +14,7 @@ export default function Filter(props) {
       width: "100%",
       borderRadius: "1rem",
       margin: "0.5rem",
-      borderTop: "1px solid #274659",
-      borderLeft: "1px solid #274659",
+      marginLeft: "2rem",
     },
     check: {
       width: "2.5rem",
@@ -26,19 +25,19 @@ export default function Filter(props) {
       border: "2px solid #274659",
       backgroundColor: "#d9eff0",
       borderRadius: "1rem",
-      margin: "0.5rem",
+      margin: "1rem",
     },
   });
 
   const classes = useStyles();
-  const BASE_URL = "http://localhost:8000";
+  const BASE_URL = process.env.REACT_APP_BACKEND_URL;
   const [value, setValue] = React.useState("");
-  const [state, setState] = React.useState({
-    nano: true,
-    micro: false,
-    mini: false,
-    mega: false,
-  });
+  // const [state, setState] = React.useState({
+  //   nano: true,
+  //   micro: false,
+  //   mini: false,
+  //   mega: false,
+  // });
 
   const handleCategory = (event) => {
     const cat = event.target.value;
@@ -62,11 +61,11 @@ export default function Filter(props) {
           });
   };
 
-  const handleCreatorType = (event) => {
-    setState({ ...state, [event.target.name]: event.target.checked });
-  };
+  // const handleCreatorType = (event) => {
+  //   setState({ ...state, [event.target.name]: event.target.checked });
+  // };
 
-  const { nano, micro, mini, mega } = state;
+  // const { nano, micro, mini, mega } = state;
 
   return (
     <div className={classes.sidebar}>
@@ -146,7 +145,7 @@ export default function Filter(props) {
             />
           </RadioGroup>
         </div>
-        <div className={classes.group}>
+        {/* <div className={classes.group}>
           <FormLabel component="legend">Creator Type</FormLabel>
           <FormControlLabel
             control={
@@ -188,7 +187,7 @@ export default function Filter(props) {
             }
             label="Mega Creator"
           />
-        </div>
+        </div> */}
       </FormControl>
     </div>
   );

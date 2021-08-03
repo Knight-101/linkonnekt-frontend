@@ -10,7 +10,9 @@ const Head = () => {
         <div className="headContent">
           <div className="nav">
             <div>
-              <h4 style={{ wordSpacing: "1rem" }}>Linkonnekt</h4>
+              <h4 style={{ wordSpacing: "1rem", fontSize: "1.8rem" }}>
+                Linkonnekt
+              </h4>
             </div>
 
             <div className="grid-item">
@@ -37,7 +39,7 @@ const Head = () => {
         </div>
       </div>
       <div className="vector-header" style={{ height: "100%", width: "100%" }}>
-        <Vector/>
+        <Vector />
       </div>
     </div>
   );

@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import AppBar from "@material-ui/core/AppBar";
 import CssBaseline from "@material-ui/core/CssBaseline";
-// import Divider from "@material-ui/core/Divider";
 import Drawer from "@material-ui/core/Drawer";
 import Hidden from "@material-ui/core/Hidden";
 import IconButton from "@material-ui/core/IconButton";
@@ -26,7 +25,7 @@ function UserHome(props) {
   const theme = useTheme();
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const [profileStatus, setprofileStatus] = useState(false);
-  const BASE_URL = "http://localhost:8000";
+  const BASE_URL = process.env.REACT_APP_BACKEND_URL;
   const profileImgUrl = useSelector((state) => state.userData.profileImg);
   const profileObj = useSelector((state) => state.profileInfo);
   const fname = profileObj.personalInfo.firstName;

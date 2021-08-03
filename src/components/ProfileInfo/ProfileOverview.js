@@ -11,7 +11,7 @@ import { setImg } from "../../Redux/userData/userDataActions";
 const ProfileOverview = (props) => {
   const dispatch = useDispatch();
   const profileImgUrl = useSelector((state) => state.userData.profileImg);
-  const BASE_URL = "http://localhost:8000";
+  const BASE_URL = process.env.REACT_APP_BACKEND_URL;
   const [DP, setDP] = useState(profileImgUrl);
 
   const DPChange = () => {
@@ -29,10 +29,9 @@ const ProfileOverview = (props) => {
           alert("Image Only!!");
         }
         if (res.data.ok) {
-          setDP(BASE_URL + "/" + res.data.path);
+          setDP(res.data.path);
           dispatch(setImg(res.data.path));
-        } 
-        else {
+        } else {
           console.log(res.data);
         }
       })

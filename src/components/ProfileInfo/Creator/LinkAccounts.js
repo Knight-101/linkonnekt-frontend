@@ -18,7 +18,7 @@ const LinkAccounts = (props) => {
     (state) => state.profileInfo.categories.Platforms
   );
   const profileObj = useSelector((state) => state.profileInfo);
-  const BASE_URL = "http://localhost:8000";
+  const BASE_URL = process.env.REACT_APP_BACKEND_URL;
   const platforms = [
     platformsObj.P1.Platform,
     platformsObj.P2.Platform,

@@ -26,13 +26,14 @@ const useStyles = makeStyles((theme) => ({
     fontSize: "40px",
   },
   Twitter: {
-    color: "blue",
-    fontSize: "#1DA1F2",
+    color: "#1DA1F2",
+    fontSize: "40px",
   },
   Instagram: {
     background:
       "radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%,#d6249f 60%,#285AEB 90%)",
     borderRadius: "5px",
+    color: "white",
     fontSize: "40px",
   },
   LinkedIn: {

@@ -30,7 +30,7 @@ const useStyles = makeStyles((theme) => ({
 export default function SignupModal(props) {
   const history = useHistory();
   const dispatch = useDispatch();
-  const BASE_URL = "http://localhost:8000";
+  const BASE_URL = process.env.REACT_APP_BACKEND_URL;
   const classes = useStyles();
   const [open, setOpen] = useState(false);
   const [role, setrole] = useState("");
@@ -49,14 +49,12 @@ export default function SignupModal(props) {
     setrole(name);
   };
   //for logout
-  const clientId =
-    "378065475011-nt3el8svf2r3d0h9sabche7sgcq4o83i.apps.googleusercontent.com";
+  const clientId = process.env.REACT_APP_OAUTH_CLIENT_ID;
   const { signOut } = useGoogleLogout({
     clientId,
   });
   //for login
-  const CLIENT_ID =
-    "378065475011-nt3el8svf2r3d0h9sabche7sgcq4o83i.apps.googleusercontent.com";
+  const CLIENT_ID = process.env.REACT_APP_OAUTH_CLIENT_ID;
 
   const responseGoogle = async (response) => {
     let accessToken = response.accessToken;

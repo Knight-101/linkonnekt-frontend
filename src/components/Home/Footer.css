@@ -29,13 +29,17 @@ li {
 }
 
 #subscribe {
-  font-size: 1.3rem;
+  font-size: 1rem;
+  margin-top: 2rem;
+  margin-bottom: 0;
 }
 #mail {
   border-radius: 20px;
   border: none;
   font-size: 15px;
   padding: 8px;
+  max-height: 30px;
+  align-self: center;
 }
 svg {
   margin-bottom: -15px;
@@ -43,9 +47,15 @@ svg {
 }
 
 .socials {
+  display: flex;
+  flex-wrap: nowrap;
   position: relative;
   top: 30px;
   bottom: 0;
+}
+.emailSubmit {
+  display: flex;
+  flex-wrap: nowrap;
 }
 
 .socials-link {
@@ -55,6 +65,10 @@ svg {
   height: 100%;
   width: 100%;
 }
+.socials-link:hover {
+  color: white;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+}
 
 .copyright {
   text-align: center;
@@ -62,6 +76,14 @@ svg {
 }
 
 .submit-button {
-  padding: 0.5rem;
+  padding: 0.5rem 1rem 0.5rem 1rem;
   margin: 1rem;
+  border-radius: 20px;
+  border: none;
+  background-color: white;
+  color: #457b9d;
+  font-weight: bold;
+}
+.submit-button:hover {
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 }

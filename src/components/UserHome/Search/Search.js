@@ -8,7 +8,7 @@ import { useSelector } from "react-redux";
 import Loader from "../../ProfileInfo/Assets/Loader";
 
 function Search(props) {
-  const BASE_URL = "http://localhost:8000";
+  const BASE_URL = process.env.REACT_APP_BACKEND_URL;
   const classes = useStyles();
   const [creatorsArray, setcreatorsArray] = useState([]);
   const email = useSelector((state) => state.userData.email);

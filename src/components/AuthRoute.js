@@ -7,11 +7,10 @@ import { useGoogleLogout } from "react-google-login";
 
 const AuthRoute = ({ component: Component, ...rest }) => {
   const dispatch = useDispatch();
-  const BASE_URL = "http://localhost:8000";
+  const BASE_URL = process.env.REACT_APP_BACKEND_URL;
   const [auth, setauth] = useState(true);
   const history = useHistory();
-  const clientId =
-    "378065475011-nt3el8svf2r3d0h9sabche7sgcq4o83i.apps.googleusercontent.com";
+  const clientId = process.env.REACT_APP_OAUTH_CLIENT_ID;
   const { signOut } = useGoogleLogout({
     clientId,
   });

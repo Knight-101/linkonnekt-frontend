@@ -51,8 +51,7 @@ const Sidebar = (props) => {
       history.push("/");
     }
   };
-  const clientId =
-    "378065475011-nt3el8svf2r3d0h9sabche7sgcq4o83i.apps.googleusercontent.com";
+  const clientId = process.env.REACT_APP_OAUTH_CLIENT_ID;
   const { signOut } = useGoogleLogout({
     clientId,
     onLogoutSuccess,

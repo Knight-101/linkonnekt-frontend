@@ -1,18 +1,29 @@
 import React, { useState } from "react";
 import LinkedInIcon from "@material-ui/icons/LinkedIn";
 import TwitterIcon from "@material-ui/icons/Twitter";
-import FacebookIcon from "@material-ui/icons/Facebook";
+import InstagramIcon from "@material-ui/icons/Instagram";
 import "./Footer.css";
+import axios from "axios";
 
 const Footer = () => {
-  const [phoneInput, setPhoneInput] = useState("");
+  const BASE_URL = process.env.REACT_APP_BACKEND_URL;
+  const [emailInput, setEmailInput] = useState("");
   function handleInputChange(event) {
-    setPhoneInput(event.target.value);
+    setEmailInput(event.target.value);
   }
-
-  function handleSubmit(event) {
-    alert("A number was submitted: " + phoneInput);
+  async function handleSubmit(event) {
     event.preventDefault();
+    await axios
+      .post(`${BASE_URL}/creator/addemail`, { email: emailInput })
+      .then((res) => {
+        if (res.data.ok) {
+          setEmailInput("");
+          alert("Your email is submitted.");
+        } else {
+          setEmailInput("");
+          console.log(res.data);
+        }
+      });
   }
   return (
     <div>
@@ -42,15 +53,15 @@ const Footer = () => {
             <h4> Contact Us </h4>
           </div>
           <div className="foot-left">
-            <p id="subscribe">Request a Callback</p>
-            <form onSubmit={handleSubmit}>
+            <p id="subscribe">Subscribe to get regular updates</p>
+            <form className="emailSubmit" onSubmit={handleSubmit}>
               <input
                 id="mail"
-                placeholder="+91 12345 67890"
-                value={phoneInput}
+                placeholder="abc@xyz.com"
+                value={emailInput}
                 onChange={handleInputChange}
               ></input>
-              <input type="submit" value="Submit" class="submit-button" />
+              <button class="submit-button">Submit</button>
             </form>
             <p>
               Linkonnekt is a network of Content Creators and makes discovery
@@ -79,23 +90,14 @@ const Footer = () => {
               <li>Contact info</li>
             </ul>
             <div className="socials">
-              <a
-                href="https://www.linkedin.com/in/sanskar-mohapatra-51215815a/"
-                className="socials-link"
-              >
-                <LinkedInIcon fontSize="large" />
+              <a href="https://www.linkedin.com/in/sanskar-mohapatra-51215815a/">
+                <LinkedInIcon className="socials-link" fontSize="large" />
               </a>
-              <a
-                href="https://twitter.com/SanskarMohapat1"
-                className="socials-link"
-              >
-                <TwitterIcon fontSize="large" />
+              <a href="https://twitter.com/SanskarMohapat1">
+                <TwitterIcon className="socials-link" fontSize="large" />
               </a>
-              <a
-                href="https://twitter.com/SanskarMohapat1"
-                className="socials-link"
-              >
-                <FacebookIcon fontSize="large" />
+              <a href="https://twitter.com/SanskarMohapat1">
+                <InstagramIcon className="socials-link" fontSize="large" />
               </a>
             </div>
           </div>

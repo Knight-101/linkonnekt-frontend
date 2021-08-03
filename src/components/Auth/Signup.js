@@ -21,7 +21,7 @@ function Alert(props) {
 const Signup = () => {
   const history = useHistory();
   const dispatch = useDispatch();
-  const BASE_URL = "http://localhost:8000";
+  const BASE_URL = process.env.REACT_APP_BACKEND_URL;
   const [open, setOpen] = React.useState(false);
   // const [role, setrole] = useState("");
   const [roleSelect, setRoleSelect] = useState("");

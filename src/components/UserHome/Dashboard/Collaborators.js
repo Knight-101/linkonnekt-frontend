@@ -27,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Collaborators() {
   const classes = useStyles();
-  const BASE_URL = "http://localhost:8000";
+  const BASE_URL = process.env.REACT_APP_BACKEND_URL;
   const profileObj = useSelector((state) => state.profileInfo);
   const email = useSelector((state) => state.userData.email);
   const cat = profileObj.categories.Category;
@@ -80,9 +80,7 @@ export default function Collaborators() {
             )
         )
       ) : (
-        <ListItem>
-          <h1>No user found</h1>
-        </ListItem>
+        <h1>No user found</h1>
       )}
     </List>
   );

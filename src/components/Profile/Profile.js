@@ -61,7 +61,7 @@ const useStyles = makeStyles((theme) => ({
 export default function Profile(props) {
   const history = useHistory();
   const classes = useStyles();
-  const BASE_URL = "http://localhost:8000";
+  const BASE_URL = process.env.REACT_APP_BACKEND_URL;
   const profileImgUrl = useSelector((state) => state.userData.profileImg);
   const [creator, setcreator] = useState({});
   const [loader, setloader] = useState(true);

@@ -33,7 +33,7 @@ const useStyles = makeStyles({
     borderRadius: "30px",
     alignItems: "flex-start",
     padding: "1rem",
-    maxWidth: 570,
+    maxWidth: 600,
   },
   YouTube: {
     "&:hover": {

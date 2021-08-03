@@ -48,7 +48,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function SendMailModal(props) {
-  const BASE_URL = "http://localhost:8000";
+  const BASE_URL = process.env.REACT_APP_BACKEND_URL;
   const classes = useStyles();
   const [open, setOpen] = useState(false);
   const [emailSent, setemailSent] = useState(false);
