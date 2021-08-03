@@ -47,7 +47,7 @@ export default function Collaborators() {
       .catch((err) => {
         console.log(err);
       });
-  }, [cat, email]);
+  }, [cat, email, BASE_URL]);
 
   return (
     <List className={classes.root}>

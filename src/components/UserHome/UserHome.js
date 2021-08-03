@@ -45,7 +45,7 @@ function UserHome(props) {
       .catch((error) => {
         console.log(error);
       });
-  }, [history]);
+  }, [history, BASE_URL]);
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);

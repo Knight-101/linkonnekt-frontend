@@ -79,7 +79,7 @@ export default function Profile(props) {
       .catch((err) => {
         console.log(err);
       });
-  }, [props.match.params.username]);
+  }, [BASE_URL, props.match.params.username]);
   return (
     <div>
       {loader ? (

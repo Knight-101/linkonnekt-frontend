@@ -25,7 +25,7 @@ function Search(props) {
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+  }, [BASE_URL]);
   return (
     <div>
       {loading ? (
