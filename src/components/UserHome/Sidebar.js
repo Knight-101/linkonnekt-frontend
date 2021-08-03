@@ -96,14 +96,13 @@ const Sidebar = (props) => {
             <ListItemText primary={"Wallet"} />
           </ListItem>
         </Link> */}
-        <Link to="/userhome/logout" className={classes.link}>
-          <ListItem onClick={signOut} button selected={listitem.LogOut}>
-            <ListItemIcon>
-              <LogoutIcon className={classes.icons} />
-            </ListItemIcon>
-            <ListItemText primary={"Log Out"} />
-          </ListItem>
-        </Link>
+
+        <ListItem onClick={signOut} button selected={listitem.LogOut}>
+          <ListItemIcon>
+            <LogoutIcon className={classes.icons} />
+          </ListItemIcon>
+          <ListItemText primary={"Log Out"} />
+        </ListItem>
       </List>
     </div>
   );
