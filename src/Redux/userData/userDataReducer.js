@@ -4,7 +4,7 @@ const initialState = {
   username: "",
   email: "",
   role: "",
-  profileImg: "http://localhost:8000/public/uploads/Default.png",
+  profileImg: process.env.REACT_APP_BACKEND_URL + "/public/uploads/Default.png",
 };
 
 const userDataReducer = (state = initialState, action) => {
