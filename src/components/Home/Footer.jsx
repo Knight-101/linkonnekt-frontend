@@ -61,7 +61,7 @@ const Footer = () => {
                 value={emailInput}
                 onChange={handleInputChange}
               ></input>
-              <button class="submit-button">Submit</button>
+              <button className="submit-button">Submit</button>
             </form>
             <p>
               Linkonnekt is a network of Content Creators and makes discovery
@@ -71,11 +71,31 @@ const Footer = () => {
           <div></div>
           <div>
             <ul>
-              <li>About Us</li>
+              <li>
+                <a
+                  href="https://www.linkedin.com/company/linkonnekt/"
+                  target="__blank"
+                  className="textLink"
+                >
+                  About Us
+                </a>
+              </li>
               <li>Support</li>
               <li>FAQ</li>
-              <li>Terms and Conditions</li>
-              <li>Privacy Policy</li>
+              <li>
+                <a
+                  href="/termsandconditions"
+                  className="textLink"
+                  target="__blank"
+                >
+                  Terms and Conditions
+                </a>
+              </li>
+              <li>
+                <a href="/privacypolicy" className="textLink" target="__blank">
+                  Privacy Policy
+                </a>
+              </li>
             </ul>
           </div>
           <div>

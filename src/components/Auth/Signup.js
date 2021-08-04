@@ -80,6 +80,7 @@ const Signup = () => {
       .then((res) => {
         if (res.data === "Email already exists") {
           setOpen(true);
+          setRoleSelect("");
           setUserData({
             username: "",
             email: "",
@@ -90,9 +91,11 @@ const Signup = () => {
         if (res.data.ok) {
           localStorage.setItem("token", res.data.token);
           dispatch(setData(userData.username, userData.email, userData.role));
+          setRoleSelect("");
           history.push("/emailV");
         } else {
           console.log(res.data);
+          setRoleSelect("");
           setUserData({
             username: "",
             email: "",
@@ -116,7 +119,7 @@ const Signup = () => {
               To keep connected with us please login with your personal info
             </p>
             <a href="/login">
-              <Link to="/login" class="link">
+              <Link to="/login" className="link">
                 <button id="loginB">Login</button>
               </Link>
             </a>
@@ -169,14 +172,14 @@ const Signup = () => {
               <label htmlFor="firstName" className="visually-hidden">
                 username
               </label>
-              <div class="input-group mb-3  signupInput">
-                <span class="input-group-text" id="basic-addon1">
+              <div className="input-group mb-3  signupInput">
+                <span className="input-group-text" id="basic-addon1">
                   <img src={imguser} className="userImg" alt="logo"></img>
                 </span>
                 <input
                   type="text"
                   required
-                  class="form-control"
+                  className="form-control"
                   placeholder="Username"
                   id="username"
                   value={userData.username}
@@ -187,14 +190,14 @@ const Signup = () => {
               <label htmlFor="inputEmail" className="visually-hidden">
                 Email address
               </label>
-              <div class="input-group mb-3  signupInput">
-                <span class="input-group-text" id="basic-addon1">
+              <div className="input-group mb-3  signupInput">
+                <span className="input-group-text" id="basic-addon1">
                   <img src={imgmail} className="userImg" alt="logo"></img>
                 </span>
                 <input
                   type="email"
                   required
-                  class="form-control"
+                  className="form-control"
                   placeholder="Email"
                   id="email"
                   value={userData.email}
@@ -205,14 +208,14 @@ const Signup = () => {
               <label htmlFor="inputPassword" className="visually-hidden">
                 Password
               </label>
-              <div class="input-group mb-3  signupInput">
-                <span class="input-group-text" id="basic-addon1">
+              <div className="input-group mb-3  signupInput">
+                <span className="input-group-text" id="basic-addon1">
                   <img src={imglock} className="userImg" alt="logo"></img>
                 </span>
                 <input
                   type="password"
                   required
-                  class="form-control"
+                  className="form-control"
                   placeholder="Password"
                   id="password"
                   value={userData.password}

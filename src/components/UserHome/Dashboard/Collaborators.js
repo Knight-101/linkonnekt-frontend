@@ -10,6 +10,7 @@ import axios from "axios";
 const useStyles = makeStyles((theme) => ({
   root: {
     width: "100%",
+    position: "relative",
     maxWidth: "40rem",
     height: "40rem",
     backgroundColor: theme.palette.background.paper,
@@ -22,6 +23,14 @@ const useStyles = makeStyles((theme) => ({
   inline: {
     display: "inline",
     fontSize: "1.3rem",
+  },
+  noUser: {
+    zIndex: "1",
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%,-50%)",
+    fontSize: "1.5rem",
   },
 }));
 
@@ -37,11 +46,6 @@ export default function Collaborators() {
     axios
       .get(BASE_URL + "/creator/list/category/" + cat)
       .then((res) => {
-        for (let i = 0; i < res.data.length; i++) {
-          if (res.data[i].email === email) {
-            res.data.pop(res.data[i]);
-          }
-        }
         setMatchesArray(res.data);
       })
       .catch((err) => {
@@ -52,9 +56,9 @@ export default function Collaborators() {
   return (
     <List className={classes.root}>
       <h4 style={{ paddingLeft: "1rem", textAlign: "center" }}>
-        Interesting people to collab
+        <b>Interesting people to collab</b>
       </h4>
-      {matchesArray ? (
+      {matchesArray.length !== 0 ? (
         matchesArray.map(
           (creator, index) =>
             creator.email !== email && (
@@ -80,7 +84,7 @@ export default function Collaborators() {
             )
         )
       ) : (
-        <h1>No user found</h1>
+        <h1 className={classes.noUser}>No user found</h1>
       )}
     </List>
   );

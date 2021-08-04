@@ -103,11 +103,11 @@ const EmailV = () => {
       {mail ? (
         <div>
           <form onSubmit={submitHandler}>
-            <div class="codeInput">
+            <div className="codeInput">
               <input
                 type="text"
                 required
-                class="form-control code"
+                className="form-control code"
                 id="one"
                 maxlength="1"
                 value={code.one}
@@ -116,7 +116,7 @@ const EmailV = () => {
               <input
                 type="text"
                 required
-                class="form-control code"
+                className="form-control code"
                 id="two"
                 maxlength="1"
                 value={code.two}
@@ -125,7 +125,7 @@ const EmailV = () => {
               <input
                 type="text"
                 required
-                class="form-control code"
+                className="form-control code"
                 id="three"
                 maxlength="1"
                 value={code.three}
@@ -134,7 +134,7 @@ const EmailV = () => {
               <input
                 type="text"
                 required
-                class="form-control code"
+                className="form-control code"
                 id="four"
                 maxlength="1"
                 value={code.four}

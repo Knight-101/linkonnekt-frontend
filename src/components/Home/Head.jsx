@@ -16,13 +16,13 @@ const Head = () => {
             </div>
 
             <div className="grid-item">
-              <Link to="/login" class="link">
+              <Link to="/login" className="link">
                 <p id="login">Login</p>
               </Link>
             </div>
 
             <div className="grid-item">
-              <Link to="/signup" class="link">
+              <Link to="/signup" className="link">
                 <button id="signup">SignUp</button>
               </Link>
             </div>

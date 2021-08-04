@@ -4,14 +4,14 @@ import Sort from "./Sort";
 import UserCard from "./UserCard";
 import Filters from "./Filters";
 import axios from "axios";
-import { useSelector } from "react-redux";
+// import { useSelector } from "react-redux";
 import Loader from "../../ProfileInfo/Assets/Loader";
 
 function Search(props) {
   const BASE_URL = process.env.REACT_APP_BACKEND_URL;
   const classes = useStyles();
   const [creatorsArray, setcreatorsArray] = useState([]);
-  const email = useSelector((state) => state.userData.email);
+  // const email = useSelector((state) => state.userData.email);
   const [loading, setloading] = useState(true);
 
   useEffect(() => {
@@ -46,7 +46,6 @@ function Search(props) {
                 {creatorsArray &&
                   creatorsArray.map(
                     (creator, index) =>
-                      creator.email !== email &&
                       creator.profileInfo && (
                         <UserCard
                           key={index}

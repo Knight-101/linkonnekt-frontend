@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { Divider } from "@material-ui/core";
 import { Link } from "react-router-dom";
+import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
+import { setImg } from "../../Redux/userData/userDataActions";
 
 const useStyles = makeStyles((theme) => ({
   title: {
@@ -19,6 +22,36 @@ const useStyles = makeStyles((theme) => ({
 
 const ProfileOverview = (props) => {
   const classes = useStyles();
+  const dispatch = useDispatch();
+  const profileImgUrl = useSelector((state) => state.userData.profileImg);
+  const BASE_URL = process.env.REACT_APP_BACKEND_URL;
+  const [DP, setDP] = useState(profileImgUrl);
+
+  const DPChange = () => {
+    const form = document.querySelector("#myDPForm");
+    const token = localStorage.getItem("token");
+    var formData = new FormData(form);
+    axios
+      .post(BASE_URL + "/auth/uploadDP", formData, {
+        headers: {
+          Authorization: token,
+        },
+      })
+      .then((res) => {
+        if (res.data === "Images Only!") {
+          alert("Image Only!!");
+        }
+        if (res.data.ok) {
+          setDP(res.data.path);
+          dispatch(setImg(res.data.path));
+        } else {
+          console.log(res.data);
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
   return (
     <div className="profile">
       <Link to="/userhome/dashboard" className={classes.title}>
@@ -27,22 +60,21 @@ const ProfileOverview = (props) => {
       <Divider />
       <div>
         {/* Image comes here */}
-        <img src={props.image} alt="dp" className="profile-image" />
+        <img src={DP} alt="dp" className="profile-image" />
         {/* <div className="camera"> */}
         {/* <Camera /> */}
-        {/* <div className="DPinput"> */}
-        {/* <form id="myDPForm">
+        <form id="myDPForm">
           <input
             type="file"
             id="myDP"
             name="DisplayPicture"
             hidden
+            onChange={DPChange}
           />
           <label className="DPlabel" for="myDP">
             Change Image
           </label>
-        </form> */}
-        {/* </div> */}
+        </form>
         {/* </div> */}
       </div>
       <div id="user-data">

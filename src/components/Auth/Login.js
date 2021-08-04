@@ -135,6 +135,8 @@ const Login = () => {
           if (res.data === "User not found") {
             signOut();
             setfail("User not found");
+          } else {
+            console.log(res.data);
           }
         }
       })
@@ -158,8 +160,8 @@ const Login = () => {
               <label htmlFor="inputEmail" className="visually-hidden">
                 Email address
               </label>
-              <div class="input-group mb-3  loginInput">
-                <span class="input-group-text" id="basic-addon1">
+              <div className="input-group mb-3  loginInput">
+                <span className="input-group-text" id="basic-addon1">
                   <img src={imgmail} className="userImg" alt="logo"></img>
                 </span>
                 <input
@@ -168,7 +170,7 @@ const Login = () => {
                   id="email"
                   onChange={handleChange}
                   type="email"
-                  class="form-control"
+                  className="form-control"
                   placeholder="Email"
                 />
               </div>
@@ -176,8 +178,8 @@ const Login = () => {
               <label htmlFor="inputPassword" className="visually-hidden">
                 Password
               </label>
-              <div class="input-group mb-3  loginInput">
-                <span class="input-group-text" id="basic-addon1">
+              <div className="input-group mb-3  loginInput">
+                <span className="input-group-text" id="basic-addon1">
                   <img src={imglock} className="userImg" alt="logo"></img>
                 </span>
                 <input
@@ -186,7 +188,7 @@ const Login = () => {
                   onChange={handleChange}
                   id="password"
                   type="password"
-                  class="form-control"
+                  className="form-control"
                   placeholder="Password"
                 />
               </div>
@@ -219,7 +221,7 @@ const Login = () => {
               Enter your personal details and start your journey with us
             </p>
             <a href="/signup">
-              <Link to="/signup" class="link">
+              <Link to="/signup" className="link">
                 <button id="loginB">Sign Up</button>
               </Link>
             </a>

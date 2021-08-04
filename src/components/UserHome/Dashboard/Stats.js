@@ -12,10 +12,9 @@ const useStyles = makeStyles({
   root: {
     minWidth: 275,
     background: "#E63946",
-    opacity: "0.65",
     color: "white",
-    margin: 10
-
+    margin: 10,
+    opacity: "0.3",
   },
   bullet: {
     display: "inline-block",
@@ -28,6 +27,17 @@ const useStyles = makeStyles({
   pos: {
     marginBottom: 12,
   },
+  master: {
+    position: "relative",
+  },
+  underDev: {
+    zIndex: "1",
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%,-50%)",
+    fontSize: "1.5rem",
+  },
 });
 
 export default function Stats() {
@@ -38,29 +48,36 @@ export default function Stats() {
     { id: 3, date: "LastMonth", amount: 10 },
   ];
   return (
-    <Card className={classes.root}>
-      <CardContent>
-        <Typography variant="h5" component="h2">
-          New Audience Captured
-        </Typography>
-        <Divider />
-        <div>
-          <h3 className="stat-most-imp">1003</h3>
-        </div>
-        <div className="flexbox">
-          {DataArr.map((post) => (
-            <div key={post.id}>
-              <div> {post.date}</div>
-              <div className="old-stats-div">
-                <p>{post.amount}</p>
+    <div className={classes.master}>
+      <div className={classes.underDev}>
+        <p style={{ textAlign: "center" }}>
+          <b>Under developement</b>
+        </p>
+      </div>
+      <Card className={classes.root}>
+        <CardContent>
+          <Typography variant="h5" component="h2">
+            New Audience Captured
+          </Typography>
+          <Divider />
+          <div>
+            <h3 className="stat-most-imp">1003</h3>
+          </div>
+          <div className="flexbox">
+            {DataArr.map((post) => (
+              <div key={post.id}>
+                <div> {post.date}</div>
+                <div className="old-stats-div">
+                  <p>{post.amount}</p>
+                </div>
               </div>
-            </div>
-          ))}
-        </div>
-      </CardContent>
-      <CardActions>
-        <Button size="small">Learn More</Button>
-      </CardActions>
-    </Card>
+            ))}
+          </div>
+        </CardContent>
+        <CardActions>
+          <Button size="small">Learn More</Button>
+        </CardActions>
+      </Card>
+    </div>
   );
 }

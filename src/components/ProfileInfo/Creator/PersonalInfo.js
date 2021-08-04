@@ -74,7 +74,7 @@ const PerosnalInfo = (props) => {
             // helperText="Please select your currency"
           />
         </div>
-        <div class="aboutUser">
+        <div className="aboutUser">
           <h5 className="aboutUserHead">Tell us about yourself</h5>
           <textarea
             id="about"

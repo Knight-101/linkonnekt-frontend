@@ -76,6 +76,7 @@ const useStyles = makeStyles((theme) => ({
     fontSize: "30px",
     borderRadius: "100%",
     cursor: "pointer",
+    opacity: "0.3",
   },
   DPIcon: {
     marginRight: "25px",

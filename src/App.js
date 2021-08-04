@@ -11,6 +11,8 @@ import AuthRoute from "./components/AuthRoute";
 import Profile from "./components/Profile/Profile";
 import "./App.css";
 import UserProfile from "./components/UserProfile/UserProfile";
+import PrivacyPolicy from "./components/PrivacyPolicy/PrivacyPolicy";
+import TermsAndConditions from "./components/Terms/TermsAndConditions";
 
 function App() {
   return (
@@ -24,6 +26,12 @@ function App() {
         </Route>
         <Route path="/login">
           <Login />
+        </Route>
+        <Route path="/privacypolicy">
+          <PrivacyPolicy />
+        </Route>
+        <Route path="/termsandconditions">
+          <TermsAndConditions />
         </Route>
         <AuthRoute path="/emailV" exact component={EmailV} />
         <AuthRoute path="/mobileV" exact component={MobileV} />

@@ -74,12 +74,13 @@ export default function SignupModal(props) {
           localStorage.setItem("token", res.data.token);
           dispatch(setData(username, email, role));
           dispatch(setImg(profileImg));
+          setRoleSelect("");
           history.push("/emailV");
         }
         if (res.data === "User already exists") {
           signOut();
           setOpen(false);
-
+          setRoleSelect("");
           alert("User already exists");
         }
       })

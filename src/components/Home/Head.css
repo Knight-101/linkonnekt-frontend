@@ -19,7 +19,8 @@ body {
 }
 
 .headContent {
-  padding: 1rem 5rem 0 5rem;
+  background: linear-gradient(180deg, var(--heavy-jb) 0%, var(--jb) 100%);
+  padding: 2rem 5rem 2rem 5rem;
 }
 
 .nav {
