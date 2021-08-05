@@ -8,33 +8,46 @@ import Users from "./Users";
 const Middle = () => {
   return (
     <div>
-      <div className="space"></div>
       <div className="mid">
         <div className="about">
           <div className="working">
             <h3>How it works</h3>
             <hr></hr>
             <div>
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry's standard dummy text
-              ever since the 1500s, when an unknown printer took a galley of
-              type and scrambled it to make a type specimen book. It has
-              survived not only five centuries, but also the leap into
-              electronic typesetting, remaining essentially unchanged.
+              <p>Hola Amigos ! Thanks for dropping by our site 😀</p>
+              <p>
+                Well now you are here , we would like to ask you if you are
+                looking forward to create an impact and take your content
+                creation journey to the moon 🚀?
+              </p>
+              <p>Why ?</p>
+              <p>
+                Because , it requires COLLABORATION and we can surely help you
+                with that.
+              </p>
+              <p>- Collaborate with people having similar interests. </p>
+              <p>-Bring your creation to a wider audience.</p>
+              <p>- Invite folks for your next livestream or podcast.</p>
+              <p>
+                What are you waiting for? Just log in and there you goooo 🏃🏻‍♀️.
+              </p>
             </div>
           </div>
           <div className="aboutimg boxstyle">
             <img src={imgsrc1} className="about1img" alt="logo"></img>
             <h3> Discover Interesting People </h3>
           </div>
-          <div className="aboutimg aboutParent" style={{width: '300px', height: '900px'}} >
+          <div
+            className="aboutimg aboutParent"
+            style={{ width: "300px", height: "900px" }}
+          >
             <div className="aboutChild boxstyle">
-              <img src={imgsrc3}  className="about3img" alt="logo"></img>
+              <img src={imgsrc3} className="about3img" alt="logo"></img>
               <h3> Collaborate </h3>
             </div>
             <div className="aboutChild boxstyle">
               <img src={imgsrc2} className="about2img" alt="logo"></img>
-              <h3> Increase Yoru Reach </h3>
+              <h3> Increase Your Reach </h3>
             </div>
           </div>
         </div>

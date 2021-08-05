@@ -1,27 +1,36 @@
-.parentContainer{
+.parentContainer {
+  display: flex;
+  margin: auto;
+  align-content: stretch;
+  margin: 5rem;
+  max-width: 100%;
+  height: auto;
+}
+
+.Stars {
+  padding: 0.5rem 0 1rem 0;
+}
+
+.Name {
+  color: var(--heavy-jb);
+  font-weight: 500;
+}
+
+.Heading {
+  color: var(--heavy-charl);
+  font-weight: 600;
+}
+
+Text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+@media (max-width: 1000px) {
+  .parentContainer {
     display: flex;
     margin: auto;
-    align-content: stretch ;
-    margin: 5rem ;
-}
-
-.Stars{
-    padding: 0.5rem 0 1rem 0;
-}
-
-.Name{
-    color: var(--heavy-jb);
-    font-weight: 500;
-
-}
-
-.Heading{
-    color: var(--heavy-charl);
-    font-weight: 600;
-}
-
-Text{
-    display: flex;
     flex-direction: column;
-    align-items: center;
+    text-align: center;
+  }
 }

@@ -40,36 +40,29 @@ const Footer = () => {
       <div className="foot">
         <div className="foot-grid">
           <div className="foot-left">
-            <h2>Linkonnekt</h2>
+            <h1>Linkonnekt</h1>
+            <div className="foot-left">
+              <p id="subscribe">Subscribe to get regular updates</p>
+              <form className="emailSubmit" onSubmit={handleSubmit}>
+                <input
+                  id="mail"
+                  placeholder="abc@xyz.com"
+                  value={emailInput}
+                  onChange={handleInputChange}
+                ></input>
+                <button className="submit-button">Submit</button>
+              </form>
+              <p>
+                Linkonnekt is a network of Content Creators and makes discovery
+                and Collaboration easier.
+              </p>
+            </div>
           </div>
           <div></div>
-          <div>
-            <h4> Support</h4>
-          </div>
-          <div>
-            <h4> Community</h4>
-          </div>
-          <div>
-            <h4> Contact Us </h4>
-          </div>
-          <div className="foot-left">
-            <p id="subscribe">Subscribe to get regular updates</p>
-            <form className="emailSubmit" onSubmit={handleSubmit}>
-              <input
-                id="mail"
-                placeholder="abc@xyz.com"
-                value={emailInput}
-                onChange={handleInputChange}
-              ></input>
-              <button className="submit-button">Submit</button>
-            </form>
-            <p>
-              Linkonnekt is a network of Content Creators and makes discovery
-              and Collaboration easier.
-            </p>
-          </div>
-          <div></div>
-          <div>
+          <div id="foot-support">
+            <h4>
+              <b>Support</b>
+            </h4>
             <ul>
               <li>
                 <a
@@ -80,7 +73,6 @@ const Footer = () => {
                   About Us
                 </a>
               </li>
-              <li>Support</li>
               <li>FAQ</li>
               <li>
                 <a
@@ -99,6 +91,9 @@ const Footer = () => {
             </ul>
           </div>
           <div>
+            <h4>
+              <b>Community</b>{" "}
+            </h4>
             <ul>
               <li>Blog</li>
               <li>Partnership</li>
@@ -106,19 +101,24 @@ const Footer = () => {
             </ul>
           </div>
           <div>
+            <h4>
+              <b>Contact Us</b>
+            </h4>
             <ul>
               <li>Contact info</li>
             </ul>
-            <div className="socials">
-              <a href="https://www.linkedin.com/in/sanskar-mohapatra-51215815a/">
-                <LinkedInIcon className="socials-link" fontSize="large" />
-              </a>
-              <a href="https://twitter.com/SanskarMohapat1">
-                <TwitterIcon className="socials-link" fontSize="large" />
-              </a>
-              <a href="https://twitter.com/SanskarMohapat1">
-                <InstagramIcon className="socials-link" fontSize="large" />
-              </a>
+            <div>
+              <div className="socials">
+                <a href="https://www.linkedin.com/company/linkonnekt/">
+                  <LinkedInIcon className="socials-link" fontSize="large" />
+                </a>
+                <a href="https://twitter.com/linkonnekt">
+                  <TwitterIcon className="socials-link" fontSize="large" />
+                </a>
+                <a href="https://www.instagram.com/__sanskar0520/">
+                  <InstagramIcon className="socials-link" fontSize="large" />
+                </a>
+              </div>
             </div>
           </div>
         </div>

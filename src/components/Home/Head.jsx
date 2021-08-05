@@ -30,7 +30,9 @@ const Head = () => {
           <div className="head-mid">
             <div className="moto">
               <p>Connect , Collaborate , Create</p>
-              <button id="signup2">SignUp</button>
+              <Link to="/signup" className="link">
+                <button id="signup2">SignUp</button>
+              </Link>
             </div>
             <div className="graphic">
               <img src={imgsrc} className="mobileImg" alt="logo"></img>
