@@ -20,7 +20,6 @@ function Search(props) {
       .then(async (res) => {
         setcreatorsArray(res.data);
         setloading(false);
-        console.log(res.data);
       })
       .catch((err) => {
         console.log(err);
