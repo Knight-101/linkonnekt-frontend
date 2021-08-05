@@ -44,7 +44,9 @@ export default function Collaborators() {
 
   useEffect(() => {
     axios
-      .get(BASE_URL + "/creator/list/category/" + cat)
+      .get(BASE_URL + "/creator/list/category/" + cat, {
+        headers: { Authorization: localStorage.getItem("token") },
+      })
       .then((res) => {
         setMatchesArray(res.data);
       })
