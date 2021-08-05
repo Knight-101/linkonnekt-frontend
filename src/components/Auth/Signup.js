@@ -24,6 +24,7 @@ const Signup = () => {
   const BASE_URL = process.env.REACT_APP_BACKEND_URL;
   const [open, setOpen] = React.useState(false);
   // const [role, setrole] = useState("");
+  const [errmsg, setErrmsg] = useState("");
   const [roleSelect, setRoleSelect] = useState("");
 
   const handleClose = (event, reason) => {
@@ -79,6 +80,7 @@ const Signup = () => {
       .post(BASE_URL + "/auth/signup", userData)
       .then((res) => {
         if (res.data === "Email already exists") {
+          setErrmsg("Email already exists");
           setOpen(true);
           setRoleSelect("");
           setUserData({
@@ -93,6 +95,10 @@ const Signup = () => {
           dispatch(setData(userData.username, userData.email, userData.role));
           setRoleSelect("");
           history.push("/emailV");
+        }
+        if (res.data === '"role" is not allowed to be empty') {
+          setErrmsg("Select a role");
+          setOpen(true);
         } else {
           console.log(res.data);
           setRoleSelect("");
@@ -236,7 +242,7 @@ const Signup = () => {
       </div>
       <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
         <Alert onClose={handleClose} severity="error">
-          Email already exists
+          {errmsg}
         </Alert>
       </Snackbar>
     </div>
