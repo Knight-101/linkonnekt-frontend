@@ -4,8 +4,16 @@ import Sort from "./Sort";
 import UserCard from "./UserCard";
 import Filters from "./Filters";
 import axios from "axios";
-// import { useSelector } from "react-redux";
-import Loader from "../../ProfileInfo/Assets/Loader";
+import { css } from "@emotion/react";
+import ClipLoader from "react-spinners/ClipLoader";
+
+const override = css`
+  display: block;
+  margin: 0 auto;
+  position: absolute;
+  top: 35%;
+  left: 45%;
+`;
 
 function Search(props) {
   const BASE_URL = process.env.REACT_APP_BACKEND_URL;
@@ -28,7 +36,12 @@ function Search(props) {
   return (
     <div>
       {loading ? (
-        <Loader />
+        <ClipLoader
+          loading={loading}
+          css={override}
+          color={"#457b9d"}
+          size={100}
+        />
       ) : (
         <main className={classes.content}>
           <Sort

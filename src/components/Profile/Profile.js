@@ -9,7 +9,8 @@ import MainContent from "./MainContent";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 import UserBioTabs from "./UserBioTabs";
 import { useSelector } from "react-redux";
-import Loader from "../ProfileInfo/Assets/Loader";
+import { css } from "@emotion/react";
+import ClipLoader from "react-spinners/ClipLoader";
 
 const useStyles = makeStyles((theme) => ({
   outer: {
@@ -57,6 +58,13 @@ const useStyles = makeStyles((theme) => ({
     },
   },
 }));
+const override = css`
+  display: block;
+  margin: 0 auto;
+  position: absolute;
+  top: 35%;
+  left: 45%;
+`;
 
 export default function Profile(props) {
   const history = useHistory();
@@ -64,14 +72,14 @@ export default function Profile(props) {
   const BASE_URL = process.env.REACT_APP_BACKEND_URL;
   const profileImgUrl = useSelector((state) => state.userData.profileImg);
   const [creator, setcreator] = useState({});
-  const [loader, setloader] = useState(true);
+  let [loading, setLoading] = useState(true);
   useEffect(() => {
     axios
       .get(`${BASE_URL}/creator/${props.match.params.username}`)
       .then(async (res) => {
         if (res.data.ok) {
           setcreator(res.data.user);
-          setloader(false);
+          setLoading(false);
         } else {
           console.log(res.data);
         }
@@ -82,8 +90,13 @@ export default function Profile(props) {
   }, [BASE_URL, props.match.params.username]);
   return (
     <div>
-      {loader ? (
-        <Loader />
+      {loading ? (
+        <ClipLoader
+          color={"#457b9d"}
+          loading={loading}
+          css={override}
+          size={150}
+        />
       ) : (
         <div className={classes.outer}>
           <div className={classes.Sidebar}>

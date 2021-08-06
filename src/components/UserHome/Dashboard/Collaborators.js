@@ -6,6 +6,8 @@ import Divider from "@material-ui/core/Divider";
 import { useSelector } from "react-redux";
 import Matches from "./Matches";
 import axios from "axios";
+import { css } from "@emotion/react";
+import ClipLoader from "react-spinners/ClipLoader";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -34,21 +36,44 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+const override = css`
+  display: block;
+  margin: 0 auto;
+  position: relative;
+  top: 40%;
+`;
+
 export default function Collaborators() {
   const classes = useStyles();
   const BASE_URL = process.env.REACT_APP_BACKEND_URL;
   const profileObj = useSelector((state) => state.profileInfo);
   const email = useSelector((state) => state.userData.email);
   const cat = profileObj.categories.Category;
+  let [loading, setLoading] = useState(true);
   const [matchesArray, setMatchesArray] = useState([]);
 
   useEffect(() => {
+    let top5 = [];
+    axios
+      .get(BASE_URL + "/creator/top5")
+      .then((res) => {
+        top5 = res.data;
+      })
+      .catch((err) => {
+        console.log(err);
+      });
     axios
       .get(BASE_URL + "/creator/list/category/" + cat, {
         headers: { Authorization: localStorage.getItem("token") },
       })
       .then((res) => {
-        setMatchesArray(res.data);
+        const arrayLen = res.data.length;
+        if (res.data.length < 5) {
+          setMatchesArray([...res.data, ...top5.slice(0, 5 - arrayLen)]);
+          setLoading(false);
+        } else {
+          setMatchesArray(res.data);
+        }
       })
       .catch((err) => {
         console.log(err);
@@ -86,7 +111,12 @@ export default function Collaborators() {
             )
         )
       ) : (
-        <h1 className={classes.noUser}>No user found</h1>
+        <ClipLoader
+          color={"#457b9d"}
+          loading={loading}
+          css={override}
+          size={100}
+        />
       )}
     </List>
   );

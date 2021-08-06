@@ -9,8 +9,19 @@ const Head = () => {
       <div className="head">
         <div className="headContent">
           <div className="nav">
-            <div>
-              <h4 style={{ wordSpacing: "1rem", fontSize: "1.8rem" }}>
+            <div className="head-logo">
+              {/* <img
+                src="./apple-touch-icon.png"
+                alt="logo"
+                style={{ height: "50px", width: "50px" }}
+              /> */}
+              <h4
+                style={{
+                  wordSpacing: "1rem",
+                  fontSize: "2rem",
+                  alignSelf: "flex-end",
+                }}
+              >
                 Linkonnekt
               </h4>
             </div>
