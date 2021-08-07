@@ -55,7 +55,7 @@ export default function SignupModal(props) {
       return;
     }
 
-    setOpen(false);
+    setSnackopen(false);
   };
   const roleClick = (event) => {
     const { name, id } = event.target;
@@ -77,11 +77,11 @@ export default function SignupModal(props) {
     let profileImg = response.profileObj.imageUrl;
     if (!role) {
       signOut();
+      setErrmsg("Select a role");
       setOpen(false);
       setrole("");
       setRoleSelect("");
       setSnackopen(true);
-      setErrmsg("Select a role");
     } else {
       //posting oauth data
       await axios
@@ -105,6 +105,7 @@ export default function SignupModal(props) {
             setRoleSelect("");
             setrole("");
             setErrmsg("User already exists");
+            setSnackopen(true);
           }
         })
         .catch((error) => {
