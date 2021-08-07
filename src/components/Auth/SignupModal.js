@@ -50,7 +50,11 @@ export default function SignupModal(props) {
   const handleClose = () => {
     setOpen(false);
   };
-  const snackhandleClose = () => {
+  const snackhandleClose = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+
     setOpen(false);
   };
   const roleClick = (event) => {
