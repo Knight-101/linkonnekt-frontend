@@ -5,6 +5,8 @@ import Backdrop from "@material-ui/core/Backdrop";
 import Fade from "@material-ui/core/Fade";
 import GoogleLogin from "react-google-login";
 import axios from "axios";
+import Snackbar from "@material-ui/core/Snackbar";
+import MuiAlert from "@material-ui/lab/Alert";
 import "./SignupModal.css";
 import { useHistory } from "react-router";
 import { useDispatch } from "react-redux";
@@ -26,6 +28,9 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(2, 4, 3),
   },
 }));
+function Alert(props) {
+  return <MuiAlert elevation={6} variant="filled" {...props} />;
+}
 
 export default function SignupModal(props) {
   const history = useHistory();
@@ -33,14 +38,19 @@ export default function SignupModal(props) {
   const BASE_URL = process.env.REACT_APP_BACKEND_URL;
   const classes = useStyles();
   const [open, setOpen] = useState(false);
+  const [snackopen, setSnackopen] = useState(false);
   const [role, setrole] = useState("");
   const [roleSelect, setRoleSelect] = useState("");
+  const [errmsg, setErrmsg] = useState("");
 
   const handleOpen = () => {
     setOpen(true);
   };
 
   const handleClose = () => {
+    setOpen(false);
+  };
+  const snackhandleClose = () => {
     setOpen(false);
   };
   const roleClick = (event) => {
@@ -61,32 +71,46 @@ export default function SignupModal(props) {
     let email = response.profileObj.email;
     let username = response.profileObj.givenName;
     let profileImg = response.profileObj.imageUrl;
-    //posting oauth data
-    await axios
-      .post(BASE_URL + "/auth/oauthsignup", {
-        access_token: accessToken,
-        email: email,
-        role: role,
-        profileImg: profileImg,
-      })
-      .then(async (res) => {
-        if (res.data.ok) {
-          localStorage.setItem("token", res.data.token);
-          dispatch(setData(username, email, role));
-          dispatch(setImg(profileImg));
-          setRoleSelect("");
-          history.push("/emailV");
-        }
-        if (res.data === "User already exists") {
+    if (!role) {
+      signOut();
+      setOpen(false);
+      setrole("");
+      setRoleSelect("");
+      setSnackopen(true);
+      setErrmsg("Select a role");
+    } else {
+      //posting oauth data
+      await axios
+        .post(BASE_URL + "/auth/oauthsignup", {
+          access_token: accessToken,
+          email: email,
+          role: role,
+          profileImg: profileImg,
+        })
+        .then(async (res) => {
+          if (res.data.ok) {
+            localStorage.setItem("token", res.data.token);
+            dispatch(setData(username, email, role));
+            dispatch(setImg(profileImg));
+            setRoleSelect("");
+            history.push("/emailV");
+          }
+          if (res.data === "User already exists") {
+            signOut();
+            setOpen(false);
+            setRoleSelect("");
+            setrole("");
+            setErrmsg("User already exists");
+          }
+        })
+        .catch((error) => {
+          console.log(error);
           signOut();
           setOpen(false);
           setRoleSelect("");
-          alert("User already exists");
-        }
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+          setrole("");
+        });
+    }
   };
 
   const failureGoogle = (res) => {
@@ -179,6 +203,15 @@ export default function SignupModal(props) {
           </div>
         </Fade>
       </Modal>
+      <Snackbar
+        open={snackopen}
+        autoHideDuration={6000}
+        onClose={snackhandleClose}
+      >
+        <Alert onClose={snackhandleClose} severity="error">
+          {errmsg}
+        </Alert>
+      </Snackbar>
     </div>
   );
 }
