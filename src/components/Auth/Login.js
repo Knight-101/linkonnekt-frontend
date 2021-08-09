@@ -99,7 +99,11 @@ const Login = () => {
         email: email,
       })
       .then((res) => {
-        if (res.data.ok) {
+        if (res.data === "User not found") {
+          signOut();
+          alert("User not found");
+          console.log("User not found");
+        } else if (res.data.ok) {
           const username = res.data.user.username;
           const email = res.data.user.email;
           const role = res.data.user.role;
@@ -131,13 +135,6 @@ const Login = () => {
                   history.push("/emailV");
                 }
               });
-          }
-          if (res.data === "User not found") {
-            signOut();
-            alert("User not found");
-            console.log("User not found");
-          } else {
-            console.log(res.data);
           }
         }
       })
