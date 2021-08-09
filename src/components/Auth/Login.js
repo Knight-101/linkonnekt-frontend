@@ -101,8 +101,7 @@ const Login = () => {
       .then((res) => {
         if (res.data === "User not found") {
           signOut();
-          alert("User not found");
-          console.log("User not found");
+          setfail("User not found");
         } else if (res.data.ok) {
           const username = res.data.user.username;
           const email = res.data.user.email;
