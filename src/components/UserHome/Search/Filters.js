@@ -52,7 +52,9 @@ export default function Filter(props) {
             console.log(err);
           })
       : axios
-          .get(BASE_URL + "/creator/list/category/" + cat)
+          .get(BASE_URL + "/creator/list/category/" + cat, {
+            headers: { Authorization: localStorage.getItem("token") },
+          })
           .then((res) => {
             props.setNewCreators(res.data);
           })
