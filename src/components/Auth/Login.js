@@ -134,7 +134,8 @@ const Login = () => {
           }
           if (res.data === "User not found") {
             signOut();
-            setfail("User not found");
+            alert("User not found");
+            console.log("User not found");
           } else {
             console.log(res.data);
           }
