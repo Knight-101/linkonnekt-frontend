@@ -27,9 +27,7 @@ function Search(props) {
 
   useEffect(() => {
     axios
-      .get(BASE_URL + "/creator/list", {
-        headers: { Authorization: localStorage.getItem("token") },
-      })
+      .get(BASE_URL + "/creator/list")
       .then(async (res) => {
         setcreatorsArray(res.data);
         const len = res.data.length;

@@ -77,7 +77,9 @@ export default function Sort(props) {
   const handleSearch = (event) => {
     const name = document.querySelector("#search").value;
     axios
-      .get(BASE_URL + "/creator/list/name/" + name)
+      .get(BASE_URL + "/creator/list/name/" + name, {
+        headers: { Authorization: localStorage.getItem("token") },
+      })
       .then((res) => {
         props.setNewCreators(res.data);
       })
