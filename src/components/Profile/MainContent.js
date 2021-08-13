@@ -3,10 +3,11 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import SocialIcons from "./SocialIcons";
 import Button from "@material-ui/core/Button";
-import ReportProblemIcon from "@material-ui/icons/ReportProblem";
+// import ReportProblemIcon from "@material-ui/icons/ReportProblem";
 import BookmarkIcon from "@material-ui/icons/Bookmark";
 import Divider from "@material-ui/core/Divider";
 import SendMailModal from "./SendMailModal";
+import SendInviteModal from "./SendInviteModal";
 
 const useStyles = makeStyles((theme) => ({
   element: {
@@ -46,7 +47,7 @@ const useStyles = makeStyles((theme) => ({
     color: "#f8f8f8",
   },
   buttonSecond: {
-    color: "#457b9d",
+    color: "black",
   },
   buttonThird: {
     color: "#E63946",
@@ -138,7 +139,8 @@ export default function MainContent(props) {
 
       <div className={classes.ButtonContainer}>
         <SendMailModal email={props.creator.email} />
-        <Button
+        <SendInviteModal email={props.creator.email} />
+        {/* <Button
           className={classes.buttonSecond}
           variant="outlined"
           size="small"
@@ -146,7 +148,7 @@ export default function MainContent(props) {
           disabled
         >
           BookMark User
-        </Button>
+        </Button> */}
         <Button
           variant="outlined"
           className={classes.buttonThird}

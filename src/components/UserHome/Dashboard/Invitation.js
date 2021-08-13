@@ -13,7 +13,7 @@ const useStyles = makeStyles({
   root: {
     maxWidth: 380,
     maxHeight: 410,
-    opacity: "0.3",
+    // opacity: "0.3",
   },
   media: {
     height: "200px",
@@ -41,11 +41,11 @@ export default function Invitations() {
 
   return (
     <div className={classes.master}>
-      <div className={classes.underDev}>
+      {/* <div className={classes.underDev}>
         <p style={{ textAlign: "center" }}>
           <b>Under developement</b>
         </p>
-      </div>
+      </div> */}
       <Card className={classes.root}>
         <h4 style={{ textAlign: "center", paddingTop: "0.5rem" }}>
           Invitations for you
