@@ -117,7 +117,6 @@ export default function SendInviteModal(props) {
         size="small"
         startIcon={<SendIcon />}
         onClick={handleOpen}
-        disabled
       >
         Send Invite
       </Button>

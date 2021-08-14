@@ -75,7 +75,7 @@ export default function Profile(props) {
   let [loading, setLoading] = useState(true);
   useEffect(() => {
     axios
-      .get(`${BASE_URL}/creator/${props.match.params.username}`)
+      .get(`${BASE_URL}/creator/profile/${props.match.params.username}`)
       .then(async (res) => {
         if (res.data.ok) {
           setcreator(res.data.user);
