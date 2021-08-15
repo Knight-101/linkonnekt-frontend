@@ -102,6 +102,11 @@ export default function Filter(props) {
               label="Entertainment"
             />
             <FormControlLabel
+              value="Education"
+              control={<Radio />}
+              label="Education"
+            />
+            <FormControlLabel
               value="Family"
               control={<Radio />}
               label="Family"

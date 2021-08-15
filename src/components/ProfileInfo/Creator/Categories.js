@@ -92,6 +92,7 @@ const Categories = (props) => {
               <option value="Animals">Animals</option>
               <option value="Business">Business</option>
               <option value="Entertainment">Entertainment</option>
+              <option value="Education">Education</option>
               <option value="Family">Family</option>
               <option value="Fashion">Fashion</option>
               <option value="Food">Food</option>
