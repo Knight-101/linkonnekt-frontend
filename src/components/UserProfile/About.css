@@ -1,0 +1,11 @@
+.noEdit {
+  width: 100%;
+  height: 30vh;
+  resize: none;
+  border: none;
+}
+.Edit {
+  width: 100%;
+  height: 30vh;
+  resize: none;
+}
