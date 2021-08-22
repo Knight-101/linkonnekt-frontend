@@ -94,7 +94,7 @@ export default function UserProfile(props) {
         </div>
         <MainContent creator={creator} />
         {/* <Divider /> */}
-        <UserBioTabs about={creator.profileInfo.personalInfo.about} />
+        <UserBioTabs />
 
         {/* {props.item === "About" && <About />}
         {props.item === "SocialMedia" && <SocialMedia />} */}

@@ -58,7 +58,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function UserBioTabs(props) {
+export default function UserBioTabs() {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
 
@@ -79,7 +79,7 @@ export default function UserBioTabs(props) {
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0}>
-        <About about={props.about} />
+        <About />
       </TabPanel>
     </div>
   );

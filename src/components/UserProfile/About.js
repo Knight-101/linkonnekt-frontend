@@ -23,12 +23,13 @@ const useStyles = makeStyles((theme) => ({
     },
   },
 }));
-export default function About(props) {
+export default function About() {
   const dispatch = useDispatch();
   const creatorInfo = useSelector((state) => state.profileInfo.personalInfo);
   const classes = useStyles();
   const [edit, setedit] = useState(false);
-  const [about, setabout] = useState(props.about);
+  const [about, setabout] = useState({ about: creatorInfo.about });
+  console.log(about);
   const BASE_URL = process.env.REACT_APP_BACKEND_URL;
   const editData = () => {
     setedit((prev) => !prev);
